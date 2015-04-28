@@ -1,19 +1,11 @@
 title: "WebApplications Lecture Homepage"
-author: "Florian Rappl"
+author: "Markus Huber, Florian Rappl"
 email: "mail@florian-rappl.de"
 description: "Official website of the WebApplications lecture of the University of Regensburg."
 keywords: "Lecture, HTML5, CSS3, JavaScript, Web, WebApp, JSON, Regensburg, University"
 url: "http://webapplecture.github.io"
 more: "read more"
 favicon: "/images/favicon.ico"
-
-style:
-    body: "whitesmoke"
-    nav: "#181818"
-    article:
-        even: "white"
-        odd: "#222222"
-
 excerpt_separator: "\n\n\n"
 markdown: kramdown
 highlighter: pygments

@@ -5,14 +5,26 @@
 @import mixins
 
 body
-  +body_background({{ site.style.body }})
+  +body-background( )
   > header,  > footer
-    +contrast({{ site.style.nav }})
+    +contrast()
 
-article:nth-child(even)
-  +article_background({{ site.style.article.even }})
+.MainLogo
+  +transform-rotate(15deg)
+
+body > header
+  +border-radius(0 0 10px 10px)
+
+body > footer
+  +border-radius(10px 10px 0 0)
+
+article
+  +border-radius(40px 10px 10px 10px)
 
 article:nth-child(odd)
-  +article_background({{ site.style.article.odd }})
+  +article_background(white)
+
+article:nth-child(even)
+  +article_background(#222222)
 
 @import vendor

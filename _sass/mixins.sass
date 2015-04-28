@@ -5,9 +5,9 @@
     color: if($light, black, white)
 
 =body_background($background: white)
-    $is_white: lightness($background) == 100%
+    $is_white: lightness(#CCC) == 100%
 
-    background: $background
+    +linear-gradient-back(#95BFD6, #4C88A8)
     padding: if($is_white, 0, 0 calc(27% - 6em))
     > *
         padding: if($is_white, 1em calc(33% - 6em), 1em calc(13% - 1.6em))
@@ -15,7 +15,7 @@
 =article_background($background: white)
     +contrast($background)
     $light: lightness($background) > 50%
-
+    
     border-top-color: if($light, gainsboro, #333333)
     tr:hover
         background-color: if($light, #eeeeee, #333333)
@@ -35,3 +35,26 @@
         &:hover
             background-color: if($light, black, white)
             color: if($light, white, black)
+
+=linear-gradient-back($color1, $color2) 
+    background: -webkit-linear-gradient(center top , $color1 0%, $color2 100%)
+    background: -moz-linear-gradient(center top , $color1 0%, $color2 100%)
+    background: -ms-linear-gradient(center top , $color1 0%, $color2 100%)
+    background: -o-linear-gradient(center top , $color1 0%, $color2 100%)
+    background: linear-gradient(center top , $color1 0%, $color2 100%)
+    
+=border-radius($r1)
+    -webkit-border-radius: $r1 
+    -moz-border-radius: $r1
+    -ms-border-radius: $r1 
+    -o-border-radius: $r1 
+    border-radius: $r1 
+
+=transform-rotate($degree)
+    -webkit-transform: rotate($degree)
+    -moz-transform: rotate($degree)
+    -ms-transform: rotate($degree)
+    -o-transform: rotate($degree)
+    transform: rotate($degree)
+
+
