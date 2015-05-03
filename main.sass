@@ -9,6 +9,9 @@ body
   > header,  > footer
     +contrast()
 
+.MainLogo
+  +transform-rotate(15deg)
+
 body > header
   +border-radius(0 0 10px 10px)
 
@@ -18,10 +21,10 @@ body > footer
 article
   +border-radius(40px 10px 10px 10px)
 
-article:nth-child(even)
+article:nth-child(odd)
   +article_background(white)
 
-article:nth-child(odd)
+article:nth-child(even)
   +article_background(#222222)
 
 @import vendor
