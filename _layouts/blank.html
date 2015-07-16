@@ -23,11 +23,11 @@
       </h2>
       <nav>
         <ul>
-          <li><a href="{{ site.baseurl }}/">Home</a></li><li><a href="{{ site.baseurl }}/Slides">Slides</a></li>{% for node in site.pages %}{% if node.title %}<li><a href="{{ node.url | prepend: site.baseurl }}"{% if page.url == node.url %} id="selected"{% endif %}>{{ node.title }}</a></li>{% endif %}{% endfor %}
+          <li><a href="{{ site.baseurl }}/">Home</a></li><li><a href="{{ site.baseurl }}/Slides">Slides</a></li><li><a href="{{ site.baseurl }}Exercises/">Exercises</a></li>{% for node in site.pages %}{% if node.title %}<li><a href="{{ node.url | prepend: site.baseurl }}"{% if page.url == node.url %} id="selected"{% endif %}>{{ node.title }}</a></li>{% endif %}{% endfor %}
         </ul>
       </nav>
     </header>
-    <img src="/images/logo.png" class="MainLogo"/>
+<img src="/images/logo.png" class="MainLogo"/>
 {{ content }}
     <footer>
       <span><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>, {{ site.time | date: "%Y" }}.<br>

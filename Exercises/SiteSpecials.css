@@ -1,0 +1,103 @@
+
+
+    body
+    {
+        position: relative;
+    }
+
+     div 
+    {
+        width: 600px;
+        margin: auto;
+        left: 0;
+        right: 0;
+    }
+    #solutionExplorer
+    {
+        position: fixed;
+        top: 10%;
+        width: 800px;
+        height: 80%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 20px 0 20px 20px;
+        padding: 20px;
+        z-Index: 100;
+    }
+    #solutionExplorer > *
+    {
+        color: black;
+        background-color: white;
+        border-radius: 0;
+        border: 0;
+        padding: 0;
+        margin: 0;
+
+    }
+    #FadeBackground
+    {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        margin: 0;
+        z-Index: 99;
+
+    }
+    #hideSolution
+    {
+        position: absolute;
+        top: -33px;
+        height: 30px;
+
+        right: 0;
+        padding: 0 2em;
+        border-radius: 5px 5px 0 0 ;
+        
+    }
+    #TextInput
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .FancyButton
+    {
+        background-color: white;
+        border: 0;
+        padding: 0;
+        width: 15%;
+        margin: 0 2%;
+        border-radius: 5px;
+        border: 1px solid #CCC;
+        height: 30px;
+    }
+    .FancyButton:hover
+    {
+        background-color: #95BFD6;
+        cursor: pointer;
+    }
+    .FancyButton2
+    {
+        background-color: white;
+        border: 0;
+        padding: 0;
+        margin: 0 10px;
+        border-radius: 5px;
+        border: 1px solid #CCC;
+        height: 30px;
+    }
+    .FancyButton2:hover
+    {
+        background-color: #95BFD6;
+        cursor: pointer;
+    }
+    
+    .ButtonHolder
+    {
+        text-align: center;
+    }

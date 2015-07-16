@@ -1,0 +1,115 @@
+.Exercise
+    {
+        display: block;
+        margin-top: 50px;
+        font-size: 15pt;
+        font-weight: bold;
+        border-bottom: 1px dashed black;
+    }
+    .RequiredExercise
+    {
+        display: block;
+        margin-top: 50px;
+        font-size: 15pt;
+        font-weight: bold;
+        border-bottom: 1px solid black;
+    }
+    .RequiredExercise:after
+    {
+        content: '*';
+    }
+    .htag
+    {
+        color: orange;
+    }
+    .htag:before
+    {
+        content: '<';
+        color: orange;
+    }
+    .htag:after
+    {
+        content: '>';
+        color: orange;
+    }
+    .jvar
+    {
+        color: green;
+    }
+    .jfunc
+    {
+        color: green;
+    }
+    .jfunc:after
+    {
+        content: '()';
+    }
+    .jTag
+    {
+        color: blue;
+    }
+    .jkey
+    {
+        color: blue;
+    }
+    .equation
+    {
+        display: block;
+        padding: 5px;
+        border: 1px dashed #CCC;
+        text-align: center;
+    }
+    .emph
+    {
+        font-weight: bold;
+    }
+    .math
+    {
+        font-style: italic;
+        color: red;
+    }
+    .remark
+    {
+        display: block;
+        border-bottom: 1px solid blue;
+        margin-top: 1em;
+    }
+    .qty
+    {
+        color: red;
+    }
+    .figure
+    {
+        display: block;
+        /*border: 1px solid black;*/
+    }
+    figcaption
+    {
+        font-size: 1.8ex;
+        margin-bottom: 2ex;
+    }
+    figcaption:before
+    {
+        font-weight: bold;
+        content: 'Figure: ';
+    }
+    .TexImg
+    {
+        display: block;
+        margin-top: 2ex;
+        margin-bottom: 2ex;
+    }
+    .lstlisting
+    {
+        display: block;
+        border: 1px dashed blue;
+        border-radius: 5px;
+    }
+    .footnote:before
+    {
+        content: '(';
+    }
+    .footnote:after
+    {
+        content: ')';
+    }
