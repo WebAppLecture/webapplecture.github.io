@@ -6,6 +6,7 @@ $( document ).ready(function(){
     $('#Day4Button').click(function(){getExercisesForDay(4)});
     $('#Day5Button').click(function(){getExercisesForDay(5)});
     $('#FadeBackground').hide();
+    $('#LoadingScreen').hide();
     $('#hideSolution').click(function(){$('#FadeBackground').hide();});
 
     var p = new TeXParser();
