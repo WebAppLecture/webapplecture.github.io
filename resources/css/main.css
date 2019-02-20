@@ -83,6 +83,7 @@ body > .wrapper {
     flex-basis: 75%;
     flex-grow: 1;
     flex-shrink: 1;
+    max-width: 75%;
     padding-left: 10px;
     box-shadow: inset 6px 0 8px -6px black;
 }
