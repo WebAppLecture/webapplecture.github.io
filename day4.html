@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Webapplecture</title>
+    <link rel="shortcut icon" href="resources/images/html5.png">
+    <link rel="stylesheet" href="resources/css/main.css"/>
+    <link rel="stylesheet" href="resources/css/codeEditor.css"/>
+    <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
+    <link rel="stylesheet" href="resources/css/table.css"/>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <img src="resources/images/html5.png">
+        <nav>
+            <ul>
+                <li>
+                    <h2>Tag</h2>
+                </li>
+                <li>
+                    <a href="index.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="day2.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="day3.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="day4.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>5</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>6</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>7</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>8</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>9</h2></a>
+                </li>
+                <li>
+                    <h2>Übung</h2>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>5</h2></a>
+                </li>
+            </ul>
+        </nav>
+        <span id="toTop">
+            <a><h2>Top</h2></a>
+        </span>
+    </div>
+</header>
+<div class="wrapper">
+<nav class="column left">
+
+</nav>
+<main class="column middle">
+<section id="Multimedia">
+    <article>
+        <h2>Das Audio Element</h2>
+        <ul>
+        <li>HTML5 erlaubt uns Audiodateien direkt über den <code>&lt;audio&gt;</code>-Tag einzubinden</li>
+        <li>Der Tag ist von den Attributen her wie der <code>&lt;img&gt;</code>-Tag aufgebaut</li>
+        <li>Das Element ist aus Fallbackgründen nicht selbstschließend - der Inhalt ist ein Fallback, z.B.
+        <pre lang="html">&lt;audio src="..."&gt;Ihr Browser unterstützt noch kein HTML5 Audio. Bitte &lt;a href="..."&gt;hier&lt;/a&gt; klicken zum Download.&lt;/audio&gt;
+        </pre>
+        </li>
+        <li>Natürlich gibt es neben <code>src</code> jede Menge neuer Attribute für dieses Element, u.a.
+        <ul>
+        <li><code>autoplay</code> spielt die Audiodatei automatisch ab (Vorsicht!)</li>
+        <li><code>controls</code> zeigt Kontrollelemente (Start, Pause, ...) an (ansonsten gar nichts!)</li>
+        <li><code>loop</code> stellt ein ob es sich um eine Endlosschleife handelt (Standardmäßig: <code>false</code>)</li>
+        <li><code>preload</code> mit drei Werten (<code>auto</code>, <code>none</code>, <code>metadata</code>) zur Konfiguration des Vorladevorgangs</li>
+        </ul>
+        </li>
+        <li>Neue JavaScript-Ereignisse sind u.a. <code>play</code>, <code>canplay</code>, <code>pause</code>, <code>seeking</code>, <code>abort</code>, <code>ended</code> und <code>error</code></li>
+        <li>Wir können viele neue Eigenschaften (z.B. <code>volume</code>) bearbeiten und Methoden (z.B. <code>play()</code>) aufrufen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Das Video Element</h2>
+        <ul>
+        <li>Analog zum Audio-Element, besitzt jedoch zusätzlich noch Videobildanzeige</li>
+        <li>Zusätzliche Attribute sind unter anderem gegeben durch 
+        <ul>
+        <li><code>poster</code> um ein Vorschaubild zu spezifizieren (ansonsten wird der erste Frame verwendet)</li>
+        <li><code>height</code> bzw. <code>width</code> um die Größe des Videos zu bestimmen</li>
+        </ul>
+        </li>
+        <li>Schauen wir uns doch mal ein Beispiel mit eigenen Steuerelementen an (von <a href="http://introducinghtml5.com/examples/ch04/custom-controls.html" target="_blank">hier</a>):
+        <pre lang="html">
+        &lt;div class="videochrome paused"&gt;
+            &lt;div class="controls"&gt;
+                &lt;div class="scrub"&gt;
+                    &lt;button class="play" title="play"&gt;&amp;#x25BA;&lt;/button&gt;
+                    &lt;div class="duration"&gt;0:00&lt;/div&gt;
+                    &lt;div class="loaded"&gt;&lt;div class="buffer"&gt;&lt;div class="playhead"&gt;&lt;span&gt;0:00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;video loadeddata="canplay();" play="playEvent();" pause="pausedEvent();" ended="this.pause();" 
+                progress="updateSeekable();" durationchanged="updateSeekable();" timeupdate="updatePlayhead();" 
+                src="leverage-a-synergy.ogv"&gt;&lt;/video&gt;
+        &lt;/div&gt;
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Das Format-Desaster</h2>
+        <ul>
+        <li>Historisch war die Wahl von Audio und Videoformat kritisch: zwar konnten sich die Hersteller auf einen Audio- und Video-Tag einigen, jedoch nicht auf einen einheitlichen Standard</li>
+        <li>Daher akzeptieren diese Tags noch einen Untergeordneten Tag - den <code>&lt;source&gt;</code>-Tag, z.B.
+        <pre lang="html">
+        &lt;video controls&gt;
+            &lt;source src="leverage-a-synergy.ogg" type="video/ogg; codecs='theora, vorbis'"&gt;
+            &lt;source src="leverage-a-synergy.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'"&gt;
+        &lt;/video&gt;
+        </pre>
+        </li>
+        <li>Seit dem 16. April 2017 ist MP3 lizenzfrei erhältlich, es wird seit deim von allen Browsern unterstützt</li>
+        <li>Bei den Videoformaten weist MPEG-4 volle Unterstützung auf</li>
+        </ul>
+        <p>
+        </p><figure>
+        <table style="font-size: 10pt;">
+        <thead>
+            <tr>
+                <th></th>
+                <th><img src="./resources/images/slides/chrome_logo.svg"></th>
+                <th><img src="./resources/images/slides/safari_logo.svg"></th>
+                <th><img src="./resources/images/slides/firefox_logo.svg"></th>
+                <th><img src="./resources/images/slides/ie_logo.svg"></th>
+                <th><img src="./resources/images/slides/android_robot.svg"></th>
+                <th><img src="./resources/images/slides/edge_logo.svg"></th>
+                <th><img src="./resources/images/slides/baidu_logo.png"></th>
+                <th><img src="./resources/images/slides/opera_logo.svg"></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Chrome</th>
+                <th>Safari</th>
+                <th>Firefox</th>
+                <th>Internet Explorer</th>
+                <th>QQ, UC, Android</th>
+                <th>Edge</th>
+                <th>Baidu</th>
+                <th>Opera</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><a href='https://www.netmarketshare.com/browser-market-share.aspx?options={"filter"%3A{"%24and"%3A[{"deviceType"%3A{"%24in"%3A["Desktop%2Flaptop"%2C"Mobile"%2C"Tablet"]}}]}%2C"dateLabel"%3A"Trend"%2C"attributes"%3A"share"%2C"group"%3A"browser"%2C"sort"%3A{"share"%3A-1}%2C"id"%3A"browsersDesktop"%2C"dateInterval"%3A"Monthly"%2C"dateStart"%3A"2018-02"%2C"dateEnd"%3A"2019-01"%2C"segments"%3A"-1000"}'>Anteil</a></th>
+                <td>63.07%</td>
+                <td>17.57%</td>
+                <td>4.93%</td>
+                <td>4.49%</td>
+                <td>3.72</td>
+                <td>1.88%</td>
+                <td>1.22%</td>
+                <td>0.87%</td>
+            </tr>
+            <tr>
+                <td colspan="9" class="tdpartition">Audio</td>
+            </tr>
+            <tr>
+                <th>OGG Vorbis*</th>
+                <td class="tdyes">nein</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>AAC(*)</th>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdish">teilweise</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>MP3*</th>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>WAV</th>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <td colspan="9" class="tdpartition">Video</td>
+            </tr>
+            <tr>
+                <th>OGG Theora*</th>
+                <td class="tdyes">nein</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>webM*</th>
+                <td class="tdyes">nein</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdno">nein</td>
+                <td class="tdyes">ja</td>
+                <td class="tdish">teilweise</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>MPEG-4/H.264</th>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+                <td class="tdyes">ja</td>
+            </tr>
+            <tr>
+                <th>HVEC/H.265</th>
+                <td class="tdno">nein</td>
+                <td class="tdish">teilweise</td>
+                <td class="tdno">nein</td>
+                <td class="tdish">teilweise</td>
+                <td class="tdno">nein</td>
+                <td class="tdish">teilweise</td>
+                <td class="tdno">nein</td>
+                <td class="tdno">nein</td>
+            </tr>
+        </tbody>
+        </table>
+        <figcaption>
+        <small><p>Mit * gekennzeichnete Formate sind <strong>frei erhältlich</strong>.</p></small>
+        </figcaption>
+        </figure>
+    </article>
+</section>
+<section id="Canvas">
+    <article>
+        <h2>Grafik mit Canvas</h2>
+        <ul>
+        <li>"Audio und Video sind zwar schön, aber noch lange kein Grund Flash bzw. [Microsoft] Silverlight abzulösen" <small>-dieses Skript, 2011-2018</small></li>
+        <li>MS Silverlight wird mitlerweile nichtmal mehr von MS Browsern unterstützt, das End-of-Life für Flash ist auf 2020 festgelegt</li>
+        <li>Die Verwendung von Flash Inhalten in Google Chrome betrug 2014 80%, Anfang 2018 war sie auf unter 8% gesunken</li>
+        <li>Was HTML (schon immer) gefehlt hat ist die Möglichkeit <strong>frei</strong> darauf zu zeichnen</li>
+        <li>Mit dem Canvas-Tag erhalten wir nun die Möglichkeit in JavaScript darauf zeichnen zu können</li>
+        </ul>
+        <figure><img src="./resources/images/slides/canvas.png" alt="Möglichkeiten mit dem Canvas Element"><figcaption>Mit dem Canvas Element sind dynamische Zeichnungen auf eine Website möglich</figcaption></figure>
+        <ul>
+        <li>Wie bei den anderen neuen Media-Tags hat auch <code>&lt;canvas&gt;</code> einen Fallback durch den Inhalt</li>
+        <li>Die einzigen eigenen Attribute sind <code>width</code> und <code>height</code> zum Einstellen der Größe in Pixel</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Canvas JavaScript Methoden</h2>
+        <ul>
+        <li><code>getContext('2d')</code> <strong>gibt</strong> uns das entsprechende Zeichenobjekt (hier: <strong>2D</strong>, z.B. auch möglich: <strong>webgl</strong>)</li>
+        <li>Das 2D-Kontextobjekt hat einige Eigenschaften, z.B.
+        <ul>
+        <li><code>fillStyle</code> (Füllfarbe), <code>strokeStyle</code> (Stiftfarbe) und <code>lineWidth</code> (Stiftbreite)</li>
+        <li><code>shadowOffsetX/Y</code>, (Schattenversatz), <code>shadowBlur</code> (Unschärfe) und <code>shadowColor</code> (Schattenfarbe)</li>
+        <li><code>font</code> (Schriftart), <code>textAlign</code> (hor. Ausrichtung) und <code>textBaseline</code> (ver. Ausrichtung)</li>
+        </ul>
+        </li>
+        <li>Neben diesen Eigenschaften gibt es noch jede Menge Methoden (mit eigenen Objekten), z.B.
+        <ul>
+        <li><code>fillRect(x,y,width,height)</code> (Rechteck füllen), <code>strokeRect(x,y,width,height)</code> (Rechteck zeichnen) und <code>clearRect(x,y,width,height)</code> (Rechteck mit Hintergrundfarbe füllen)</li>
+        <li><code>beginPath()</code> und <code>closePath()</code> um Pfad zu erstellen, der durch <code>fill()</code>, <code>stroke()</code> gefüllt wird</li>
+        <li>Mit <code>moveTo(x,y)</code> bzw. <code>lineTo(x,y)</code> werden Teilstücke des Pfades festgelegt</li>
+        <li>Über <code>drawImage(img_el,x,y,width,heigth)</code> können wir Bilder einbinden</li>
+        <li>Durch <code>createImageData(x,y,width,height)</code> kann Pixelkarte ein Bereich mit Pixelmanipulation erstellt werden</li>
+        </ul>
+        </li>
+        <li>Sehr gute Einsatzmöglichkeiten des Canvas-Tags bieten sich durch ein Video-Element</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Animationen zeichnen</h2>
+        <ul>
+        <li>In Canvas kann man sehr gut Animationen einbauen - dies geht über löschen und neuzeichnen</li>
+        <li>Zum Zeichnen könnte man z.B. immer dieselbe Methoden mit unterschiedlichen Argumenten verwenden</li>
+        <li>Oder man transformiert die Koordinaten und verwendet dieselbe Methode mit gleichen Argumenten</li>
+        <li>Zusätzlich zur Transformation (<code>translate(dx,dy)</code> oder <code>rotate(alpha)</code>) kann man Zustände speichern</li>
+        <li><code>save()</code> speichert den aktuellen Zustand<sup>1</sup> und <code>restore()</code> stellt den gespeicherten Zustand wieder her</li>
+        </ul>
+        <div class="halfright hide">
+        <canvas height="200" width="200" style="border: 1px solid #CCC" id="canvasanidemo">
+        </canvas>
+        </div>
+        <div class="doubleleft">
+        <pre lang="javascript">var c = document.getElementById('canvas').getContext('2d'), alpha = 0;
+        setInterval(rotate, 100);//Alle 100 ms rotieren
+        function rotate() {
+            c.clearRect(0,0,c.canvas.width,c.canvas.height);//Clear
+            c.save();//Aktuellen Zustand speichern
+            alpha += 1 / 180 * Math.PI;//Winkel erhöhen
+            c.translate(c.canvas.width / 2, c.canvas.height / 2);
+            c.rotate(alpha);/*Rotation geht immer um 0,0 - daher Translate!*/
+            drawMaze();//Zeichnet unser schönes Maze (einfacher Alg.!)
+            c.restore();//Vorherigen Zustand wiederherstellen
+        }
+        </pre>
+        </div>
+
+        <script>
+        (function () {
+            var c = document.getElementById('canvasanidemo').getContext('2d'), alpha = 0;
+            var intC = setInterval(rotate, 100);
+            var locH = location.hash;
+
+            function rotate() {
+                if(location.hash != locH)
+                    clearInterval(intC);
+            
+                c.clearRect(0,0,c.canvas.width,c.canvas.height);
+                c.save();
+                alpha += 1 / 180 * Math.PI;
+                c.translate(c.canvas.width / 2, c.canvas.height / 2);
+                c.rotate(alpha);
+                drawMaze();
+                c.restore();
+            }
+
+            function drawMaze() {
+                var s = 0, r = 1, b = 1, x = 0, y = 0;
+                c.beginPath();
+                c.moveTo(x, y);
+                
+                for(var i = 0; i < 100; i++) {
+                    if(i % 2 == 0) {
+                        s += 10;
+                        x += s * r;
+                        c.lineTo(x, y);
+                        r *= -1;
+                    } else {
+                        y += s * b;
+                        c.lineTo(x, y);
+                        b *= -1;
+                    }
+                }
+                
+                c.stroke();
+                c.closePath();
+            }
+        })();
+        </script>
+    </article>
+    <article>
+        <h2>Bilder laden und verwenden</h2>
+        <ul>
+        <li>Wie wir bereits festgestellt haben können wir mit Canvas auch Bilder zeichen - woher kommen diese?</li>
+        <li>Die Bilder müssen durch einen <code>&lt;img&gt;</code>-Tag bereits geladen sein, dies erreichen wir durch
+        <pre lang="javascript">var img = document.createElement('img');//Erstellt das Bild
+        img.onload = function() { /* Was tun wenn geladen?*/ };//Falls Bild gecached vor src
+        img.src = url;//Legt fest woher das Bild kommt - hier könnten wir auch toDataURL() verwenden
+        </pre>
+        </li>
+        <li>Da wir das Bild nirgends angehängt haben wird es auch nicht auf der Seite angezeigt werden</li>
+        <li>Es kann wichtig sein das <code>onload</code> Ereignis vor dem Setzen des <code>src</code> Attributes festzulegen</li>
+        <li>Als Bild erwartet der Canvas-Kontext immer das entsprechende HTML-Image-Element (d.h. den Tag)</li>
+        <li>D.h. wir können nun die Variable <i>img</i> verwenden z.B. in <code>createPattern(img, 'repeat')</code></li>
+        </ul>
+        <div class="hide">
+        <canvas width="900" height="130" id="imgloadcanvas" style="border: 1px solid #CCC;">
+        </canvas>
+        </div>
+
+        <script>
+        (function() {
+            var c = document.getElementById('imgloadcanvas').getContext('2d');
+            var cimg = document.createElement('img');
+            var locH = location.hash;
+            
+            cimg.onload = function() {          
+                c.clearRect(0,0,c.canvas.width,c.canvas.height);
+                c.drawImage(cimg, Math.floor(Math.random() * (c.canvas.width - cimg.width)), Math.floor(Math.random() * (c.canvas.height - cimg.height)));
+                c.fillText('Zufallsbild von html5.florian-rappl.de/ranimg.php?topic=html5', c.canvas.width - 350, c.canvas.height - 10);
+            };
+            
+            var cInt = setInterval(function() {
+                if(location.hash != locH) {
+                    clearInterval(cInt);
+                }
+                //else
+                    //cimg.src = 'http://html5.florian-rappl.de/ranimg.php?topic=html5&random=' + Math.random();
+            }, 3000);
+        })();
+        </script>
+    </article>
+    <article>
+        <h2>Video und Canvas</h2>
+        <ul>
+        <li>Eine super Möglichkeit ergibt sich bei der Kombination Video-Tag und Canvas-Element</li>
+        <li>Analog zum <code>&lt;img&gt;</code>-Element können wir Videos auf der Seite abspielen ohne diese anzuzeigen</li>
+        <li>Um den aktuellen Frame zu zeichnen müssen wir nur ein <code>video</code> statt <code>img</code> übergeben</li>
+        <li>Leider funktioniert beim <code>&lt;video&gt;</code>-Element das <code>onload</code> Ereignis nicht so wie vorhin, daher:
+        <pre lang="javascript">var jumpTimer = setInterval(function() { //Daten im entsprechenden Videoelement 'video' setzen
+            try { //Verhindert Werfen eines Fehlers wenn Daten noch nicht bereit sind, der zum Abbruch führt
+                video.currentTime = start; //Setzt die Startzeit (von wo wollen wir capturen?)
+                clearInterval(jumpTimer); //Anscheinend erfolgreich - daher nicht mehr ausführen
+                video.play(); //Abspielen - von Startzeit 'start' aus
+            } catch(e) {} //Nicht erfolgreich - nach 100 ms wird dies erneut aufgerufen
+        }, 100);
+        </pre>
+        </li>
+        <li>Einige Eventhandler des Videoelements helfen uns beim Festhalten von Bildern:
+        <ul>
+        <li>Über <code>timeupdate</code> können wir Änderungen der Zeit abfragen</li>
+        <li>Über <code>loadeddata</code> sollten wir unsere Schleife starten</li>
+        </ul>
+        </li>
+        <li>Wichtig ist hier v.a. dass wir über <code>video.volume = 0</code> auf Lautlos stellen!</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Noch mehr Canvas!</h2>
+        <ul>
+        <li>Mit Canvas können wir auch sehr leicht Gradienten zeichnen (z.B. linearer Farbverlauf)</li>
+        <li>Dazu benötigen wir nur die Methode <code>createLinearGradient(sx,sy,ex,ey)</code>, die uns ein Objekt gibt</li>
+        <li>Dieses Gradient Objekt besitzt die Methode <code>addColorStop(where,color)</code></li>
+        </ul>
+        <figure><img src="./resources/images/slides/lineargradient.png" alt="Koordinaten beim LinearGradient"><figcaption>Die Bedeutung der Argumente für den linearen Farbverlauf</figcaption></figure>
+        <ul>
+        <li>Der <code>fillStyle</code> kann mit diesem Objekt gesetzt werden und mit <code>fillRect()</code> gefüllt werden</li>
+        <li>Gradangaben beim radialen Farbverlauf sind stets in <strong>rad</strong> (<code>rad = Math.PI / 180</code>)</li>
+        <li>Über die Canvas-Methode <code>createPattern(img,mode)</code> können Muster erzeugt werden (z.B. <code>'repeat'</code>)</li>
+        <li>Aus jedem Canvas kann über die Methode <code>toDataURL('image/png')</code> ein Bild erzeugt werden</li>
+        </ul>
+    </article>
+    <article>
+        <h2>WebGL</h2>
+        <ul>
+        <li>WebGL bietet 3D Grafik im Browser an</li>
+        <li>Die Syntax ist dabei stark an OpenGL angelegt (basiert WebGL doch auf OpenGL ES 2.0)</li>
+        <li>WebGL läuft im Canvas-Element des Browsers ab und kann Hardwarebeschleunigt werden</li>
+        <li>Es gibt hauptsächlich zwei große Libraries um WebGL effizient zu nutzen
+            <ul>
+                <li><a href="https://threejs.org">Three.js</a> ist sehr allgemein gehalten und kann sehr flexibel benutzt werden</li>
+                <li><a href="https://www.babylonjs.com">Babylon.js</a> ist auf Spieleentwicklung spezialisiert, kann aber auch für andere Zwecke benutzt werden</li>
+            </ul></li>
+        <li>Folgender Code zum Initialisieren ist sinnvoll:
+        <pre lang="javascript">function initWebGL(canvas) {
+          var gl = null;  
+          try { //WebGL Kontext holen
+            gl = canvas.getContext("webgl");  
+          } catch(e) {}  
+          if (!gl) alert("Der Browser unterstützt kein WebGL!");
+          return gl; }  
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Beispiel Three.js</h2>
+        <figure>
+            <iframe style="width: 100%; height: 600px" src="https://demos.littleworkshop.fr/infinitown"></iframe>
+            <figcaption>Infinitown - ein Three.js Projekt</figcaption>
+        </figure>
+    </article>
+
+</section>
+<section id="SVG">
+    <article>
+        <h2>Vektorgrafiken mit SVG</h2>
+
+        <div class="left">
+        <ul>
+        <li>Neben pixelbasierten Grafiken mit Canvas kann man auch vektorbasierte Grafiken mit <code>&lt;svg&gt;</code> erstellen</li>
+        <li>Was mit SVG auf keinen Fall geht sind Pixelmanipulationen (Ereignisse z.B. Klick auf Kreis sind möglich)</li>
+        <li>Ein Vorteil von SVG ist, dass man komplizierte Pfade direkt in Programmen wie <a href="https://inkscape.org/de/">Inkscape</a> zeichnen kann</li>
+        <li>Das Bild zur Rechten wurde nur über HTML generiert</li>
+        <li>Gezeichnet wurde es in einem externen Programm</li>
+        <li>Der generierte Quellcode wurde nur kopiert und wäre über JavaScript noch sehr leicht manipulierbar</li>
+        <li>Ein Beispiel dafür: <a href="#" onclick="return toggleSvg(svgExample.rect);">Rechteck</a> <a href="#" onclick="return toggleSvg(svgExample.circ);">Ellipse</a> <a href="#" onclick="return toggleSvg(svgExample.tri);">Dreieck</a></li>
+        <li>Im Prinzip muss man nur neue (SVG-) HTML-Elemente dem <code>&lt;svg&gt;</code>-Element hinzufügen</li>
+        <li>Das alles funktioniert daher sehr leicht, da SVG ein XML-basiertes Format darstellt</li>
+        <li>Auch für SVG gibt es auch mächtige Libraries wie z.B. <a href="https://d3js.org">D3.js</a>, die auf Graphen spezialisiert ist, aber auch schon Spiele hervorgebracht hat</li>
+        </ul>
+        <script>
+        var svgExample = {
+            rect : document.getElementById('RectID-13399d0890-1f04cf-4a040d-e852c4-c736dd5b101cfc'),
+            circ : document.getElementById('EllipseID-2867d6cd6b-524c91-749964-b19454-c3cf56dcfef693'),
+            tri : document.getElementById('triangleID-b5cee00154-4c0a3e-8dc06b-1e123f-0e9b47d8e23314'),
+            p : document.getElementById('introsvg') };
+            
+        function toggleSvg(el) {
+            if(el.parentNode === svgExample.p)
+                svgExample.p.removeChild(el);
+            else
+                svgExample.p.appendChild(el);
+            return false;
+        }
+        </script>
+        </div>
+        <div class="right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="250" height="300" id="introsvg" style="border: 1px solid #CCC; overflow:hidden;">
+            <path d=" M28.589,10.903l-5.828,1.612c-0.534-1.419-1.338-2.649-2.311-3.628l3.082-5.44c0.271-0.48,0.104-1.092-0.38-1.365c-0.479-0.271-1.09-0.102-1.36,0.377l-2.924,5.162c-0.604-0.383-1.24-0.689-1.9-0.896c-0.416-1.437-1.652-2.411-3.058-2.562c-0.001-0.004-0.002-0.008-0.003-0.012c-0.061-0.242-0.093-0.46-0.098-0.65c-0.005-0.189,0.012-0.351,0.046-0.479c0.037-0.13,0.079-0.235,0.125-0.317c0.146-0.26,0.34-0.43,0.577-0.509c0.023,0.281,0.142,0.482,0.352,0.601c0.155,0.088,0.336,0.115,0.546,0.086c0.211-0.031,0.376-0.152,0.496-0.363c0.105-0.186,0.127-0.389,0.064-0.607c-0.064-0.219-0.203-0.388-0.414-0.507c-0.154-0.087-0.314-0.131-0.482-0.129c-0.167,0.001-0.327,0.034-0.481,0.097c-0.153,0.063-0.296,0.16-0.429,0.289c-0.132,0.129-0.241,0.271-0.33,0.426c-0.132,0.234-0.216,0.496-0.25,0.783c-0.033,0.286-0.037,0.565-0.009,0.84c0.017,0.16,0.061,0.301,0.094,0.449c-0.375-0.021-0.758,0.002-1.14,0.108c-0.482,0.133-0.913,0.36-1.28,0.653c-0.052-0.172-0.098-0.344-0.18-0.518c-0.116-0.249-0.263-0.486-0.438-0.716c-0.178-0.229-0.384-0.41-0.618-0.543C9.904,3.059,9.737,2.994,9.557,2.951c-0.18-0.043-0.352-0.052-0.516-0.027s-0.318,0.08-0.463,0.164C8.432,3.172,8.318,3.293,8.23,3.445C8.111,3.656,8.08,3.873,8.136,4.092c0.058,0.221,0.181,0.384,0.367,0.49c0.21,0.119,0.415,0.138,0.611,0.056C9.31,4.556,9.451,4.439,9.539,4.283c0.119-0.21,0.118-0.443-0.007-0.695c0.244-0.055,0.497-0.008,0.757,0.141c0.081,0.045,0.171,0.115,0.27,0.208c0.097,0.092,0.193,0.222,0.286,0.388c0.094,0.166,0.179,0.368,0.251,0.608c0.013,0.044,0.023,0.098,0.035,0.146c-0.911,0.828-1.357,2.088-1.098,3.357c-0.582,0.584-1.072,1.27-1.457,2.035l-5.16-2.926c-0.48-0.271-1.092-0.102-1.364,0.377C1.781,8.404,1.95,9.016,2.43,9.289l5.441,3.082c-0.331,1.34-0.387,2.807-0.117,4.297l-5.828,1.613c-0.534,0.147-0.846,0.699-0.698,1.231c0.147,0.53,0.697,0.843,1.231,0.694l5.879-1.627c0.503,1.057,1.363,2.28,2.371,3.443l-3.194,5.639c-0.272,0.481-0.104,1.092,0.378,1.363c0.239,0.137,0.512,0.162,0.758,0.094c0.248-0.068,0.469-0.229,0.604-0.471l2.895-5.109c2.7,2.594,5.684,4.123,5.778,1.053c1.598,2.56,3.451-0.338,4.502-3.976l5.203,2.947c0.24,0.138,0.514,0.162,0.762,0.094c0.246-0.067,0.467-0.229,0.603-0.471c0.272-0.479,0.104-1.091-0.377-1.362l-5.701-3.229c0.291-1.505,0.422-2.983,0.319-4.138l5.886-1.627c0.53-0.147,0.847-0.697,0.696-1.229C29.673,11.068,29.121,10.756,28.589,10.903z" onmouseover="this.setAttribute('stroke-width', '1');" onmouseout="this.setAttribute('stroke-width', '0');" stroke="#A0A" stroke-width="0"></path>
+            <ellipse cx="80" cy="62" rx="58" ry="50" fill="rgb(255, 204, 102)" stroke="rgb(255, 102, 0)" stroke-width="2" id="EllipseID-2867d6cd6b-524c91-749964-b19454-c3cf56dcfef693" onclick="alert('Es wurde auf den Kreis geklickt!');"></ellipse>
+            <polygon points="187,102 244,182 130,182" id="triangleID-b5cee00154-4c0a3e-8dc06b-1e123f-0e9b47d8e23314" fill="rgb(51, 102, 255)" stroke="rgb(0, 0, 102)" stroke-width="2" stroke-dasharray="0"></polygon>
+            <rect x="8" y="230" width="230" height="41" fill="rgb(204, 102, 0)" fill-opacity="1" stroke-opacity="1" stroke="rgb(51, 0, 0)" stroke-width="5" id="RectID-13399d0890-1f04cf-4a040d-e852c4-c736dd5b101cfc" rx="15"></rect>
+        </svg>
+        </div>
+    </article>
+    <article>
+        <h2>Beispiel D3.js</h2>
+        <figure>
+            <iframe style="width: 100%; height: 800px;" src="http://vax.herokuapp.com"></iframe>
+            <figcaption>VAX! - Ein D3.js Spiel</figcaption>
+        </figure>
+
+    </article>
+    <article>
+        <h2>Grundlegendes zu SVG</h2>
+        <ul>
+        <li>Alle Elemente (z.B. ein Kreis) sind echte HTML-Unterelemente von <code>&lt;svg&gt;</code></li>
+        <li>Die bekanntesten Elemente sind:
+        <ul>
+        <li><code>circle</code> mit den Attributen <code>cx</code>, <code>cy</code> und <code>r</code></li>
+        <li><code>ellipse</code> mit den Attributen <code>cx</code>, <code>cy</code>, <code>rx</code> und <code>ry</code></li>
+        <li><code>rect</code> mit den Attributen <code>x</code>, <code>y</code>, <code>width</code> und <code>height</code></li>
+        <li><code>line</code> mit den Attributen <code>x1</code>, <code>y1</code>, <code>x2</code> und <code>y2</code></li>
+        <li><code>polygon</code> bzw. <code>polyline</code> mit dem Attribut <code>points</code> (Wert entspricht "x1,y1 x2,y2 ...")</li>
+        </ul>
+        </li>
+        <li>Generische Attribute sind z.B. <code>fill</code>, <code>fill-opacity</code> <code>stroke</code>, <code>stroke-width</code>, <code>stroke-opacity</code> etc.</li>
+        <li>Wir müssten also zum Erstellen eines SVG-Bildes über JavaScript jede Menge Elemente erstellen und Eigenschaften setzen</li>
+        <li>Zur Manipulation müssten wir über unsere aus jQuery oder einfachem JavaScript bekannten Selektoren verwenden</li>
+        <li>Alternativ: <strong>Write once use anywhere</strong>! Wir schauen uns eine mögliche Umsetzung in Form von <strong>RaphaëlJS</strong> an</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Charts mit SVG</h2>
+        <ul>
+        <li>SVG eignet sich ausgezeichnet um damit einfache (vielleicht sogar dynamische) Charts zu zeichnen</li>
+        <li>Ein einfaches dynamisches Beispiel ist unten gezeigt (das Koordinatensystem ist statisch)</li>
+        <li>Wichtig ist den Namensraum (<code>...w3.org/2000/svg</code>) zu beachten - SVG ist spezialisiert</li>
+        </ul>
+        <div class="left">
+        Wichtiger HTML Code:
+        <pre lang="html">&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
+            &lt;line x1="10" y1="10" x2="10" y2="90" stroke="#444" /&gt;
+            &lt;line x1="10" y1="90" x2="780" y2="90" stroke="#444" /&gt;
+            &lt;polyline points="10,10 7,15 13,15" fill="#444" /&gt;
+            &lt;polyline points="780,90 775,87 775,93" fill="#444" /&gt;
+        &lt;/svg&gt;
+        </pre>
+        </div>
+        <div class="right">
+        Wichtiger JavaScript Code:
+        <pre lang="javascript">//Hinzufügen des Elements und setzen der Attribute
+        var r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        document.getElementById('svgChartEx').appendChild(r);
+        r.setAttribute('x', 10);
+        r.setAttribute('y', 50);
+        r.setAttribute('width', 100);
+        r.setAttribute('height', 40);
+        r.setAttribute('fill', '#F00');
+        </pre>
+        </div>
+        <div class="hide clear">
+        Name: <input type="text" id="testName"> | Wert: <input type="range" min="0" max="100" id="testRange"> | Farbe: <input type="color" id="testColor"> | <button onclick="addTestValue();">Hinzufügen</button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="100" id="svgChartEx">
+            <line x1="10" y1="10" x2="10" y2="90" stroke="#444"></line>
+            <line x1="10" y1="90" x2="790" y2="90" stroke="#444"></line>
+            <polyline points="10,10 7,15 13,15" fill="#444"></polyline>
+            <polyline points="790,90 785,87 785,93" fill="#444"></polyline>
+        </svg>
+        </div>
+        <script>
+        var testValues = [];
+
+        function addTestValue() {
+            var name = document.getElementById('testName').value || '(Ohne Namen)';
+            var value = parseInt(document.getElementById('testRange').value);
+            var color = document.getElementById('testColor').value;
+            
+            if(isNaN(value))
+                value = 0;
+            
+            testValues.push({
+                id : 'svg-ex-chart-nr' + testValues.length,
+                name : name,
+                value : value,
+                color: color
+            });
+            
+            var r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+            r.id = 'rect-' + testValues[testValues.length - 1].id;
+            document.getElementById('svgChartEx').appendChild(r);
+            var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+            var textNode = document.createTextNode(testValues[testValues.length - 1].name);
+            t.id = 'text-' + testValues[testValues.length - 1].id;
+            document.getElementById('svgChartEx').appendChild(t);
+            t.setAttribute('font-size', '12');
+            t.setAttribute('font-family', 'Verdana');
+            t.setAttribute('fill', '#FFF');
+            t.setAttribute('y', 85);
+            t.appendChild(textNode);
+                
+            for(var i in testValues) {
+                var elr = document.getElementById('rect-' + testValues[i].id);
+                var elt = document.getElementById('text-' + testValues[i].id);
+                var width = 390 / testValues.length;
+                var gap = (i * 1 + 1) * testValues.length * width / (testValues.length + 1) + i * width + 10;
+                var height = testValues[i].value * 76 / 100;
+                elr.setAttribute('x', gap);
+                elt.setAttribute('x', gap);
+                elr.setAttribute('y', 12 + 76 - height);
+                elr.setAttribute('width', width);
+                elr.setAttribute('height', height);
+                elr.setAttribute('fill', testValues[i].color);
+            }
+        }
+        </script>
+    </article>
+    <article>
+        <h2>Canvas vs. SVG</h2>
+        <ul>
+        <li>SVG bietet daher einige Vorteile gegenüber Canvas:
+        <ul>
+        <li>Die Grafiken skalieren sehr schön, d.h. ohne aufzupixeln (sprich: Skalieren und nicht zoomen!)</li>
+        <li>Jedes Objekt (Linie, Dreieck, ...) ist ein echtes Objekt: es können Ereignisse ausgenutzt werden</li>
+        <li>Wir können Objekte direkt manipulieren bzw. löschen ohne dass wir alles neuzeichnen müssen</li>
+        </ul>
+        </li>
+        <li>Grob gesagt: Für skalierbare Mausinteraktion ist SVG besser, für direkte Tastaturinteraktion Canvas</li>
+        <li>Den besten Effekt erhält man natürlich bei Kombination der beiden Techniken</li>
+        <li>Canvas gilt eher als Technik für Entwickler, SVG eher für Designer</li>
+        </ul>
+        <figure><img src="./resources/images/slides/canvasvsvg.png" alt="Canvas vs. SVG"><figcaption>Einsatzbereiche von Canvas und SVG schematisch aufgelistet</figcaption></figure>
+    </article>
+</section>
+    
+</main>
+</div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
+<script type="text/javascript" src="./resources/js/JsCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/HtmlCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/initEditors.js"></script>
+<script type="text/javascript" src="./resources/js/buildIndex.js"></script>
+</body>
+</html>
