@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Webapplecture</title>
+    <link rel="shortcut icon" href="resources/images/html5.png">
+    <link rel="stylesheet" href="resources/css/main.css"/>
+    <link rel="stylesheet" href="resources/css/codeEditor.css"/>
+    <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
+    <link rel="stylesheet" href="resources/css/buttons.css"/>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <img src="resources/images/html5.png">
+        <nav>
+            <ul>
+                <li>
+                    <h2>Tag</h2>
+                </li>
+                <li>
+                    <a href="index.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="day2.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="day3.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>5</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>6</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>7</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>8</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>9</h2></a>
+                </li>
+                <li>
+                    <h2>Übung</h2>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>5</h2></a>
+                </li>
+            </ul>
+        </nav>
+        <span id="toTop">
+            <a><h2>Top</h2></a>
+        </span>
+    </div>
+</header>
+<div class="wrapper">
+<nav class="column left">
+
+</nav>
+<main class="column middle">
+<section id="CSS">
+    <article>
+        <h2>Einstieg in CSS</h2>
+        <ul>
+        <li>Über CSS definieren wir extern, intern oder im Element wie Elemente dargestellt werden sollen
+        <pre lang="html">&lt;link rel="stylesheet" href="beispieldatei.css"&gt;&lt;!--Externe gesetzte Regeln --&gt;
+        &lt;style&gt; /* Intern gesetzte CSS Regeln  */ &lt;/style&gt;
+        &lt;element style="/* Auf dieses Element gesetzte Regeln */" ...&gt;
+        </pre>
+        dazu muss man die entsprechenden Elemente auswählen (Selektor) und Regeln für diese festlegen</li>
+        <li>Die Grundlegende Syntax lautet daher immer:
+        <pre lang="CSS">selektor1, selektor2, ...
+        {
+            eigenschaft: regel;
+            /* Weitere Regeln stehen hier! */
+        }
+        </pre>
+        </li>
+        <li>Sog. <strong>Responsive Design</strong> ist möglich um andere Darstellungen auf Smartphones, Druckern etc. zu bieten</li>
+        <li>Um Elemente auszuwählen kann man deren Tagnamen, Struktur, Werte von Attributen sowie die Eigenschaften der Attribute <code>class</code> und <code>id</code> verwenden</li>
+        <li>Einige Eigenschaften vererben an Kindelemente, so dass es z.B. reicht die Schriftart nur einmal zu setzen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>CSS Selektoren</h2>
+        <ul>
+        <li><code>*</code> wählt alle Elemente oder Unterelemente aus - sollte nicht verwendet werden</li>
+        <li><code>X</code> wählt alle Elemente mit einem Tag in Form von <code>&lt;X&gt;</code> aus</li>
+        <li><code>#X</code> wählt das Elemente mit dem Attribut <code>id="X"</code> aus</li>
+        <li><code>.X</code> wählt die Elemente mit dem Attribut <code>class="X"</code> aus</li>
+        <li><code>X:Y</code> wählt die Pseudoeigenschaft Y des Selektors X aus, bspw. <code>a:hover</code> oder <code>a:visited</code></li>
+        <li><code>X~Y</code> wählt alle Selektoren Y aus die <strong>nach</strong> einem Selektor X folgen</li>
+        <li><code>X+Y</code> wählt alle Selektoren Y aus die <strong>direkt nach</strong> einem Selektor X folgen</li>
+        <li><code>X Y</code> wählt alle Elemente mit dem Selektor Y <strong>unter</strong> dem Selektor X aus</li>
+        <li><code>X&gt;Y</code> wählt alle Selektoren Y aus die <strong>direkt unter</strong> einem Selektor X folgen</li>
+        <li><code>X[Y]</code> schränkt den Selektor X auf Elemente ein, die ein Attribut Y besitzen</li>
+        <li><code>X[Y=Z]</code> schränkt den Selektor X auf Elemente ein, die ein Attribut Y mit Wert Z besitzen</li>
+        <li><code>X[Y*=Z]</code> schränkt den Selektor X auf Elemente ein, die in deren Attribut Y einen Wert Z vorkommt</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Regeln festlegen</h2>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-rules.png" alt="CSS Regeln erklärt"><figcaption>Schema beim Aufbau von CSS-Regeln</figcaption></figure>
+        </div>
+        <div class="left">
+        <ul>
+        <li>Je nach Element (Tag) kann es spezielle Eigenschaften geben</li>
+        <li>Jedes Element besitzt u.a. folgende Eigenschaften
+        <ul>
+        <li><code>background-color</code> z.B. <code>#FF0000</code>, <code>red</code> oder <code>rgb(255,0,0)</code></li>
+        <li><code>background-image</code> z.B. <code>url('../../beispiel.png')</code></li>
+        <li><code>background-repeat</code> mit <code>no-repeat</code>, <code>repeat-x</code> und <code>repeat-y</code></li>
+        <li><code>background-position</code> mit <code>x y</code> z.B. <code>2px 0</code> oder <code>left top</code></li>
+        <li>Die oberen vier können in <code>background</code> kombiniert werden, z.B.
+        </li>
+        </ul>
+        <pre lang="css">#identifier /*Wir legen für das Element mit id=identifier fest*/
+        { /*Hintergrund soll dunkelgrau sein und ein Bild, das sich*/
+            background: #777 url('logo.png') no-repeat center center;
+        } /*nicht wiederholt im Zentrum des Elementes besitzen*/
+        </pre>
+        </li>
+        <li>Dieses Prinzip (Kombination) ist nicht auf <code>background</code> beschränkt, sondern auch bei anderen Regeln (z.B. <code>border</code>) verwendet worden</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Anzeigemodus setzen</h2>
+        <div class="left">
+        <ul>
+        <li>Eine Eigenschaft die alle Elemente besitzen ist <code>display</code> - bestimmt maßgeblich die Darstellung</li>
+        <li>Am häufigsten verwenden wir 
+        <ul>
+        <li><code>block</code> (Standard bei z.B. <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>)</li>
+        <li><code>inline-block</code> (Standard bei z.B. <code>&lt;img&gt;</code>)</li>
+        <li><code>inline</code> (Standard bei z.B. <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>)</li>
+        <li><code>list-item</code> (Standard bei z.B. <code>&lt;li&gt;</code>)</li>
+        <li><code>none</code> (Standard bei z.B. <code>&lt;head&gt;</code>)</li>
+        </ul>
+        </li>
+        <li>Mit der <code>float</code>-Eigenschaft können andere Elemente einen Block umfließen, wobei
+        <ul>
+        <li>Bei <code>float: left</code> soll das Element so weit links wie möglich sein</li>
+        <li>Mit <code>float: right</code> wird das Element rechts fließend ausgerichtet</li>
+        <li>Und bei <code>clear: both</code> soll das Element um kein Element herumfließen (im Gegensatz zu z.B. <code>clear: left</code>)</li>
+        </ul>
+        </li>
+        </ul>
+        </div>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-display.png" alt="Verdeutlichung der Diplay Eigenschaften"><figcaption>Durch die display-Eigenschaft wird der Zeichenmodus bestimmt; mit <code>none</code> gekennzeichnete Elemente werden nicht gezeichnet</figcaption></figure>
+        </div>
+    </article>
+    <article>
+        <h2>Elemente positionieren</h2>
+        <div class="left">
+        <ul>
+        <li>Die Eigenschaft <code>position</code> legt die Positionierung von Elementen fest:
+        <ul>
+        <li>Bei <code>position: static</code> bestimmt der Browser die Position</li>
+        <li>*Bei <code>position: fixed</code> bestimmt man die Position relativ im Fenster</li>
+        <li>*Bei <code>position: relative</code> ändert man die Stelle relativ zu der vom Browser festgelegten static-Position</li>
+        <li>*Bei <code>position: absolute</code> legt man die Position relativ zum ersten Oberelement mit <code>position: relative</code> fest</li>
+        </ul>
+        </li>
+        <li>Die Reihenfolge bei überlappenden Elementen bestimmt <code>z-index</code></li>
+        <li>Bei Elementen mit * wird über die Eigenschaften <code>left</code> oder <code>right</code> und <code>top</code> oder <code>bottom</code> die X und Y Koordinate festgelegt</li>
+        <li>Elemente mit fester Größe (<code>width</code>, <code>height</code>) bestimmen über die Eigenschaft <code>overflow</code> was mit zu viel Inhalt geschieht</li>
+        <li>Mögliche Werte sind <code>hidden</code>, <code>scroll</code> und <code>visible</code> - Standard ist <code>auto</code></li>
+        </ul>
+        </div>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-position.png" alt="Elemente positionieren"><figcaption>Verdeutlichung der einzelnen Positionierungseigenschaften</figcaption></figure>
+        </div>
+    </article>
+    <article>
+        <h2>Die Größe festlegen</h2>
+        <ul>
+        <li>Das CSS Box-Model bestimmt die Größe von Elementen auf der Seite (Vorsicht bei IE&lt;6<sup>1</sup>)</li>
+        <li>Wir können mit <code>min-width</code> bzw. <code>max-width</code> minimale bzw. maximale Größen einstellen</li>
+        </ul>
+        <div class="left">
+        <figure><img src="./resources/images/slides/css-box-model.png" alt="Veranschaulichung des Box-Models"><figcaption>Die reale Größe eines Elements wird durch die Kombination mehrere Eigenschaften bestimmt</figcaption></figure>
+        </div>
+        <div class="right">
+        <ul>
+        <li><code>width</code> bzw. <code>height</code> stellen eine feste Größe ein</li>
+        <li>Über <code>margin</code> kann man Abstand zu anderen Elementen einstellen - hier gibt es vier Wege:
+        <pre lang="css">margin: X; /*Links, Rechts, Oben, Unten Abstand X z.B. 5px*/
+        margin: X Y; /*Oben, Unten Abstand X und Links, Rechts Abstand Y*/
+        margin: O R U L; /*Oben, Rechts, Unten, Links einzeln*/
+        margin-top: 17px; /*Oder direkt*/
+        </pre>
+        </li>
+        <li><code>border</code> setzt den Rahmen (Breite, Stil, Farbe)</li>
+        <li><code>padding</code> setzt den inneren Abstand (Breite)</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Noch einmal CSS3</h2>
+        <ul>
+        <li>In CSS3 kann man mehrere Hintergründe einbinden, z.B. über
+        <pre lang="css">selektor { background: url('hintergrund1.gif') no-repeat 0 0, url('hintergrund2.gif') no-repeat 100% 0; }
+        </pre>
+        </li>
+        <li>Neben Rahmen über <code>border</code> sind auch sog. <code>Outlines</code> möglich, z.B.
+        <pre lang="css">selektor {
+        border: 1px solid #000;
+        outline: 1px solid #699;
+        outline-offset: -9px; }
+        </pre>
+        </li>
+        <li>In CSS3 kann man nun auch explizit das Box-Model ersetzen:
+        <pre lang="css">
+        selektor { box-sizing: content-box; /* Reguläres Box-Model - *meistens* Standard */ }
+        selektor {  box-sizing: border-box; /* Rechnet Border und Padding mit in die Gesamtbreite eines Elements ein */ }
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die @-Regeln</h2>
+        <ul>
+        <li>Wir kennen bereits die @-Regeln <code>@fontface</code> und <code>@keyframes</code>
+        </li><li>Durch <code>@charset</code> kann man die Kodierung festlegen (UTF-8 ist Standard!), z.B.
+        <pre lang="css">@charset "ISO-8859-15";
+        </pre>
+        </li>
+        <li>Über <code>@import</code> können wir weitere (externe) Stylesheets einbinden, z.B.
+        <pre lang="css">@import url("/css/main.css"); /* Oder mit Media-Query */
+        @import url("style.css") screen and (max-width: 600px);
+        </pre>
+        </li>
+        <li>Dank <code>@media</code> haben wir Zugriff auf die Media-Queries, z.B.
+        <pre lang="css">@media print { /* Selektoren mit Regeln */ }
+        @media screen and (max-width: 600px) { /* Selektoren mit Regeln */ }
+        </pre>
+        </li>
+        <li>Mit <code>@page</code> können wir die Druckausgabe anpassen (mehr dazu später) und mit <code>@namespace</code> erlaubt uns Namensräume (für Elemente) einzustellen, z.B.
+        <pre lang="css">@namespace foo "http://example.com/ns/foo";
+        foo|#mydiv { /* Regeln */ } /* Für dieses Element mit diesem xmlns Attribut */
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die @media-Regel</h2>
+        <ul>
+        <li><code>@charset</code> und <code>@import</code> müssen immer vor allen Regeln festgelegt werden - um die in <code>@fontface</code> festgelegte Schrift nutzen zu können, muss diese ebenfalls vorab festgelegt sein</li>
+        <li>Analoges gilt für die <code>@namespace</code> Deklaration - auch hier muss die Regel vor der Verwendung festgelegt sein</li>
+        <li>Bei <code>@media</code> kann man folgende Gerätearten direkt aufrufen: <code>all</code> (Alles), <code>braille</code> und <code>embossed</code> (Blindenschrift), <code>handheld</code> bzw. <code>tty</code>, <code>print</code>, <code>projection</code>, <code>speech</code> (Sprachausgabe) bzw. (veraltet) <code>aural</code>, sowie <code>tv</code> und <code>screen</code></li>
+        <li>Wie kann dergleichen aussehen? Wir schreiben uns CSS-Dokument und bauen dies z.B. so auf:
+        <pre lang="css">/*Gemeinsame Regeln */
+        @media screen /* Nur für Screen */
+        {
+            body { width: 75%; }
+        }
+        @media print /* Nur für Print */
+        {
+            body { width: 100%; }
+        }
+        </pre>
+        </li>
+        <li>Die @media-Regeln können auch sehr speziell und kompliziert aufgebaut werden (AND, OR, ...)</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Responsive Design</h2>
+        <ul>
+        <li>Mit CSS3 wurde auch ein neuer Ansatz für Webseiten design eingeführt: sog. <strong>Media Queries</strong></li>
+        <li>Dies bedeutet, dass die Webseite auf das verwendete Gerät (z.B. Mobiltelefon, PC, ...) und seine Eigenschaften (z.B. Größe, Auflösung, ...) reagiert</li>
+        <li>Aus CSS 2.1 kennt man schon das <code>media</code> Attribut von Stylesheets, z.B.
+        <pre lang="html">&lt;link rel="stylesheet" media="print" href="druck.css" /&gt;
+        &lt;link rel="stylesheet" media="screen" href="layout.css" /&gt;
+        </pre>
+        Nun wurde in CSS3 das Attribut um weitere Möglichkeiten erweitert, z.B.
+        <pre lang="html">&lt;link rel="stylesheet" href="screenklein.css" media="screen and (max-width: 600px)" /&gt;
+        &lt;link rel="stylesheet" href="allesklein.css" media="all and (max-width: 600px)" /&gt;
+        &lt;link rel="stylesheet" href="smartphone.css" media="(max-device-width: 600px)" /&gt;
+        </pre>
+        </li>
+        <li>Neben <code>and</code> (Verknüpfen von Bedingungen) gibt es noch das Komma, welches als ODER eingesetzt wird</li>
+        <li>Weitere Abrufbare Eigenschaften sind (Auszug): <code>height</code> bzw. <code>device-height</code>, <code>orientation</code> (portrait, landscape), <code>aspect-ratio</code> bzw. <code>device-aspect-ratio</code>, <code>color</code> (Farbtiefe in Bits) und <code>resolution</code> (Dichte der Pixel in dpi)</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Reactive Design</h2>
+        <ul>
+        <li>Im Prinzip handelt es sich bei dem Responsive Design um ein Reactive Design (es wird nicht geantwortet, d.h. auf den Benutzer eingegangen, sondern auf die Umgebung reagiert)</li>
+        <li>Designs sollten so aufgebaut werden, dass diese sehr schnell für verschiedene Plattformen portiert werden können</li>
+        <li>Dies schließt relative Schriften mit ein - wenn man jedem Element eine neue Schriftgröße zuweist sind mehr Änderungen notwendig als bei Zuweisung von Prozentangaben relativ zur im <code>body</code>-Selektor eingestellten Schriftgröße</li>
+        <li>Zusätzlich zu den <code>@media</code>-Regeln sollte man noch weitere (HTML) Spezifikationen beachten</li>
+        <li>So ist es essentiell zu den <strong>Viewport</strong> für Smartphones einzustellen</li>
+        <li>Die Einstellung des Viewports geschieht im <code>&lt;head&gt;</code>-Tag z.B. mit
+        <pre lang="html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /&gt;
+        </pre>
+        Legt in diesem Fall fest, dass die Seite die volle Breite hat und dies 100% Zoom (deaktiviert) entspricht</li>
+        <li>Bilder sollten mit <code>img { max-width: 100%; }</code> behandelt werden um bei Smartphones nicht zu stören</li>
+        <li>Für Smartphones gibt es noch jede Menge weiterer Tricks (Mobile First statt Desktop First) inklusive einiger besonderer CSS-Regeln wie z.B. <code>-webkit-tap-highlight-color: #FFF</code></li>
+        </ul>
+    </article>
+</section>
+<section id="Objektorientierte-Programmierung">
+    <article>
+        <h2>Klassen in JavaScript (ab ES6)</h2>
+        <div class="left">
+        <ul>
+        <li>In JavaScript gab es vor ES 6 <strong>kein</strong> Schlüsselwort um Klassen <strong>direkt</strong> zu erzeugen </li>
+        <li>Jedoch bietet uns JS jetzt das <code>class</code> Schlüsselwort um Klassen zu erstellen </li>
+        <li>Jede Klasse hat einen <code>constructor</code>, mit diesem werden Instanzen der Klasse erstellt </li>
+        <li>Methoden in Klassen werden direkt mit ihrem Namen erstellt und sind danach als <code>Klasse.methodenName()</code> aufrufbar</li>
+        <li>Interne Eigenschaften und Methoden einer Klasse müssen <strong>intern</strong> über das <code>this</code> Schlüsselwort aufgerufen werden!</li>
+        </ul>
+        </div>
+        <div class="right">
+        <code><pre>
+            class NameDerKlasse {
+
+                constructor(parameter) {
+                    this.parameter = parameter;
+                }
+
+                methodenName() {
+                    this.nochEineMethode();
+                }
+
+                nochEineMethode() {
+                    return this.parameter;
+                }
+
+            }
+        </pre></code>
+        </div>
+    </article>
+    <article>
+        <h2>Namensräume und statische Felder</h2>
+        <ul>
+        <li>Namensräume verfolgen das Ziel Objekte voneinander abzugrenzen um Ordnung zu schaffen</li>
+        <li>Wir können dies in JavaScript sehr leicht schaffen indem wir unsere Klassen in Objekte schachteln, z.B.
+        <code><pre lang="javascript">
+        let Namensraum = { };//Einen Namensraum erstellen
+        Namensraum.Shape = class { ... }; //Die Klasse im Namensraum erstellen
+        let instanz = new Namensraum.Shape(); //Instanz erstellen
+        </pre></code>
+        </li>
+        <li>Statische Eigenschaften und Methoden (Felder) können ebenfalls hinzugefügt werden</li>
+        <code><pre>
+        class NameDerKlasse {
+
+            constructor(parameter) {
+                this.parameter = parameter;
+            }
+
+            static compare(a, b) {
+                return a.parameter - b.parameter;
+            }
+
+        }
+        </pre></code>
+        <li>Statische Felder sind instanzlos (d.h. unabhängig) und können von jeder Instanz aufgerufen werden</li>
+        <li>Statische Methoden sehen nur weitere statische bzw. im aktuellen Kontext vorhandene Felder</li>
+        </ul>
+        <h3>Private und Public</h3>
+        <ul>
+        <li>Gibt es in Javascript formal nicht!</li>
+        <li>Es gibt jedoch viele Möglichkeiten dies zu emulieren, z.B. durch Scoping.</li>
+        <li>Es ist in JAvascript Konvention "private" Eigenschaften/Methoden mit einem Unterstrich zu markieren <code>_variable</code></li>
+        <li>Man kann auch Module verwenden, da diese grundsätzlich Privat sind und nur explizit exportierte Eigenschaften oder Methoden freigeben </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Setter und Getter</h2>
+        <ul>
+            <li>Mit Gettern und Settern kann man das setzen von Variables einer Klasse besser kontrollieren</li>
+            <li>Sie werden mit <code>get</code> bzw <code>set</code> Schlüsselwörtern markiert</li>
+            <div id="js-bsp-1" class="codeEditor" data-language="js">
+                <div class="container" style="height: 420px">
+                    <span class="uprightTitle">Input</span>
+                    <textarea class="input" contenteditable="true" spellcheck="false" title="Input"></textarea>
+
+                    <span class="trigger runButton">Run Code</span>
+                    <textarea class="editor" contenteditable="true" spellcheck="false" title="Editor"></textarea>
+                    <span class="uprightTitle">Output</span>
+                    <textarea class="output" contenteditable="true" spellcheck="false" title="Output"></textarea>
+                    <pre class="source hidden">
+                        function(input, output) {
+                            class User {
+
+                                constructor(name) {
+                                    this.name = name; // ruft Setter auf
+                                }
+
+                                get name() {
+                                    return this._name;
+                                }
+
+                                set name(value) {
+                                    if (value.length < 4) {
+                                      output.value = "Name ist zu kurz.";
+                                      return;
+                                    }
+                                    this._name = value;
+                                }
+                            }
+                            let user = new User(input.value);
+                            output.value += "\n" + user.name;
+                        }
+                    </pre>
+                </div>
+            </div>
+        </ul>
+        
+    </article>
+</section>
+    
+</main>
+</div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
+<script type="text/javascript" src="./resources/js/JsCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/HtmlCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/initEditors.js"></script>
+<script type="text/javascript" src="./resources/js/buildIndex.js"></script>
+</body>
+</html>
