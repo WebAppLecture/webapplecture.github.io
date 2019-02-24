@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Webapplecture</title>
+    <link rel="shortcut icon" href="resources/images/html5.png">
+    <link rel="stylesheet" href="resources/css/main.css"/>
+    <link rel="stylesheet" href="resources/css/codeEditor.css"/>
+    <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
+    <link rel="stylesheet" href="resources/css/table.css"/>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <img src="resources/images/html5.png">
+        <nav>
+            <ul>
+                <li>
+                    <h2>Tag</h2>
+                </li>
+                <li>
+                    <a href="index.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="day2.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="day3.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="day4.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="day5.html"><h2>5</h2></a>
+                </li>
+                <li>
+                    <a href="day6.html"><h2>6</h2></a>
+                </li>
+                <li>
+                    <a href="day7.html"><h2>7</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>8</h2></a>
+                </li>
+                <li>
+                    <a href="index.html"><h2>9</h2></a>
+                </li>
+                <li>
+                    <h2>Übung</h2>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>5</h2></a>
+                </li>
+            </ul>
+        </nav>
+        <span id="toTop">
+            <a><h2>Top</h2></a>
+        </span>
+    </div>
+</header>
+<div class="wrapper">
+<nav class="column left">
+
+</nav>
+<main class="column middle">
+<section id="Webworker">
+    <article>
+        <h2>Asynchroner JavaScript</h2>
+        <ul>
+        <li>JavaScript war schon immer ein Single-Threaded Problem, d.h. wir hatten keine Chance eine Operation abzubrechen</li>
+        <li>Mit den <strong>WebWorker</strong> haben wir nun die Möglichkeit Multithreading zu betreiben</li>
+        <li>Zunächst sollte man dazu überprüfen ob der Browser dies unterstützt
+        <pre lang="javascript">if(typeof Worker != "undefined") {
+            /* Wir können den WebWorker anwenden! */
+        }
+        </pre>
+        </li>
+        <li>Wie schon aus echten Programmiersprachen bekannt dürfen wir keine Cross-Threading-Zugriffe tätigen</li>
+        <li>Daher läuft die Kommunikation über die Messaging API ab - ein Beispiel
+        <pre lang="javascript">var worker = new Worker('my_worker.js');
+        worker.postMessage('Hallo!');
+        worker.onmessage = function(event) {
+            console.log(event);
+        };
+        </pre>
+        </li>
+        <li>Der Worker hat keinen Zugriff auf <code>window</code> oder den DOM - sein Basisobjekt ist das <code>Worker</code>-Objekt</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Warum WebWorker?</h2>
+        <ul>
+        <li>Die Applikation soll immer responsive bleiben (immer reagieren können)</li>
+        <li>Als Faustregel gilt: Wenn eine Operation mehr als <strong>50 ms</strong> brauchen kann, sollte diese asynchron sein</li>
+        <li>Ein WebWorker kann von außen über <code>terminate()</code> abgebrochen werden</li>
+        <li>Innerhalb eines Workers haben wir nur die Möglichkeiten über <code>postMessage()</code> an die Quelle zu senden oder diese über das <code>onmessage</code>-Ereignis zu empfangen</li>
+        <li>Diese Möglichkeiten unterliegen der Messaging API und können nur Strings senden und empfangen (JSON!)</li>
+        <li>Des Weiteren können wir AJAX Requests, <strong>WebSockets</strong>, alle JS-Methoden wie <code>eval()</code>, <code>isNaN()</code> etc. und alle Timer wie <code>setInterval()</code> verwenden</li>
+        <li>Mit Hilfe von <code>importScripts</code> kann man weitere Skripte (z.B. jQuery) reinladen</li>
+        <li>Das <code>location</code>-Objekt enthält die Adresse des WebWorkers</li>
+        <li>Worker dürfen das <code>navigator</code>-Objekt verwenden: <code>appName</code>, <code>appVersion</code>, <code>platform</code> und <code>userAgent</code></li>
+        <li>Über <code>close()</code> können wir den Worker innerhalb schließen</li>
+        <li>Innerhalb des Workers ist <code>this</code> gleich der Worker-Instanz</li>
+        </ul>
+    </article>
+</section>
+<section id="Javascript-außerhalb-des-Browsers">
+    <article>
+        <h2>Node.js</h2>
+        <figure><img src="./resources/images/slides/nodejs.png" alt="node.js"><figcaption>Das offizielle Logo von node.js</figcaption></figure>
+        <ul>
+        <li>Node.js oder kurz node ist Google's V8 Engine Standalone (ohne Browser)</li>
+        <li>Zusätzlich zur Engine gibts noch einen entsprechenden Kontext (analog <code>Window</code>)</li>
+        <li>In diesem Kontext sind Prozess spezifische Variablen und Umgebungseigenschaften</li>
+        <li>Dadurch kann man JavaScript nun auch als allgemeine (GP) Skriptsprache ansehen</li>
+        <li>Es ist sehr leicht eigene Programme / Code mit JavaScript interagieren zu lassen</li>
+        <li>Dies hat bereits für eine unzählige Anzahl an node.js Modules geführt</li>
+        <li>Wichtig für uns sind Module die auf das Dateisystem und Netzwerk zugreifen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die Node API</h2>
+        <ul>
+        <li>Nach dem Starten von node sitzt man im allgemeinen Kontext</li>
+        <li>Hier hat man zunächst (scheinbar) weniger Möglichkeiten als im vorher bekannten <code>Window</code> Kontext</li>
+        <li>Dies täuscht - tatsächlich offenbart dieser Kontext sehr viele Systemmöglichkeiten</li>
+        <li>Nach wie vor existiert <code>console</code> (nur wird jetzt wirklich das Terminal bedient)</li>
+        <li>Über <code>require</code> wurde das Modulsystem integriert (bekannt aus <strong>RequireJS</strong>)</li>
+        <li>Neue Objekte wie <code>Int8Array</code> wurden hinzugefügt</li>
+        <li>Die Eigenschaft <code>process</code> ist unser Zugang zum eigenen Prozess</li>
+        <li>Hier ist z.B. die Prozess-ID <code>pid</code> enthalten (<code>process.pid</code>)</li>
+        <li>Die Startargumente sind über <code>process.argv</code> zugreifbar (Array, 1. Element ist node, 2. der Skript, ...)</li>
+        <li>Die geladenen Module sind in <code>module</code> verfügbar (z.B. ist <i>repl</i> geladen)</li>
+        </ul>
+    </article>
+    <article>
+        <h2>JavaScript am Server</h2>
+        <ul>
+        <li>Mit dem <em>http</em> Modul kann man einen Webserver starten</li>
+        <li>Als einfachstes Beispiel kann man <i>Hallo Welt</i> bei Anfragen als Text zurückgeben:
+        <pre lang="javascript">var http = require('http');
+        http.createServer(
+          function (request, response) {
+            response.writeHead(200, {'Content-Type': 'text/plain'});
+            response.end('Hallo Welt\n');
+          }
+        ).listen(8000);
+        </pre>
+        </li>
+        <li>Natürlich kann man noch mehr machen (Parameter auslesen, dynamische Rückgabe, ...)</li>
+        <li>Analog kann man natürlich auch Anfragen senden, z.B. folgender <i>GET</i> Request
+        <pre lang="javascript">var http = require('http');
+        http.get("http://www.google.com/index.html", function(res) {
+          console.log("Got response: " + res.statusCode);
+        }).on('error', function(e) {
+          console.log("Got error: " + e.message);
+        });
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+    <h2>View engines</h2>
+        <ul>
+        <li>Bevor man tiefer in serverseitige Webseiten mit JavaScript einsteigt sollte man sich für eine view engine entscheiden</li>
+        <li>Eine view engine abstrahiert die Rückgabe (Text, i.d.R. HTML), so dass man keine seltsamen Strings mehr bauen muss</li>
+        <li>Die meisten view engines basieren darauf, dass man HTML schreibt, welches Platzhalter enthält, die gefüllt werden</li>
+        <li>Manche Systeme abstrahieren sogar noch diese Stufe, so dass man sogar kein HTML mehr schreiben muss</li>
+        <li>Als Beispiel kann man <em>Jade</em> anführen:
+        <pre lang="html">doctype 5
+        html(lang="en")
+          head
+            title= pageTitle
+          body
+            h1 Jade - node template engine
+            #container.col
+              if youAreUsingJade
+                p You are amazing
+              else
+                p Get on it!
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Electron Framework</h2>
+        <ul>
+            <li>Electron (ehemals Atom Shell) ist ein von GitHub entwickeltes, quelloffenes Framework</li>
+            <li>Ermöglicht die Ausführung von cross-platform Desktop-Anwendungen mithilfe des Webbrowsers Chromium und des Node.js-Frameworks</li>
+            <li>Oberfläche der Programme werden mit HTML und CSS beschrieben</li>
+            <li>Programmfunktionen laufen in JavaScript, teilweise in C++ für mehr Performanz</li>
+            <li>Basis für Atom, Github Desktop, Visual Studio Code, Skype, Discord...</li>
+            <li>Erlaubt die Verwendung anderer Frameworks wie Angular.js</li>
+        </ul>
+    </article>
+</section>
+<section id="Design-Patterns">
+    <article>
+        <h2>Designmuster für Webseiten</h2>
+        <ul>
+        <li>Alles was wir in der Vorlesung gelernt haben hört sich gut an (und funktioniert auch gut)</li>
+        <li>Die Frage ist jedoch - wie leicht läßt sich dies in der Realität an (großen) Webseiten umsetzen?</li>
+        <li>Die Antwort hierauf ist: Es hängt davon ab! Und zwar wie man sich anstellt und welche Tools man verwendet</li>
+        <li>Je nach Größe des Projektes und nach Ausrichtung muss man nicht zwingend so strukturiert vorgehen</li>
+        <li>Ansonsten sind Software Design Pattern auch für Webseiten sehr zu empfehlen, v.a.
+        <ul>
+        <li><strong>MVC</strong>, welches darauf abzielt eine starke Trennung zwischen Daten (Model), Webseite (View) und dem Code dazwischen (Controller) zu erzielen.</li>
+        <li><strong>MVP</strong>, welches darauf abzielt eine normale Trennung zwischen Daten (Model), Webseite (View) und dem Code dahinter (Presenter) zu erzielen.</li>
+        </ul>
+        </li>
+        <li>Die beiden Konzepte klingen zwar ähnlich, jedoch ist MVP eine Weiterentwicklung von MVC und wird oftmals mit <i>Code-Behind</i> verstanden</li>
+        <li>Beide Technologien erlauben den (leichten) Austausch der dahinterliegenden Ansichten</li>
+        <li>In der eigentlichen Programmierung sollten dann Muster wie <strong>Factory Pattern</strong>, <strong>Builder Pattern</strong>, <strong>Command Pattern</strong>, <strong>Mediator Pattern</strong> oder <strong>Chain of Responsiblity</strong> verwendet werden</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Model-View-Controller (MVC)</h2>
+        <figure><img src="./resources/images/slides/mvc.png" alt="Das MVC Muster"><figcaption>Beziehungen der Klassen mit direkten Verweisen im MVC Konzept</figcaption></figure>
+        <ul>
+        <li>Das MVC Konzept wurde bereits 1979 von Xerox bei der Entwicklung der ersten grafischen Benutzeroberfläche entwickelt</li>
+        <li>Ziel war es ein gutes Konzept für die Trennung Daten / Oberfläche zu schaffen</li>
+        <li>Das <strong>Model</strong> stellt die Daten der aktuellen Anfrage dar und soll sich ändern und validieren können</li>
+        <li>Der <strong>View</strong> stellt das Model als Webseite dar und enthält alle möglichen Interaktionen mit der Datenquelle</li>
+        <li>Der <strong>Controller</strong> nimmt die Benutzereingaben (URL, GET, POST) entgegen</li>
+        <li>Er ist außerdem für die Füllung eines Models mit Daten und die Generierung eines entsprechenden Views verantwortlich</li>
+        <li>Das Model ist nicht notwendigerweise eine Datenbank - im Regelfall wird es eine im Speicher abgelegte Instanz von Daten sein, die die Datengrundlage in einer Datenbank hat und Änderungen an dieser vollziehen kann</li>
+        <li>MVC eignet sich bei Webanwendungen besonders gut, da man hier wirklich alle Steuerräder in der Hand hat</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Model-View-Presenter (MVP)</h2>
+        <figure><img src="./resources/images/slides/mvp.png" alt="Das MVP Muster"><figcaption>Beziehungen der Klassen mit direkten Verweisen im MVP Konzept</figcaption></figure>
+        <ul>
+        <li>Das MVP Muster wurde Anfang der 90er von Taligent (Apple, IBM, HP) entwickelt</li>
+        <li>Es nimmt dabei MVC als Grundlage und kapselt die Funktionalität in einem Controller ähnlichen Objekt</li>
+        <li>Zusätzlich dazu ist der View verantwortlich für die UI Ereignisse (Postback) - dies war eigentlich der Job des Controllers</li>
+        <li>Das <strong>Model</strong> kapselt die Daten, welche dargestellt werden sollen</li>
+        <li>Der <strong>View</strong> stellt die Daten in einer Webseite dar und empfängt die Ereignisse</li>
+        <li>Die Ereignisse werden an den <strong>Presenter</strong> weitergeleitet, welcher dann entsprechende Aktionen durchführt</li>
+        <li>Dabei werden Änderungen an den Model und den View durchgeführt</li>
+        <li>Bei MVP ist in Verbindung mit WinForms und WebForms (.NET) sogar oftmals eine Portierung der Anwendung möglich</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Model-View-ViewModel (MVVM)</h2>
+        <ul>
+        <li>Ein eher neues Konzept ist MVVM, das eine Verbesserung von MVP darstellt</li>
+        <li>Das Konzept wird durch ereignisgesteuertes Binding ermöglicht - d.h. man bindet Darstellungen an Quellen</li>
+        <li>Ändert sich eine Quelle (d.h. die Daten), wird die Darstellung aktualisiert</li>
+        <li>Dies ist bei statischen Webseiten unmöglich, kann aber durch JavaScript ermöglicht werden
+        <pre lang="html">&lt;p&gt;First name: &lt;input data-bind="value: firstName" /&gt;&lt;/p&gt;
+        &lt;p&gt;Last name: &lt;input data-bind="value: lastName" /&gt;&lt;/p&gt;
+        &lt;p&gt;Full name: &lt;strong data-bind="text: fullName"&gt;&lt;/strong&gt;&lt;/p&gt;
+        </pre>
+        </li>
+        <li>Eine bekannte Bibliothek hierfür ist KnockoutJS</li>
+        <li>Hier werden verschiedene Elemente über <strong>unobtrusive JavaScript</strong> gebunden:
+        <pre lang="javascript">function AppViewModel() {
+            this.firstName = ko.observable("Bert");
+            this.lastName = ko.observable("Bertington");
+            this.fullName = ko.computed(function() {
+            return this.firstName() + " " + this.lastName();    
+            }, this);
+        }
+        ko.applyBindings(new AppViewModel()); // Activates knockout.js
+        </pre>
+        </li>
+        </ul>
+    </article>
+</section>
+    
+</main>
+</div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
+<script type="text/javascript" src="./resources/js/JsCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/HtmlCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/initEditors.js"></script>
+<script type="text/javascript" src="./resources/js/buildIndex.js"></script>
+</body>
+</html>
