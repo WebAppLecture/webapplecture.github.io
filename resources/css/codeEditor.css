@@ -8,7 +8,21 @@
     margin: 0 auto;
     border-radius: .75em;
     flex-shrink: 1;
-    min-height: 60px;
+    min-height: 80px;
+}
+
+.codeEditor .colorFrame {
+    background: linear-gradient(to right bottom, #ff8a00, purple);
+    padding: 5px 0 5px 0;
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0 5px;
+    border-radius: 15px;
+    flex-shrink: 1;
+}
+
+.codeEditor .colorFrame.error {
+    background: linear-gradient(to right bottom, #a20f0f, red);
 }
 
 .codeEditor .uprightTitle,
@@ -18,25 +32,18 @@
     font-family: monospace;
     writing-mode: vertical-lr;
     justify-content: center;
-    color: #4b4b4b;
+    color: white;
     margin: 0;
     width: 2em;
     line-height: 2em;
-    border-radius: .75em 0 0 .75em;
 }
 
 .codeEditor .uprightTitle {
     cursor: default;
-    background-color: #fd971f;
 }
 
 .codeEditor .runButton {
     cursor: pointer;
-    background-color: #5ad8ee;
-}
-
-.codeEditor .runButton.error {
-    background-color: #f92672;
 }
 
 .codeEditor .editor,
@@ -45,12 +52,12 @@
 .codeEditor .output {
     display: inline-block;
     resize: none;
-    font-family: monospace;
-    background-color: #272822;
+    font-family: "Operator Mono SSm A","Operator Mono SSm B","Operator Mono","Source Code Pro",Menlo,Consolas,Monaco,monospace;
+    background: linear-gradient(to bottom right,#001,#003);
     color: #5ad8ee;
     margin: 0 .5em 0 0;
     padding: 0.5em;
-    border-radius: 0 .75em .75em 0;
+    border-radius: 10px;
     overflow-y: auto;
 }
 
@@ -64,7 +71,7 @@
 
 .codeEditor .editor {
     width: 35em;
-    border: 2px solid #5ad8ee;
+    border: none;
     line-height: 1.5em;
     counter-reset: line;
     tab-size: 4;
@@ -75,22 +82,20 @@
 }
 
 .codeEditor pre:focus,
-.codeEditor textarea:focus{
+.codeEditor textarea:focus,
+.codeEditor div.output:focus {
     outline: none;
+    box-shadow: 0 0 8px 2px purple inset;
 }
 
 .codeEditor .editor.error {
-    border: 2px solid #f92672;
-}
-
-.codeEditor .editor.error {
-    border: 2px solid #f92672;
+    box-shadow: 0 0 8px 2px red inset;
 }
 
 .codeEditor .input,
 .codeEditor .css,
 .codeEditor .output {
-    border: 2px solid #fd971f;
+    border: none;
     width: 15em;
 }
 
@@ -106,7 +111,21 @@
     padding: 0 .5em;
     margin-right: .5em;
     text-align: right;
-    color: #888;
+    color: white;
 }
 
+@media (max-width: 800px) {
+    .codeEditor div.container {
+        flex-direction: column;
+        height: fit-content !important;
+        width: 100%;
+    } 
 
+    .codeEditor .editor, 
+    .codeEditor .input,
+    .codeEditor .css,
+    .codeEditor .output {
+        width: 100%;
+        height: 200px;
+    }
+}

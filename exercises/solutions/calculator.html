@@ -1,0 +1,30 @@
+<script>
+class Number {
+
+    constructor(initialVal) {
+        this.value = initialVal || 0;
+    }
+
+    add(a) {
+        this.value += a;
+        return this;
+    }
+
+    subtract(a) {
+        this.value -= a;
+        return this;
+    }
+
+    multiply(a) {
+        this.value *= a;
+        return this;
+    }
+
+    divide(a) {
+        if(a !== 0) {
+            this.value /= a;
+        }
+        return this;
+    }
+}
+</script>

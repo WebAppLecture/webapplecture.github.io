@@ -1,9 +1,9 @@
 code {
-	    display: inline-block;
+	display: inline-block;
     resize: none;
     font-family: monospace;
-    background-color: #272822;
-    color: #5ad8ee;
+    background: linear-gradient(to right,#941a49,#a95f06);
+    color: #fff;
     margin-bottom: -0.5em;
     padding: 0.5em;
     border-radius: .75em;
