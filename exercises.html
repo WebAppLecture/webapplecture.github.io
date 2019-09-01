@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="resources/css/main.css"/>
     <link rel="stylesheet" href="resources/css/codeEditor.css"/>
     <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
-    <link rel="stylesheet" href="resources/css/buttons.css"/>
+    <link rel="stylesheet" href="resources/css/header.css"/>
 </head>
 <body>
 <header>
@@ -52,16 +52,16 @@
                     <a href="exercises.html"><h2>1</h2></a>
                 </li>
                 <li>
-                    <a href="exercises.html"><h2>2</h2></a>
+                    <a href="exercises2.html"><h2>2</h2></a>
                 </li>
                 <li>
-                    <a href="exercises.html"><h2>3</h2></a>
+                    <a href="exercises3.html"><h2>3</h2></a>
                 </li>
                 <li>
-                    <a href="exercises.html"><h2>4</h2></a>
+                    <a href="exercises4.html"><h2>4</h2></a>
                 </li>
                 <li>
-                    <a href="exercises.html"><h2>5</h2></a>
+                    <a href="exercises5.html"><h2>5</h2></a>
                 </li>
             </ul>
         </nav>
@@ -75,65 +75,77 @@
 
 </nav>
 <main class="column middle noSpacing">
-<section id="Empfohlene Aufgaben">
+<section id="Die Entwicklertools (Empfohlen)">
+    <article>
+        <h2>01. Erste Schritte</h2>
+        <hr>
+        <p>Öffne eine beliebige Seite im Browser und öffne die Entwicklertools. (Normalerweise F12)</p>
+        <p>Navigiere zur Konsole und erstelle dir zwei variablen <code>a=2</code> und <code>b=3.5</code>. 
+            <ul>
+                <li>Probiere nun mal die Grundrechenarten aus.</li>
+                <li>Was passiert wenn du eine der Variablen durch 0 teilst?</li>
+                <li><code>a + "a"</code>, wie verhält sich Javascript wenn man verschieden Typen verrechnet?</li>
+                <li><code>(3 + "" + 2) * 1</code> Implizierte Casts ermöglichen uns Datentypen zu erzwingen.</li>
+            </ul>
+        </p>
+    </article>
+    <article>
+        <h2>02. Arrays</h2>
+        <hr>
+        <p>Erstelle in der Konsole ein Array <code>c = [0,1,2,3]</code>.</p>
+        <p></p>
+    </article>
+</section>
+<section id="Taschenrechner (Empfohlen)">
     <article>
         <h2>01. Das Grundgerüst</h2>
         <hr>
-        <p> Erstellen Sie das Grundgerüst einer Webseite mit allen (benötigten)
-        Elementen einschließlich eines Absatzes (der Tag dafür ist  <code>&lt;p&gt;</code>), der ein
-        wenig Text und ein Bild, das durch den  <code>&lt;img&gt;</code>-Tag angezeigt wird, enthält.</p>
+        <p>Erstelle die Datei "number.html", und füge in diese einen <code>&lt;script&gt;</code> Tag ein.</p>
+        <p>Erstelle darin die Klasse <code>Number</code>, diese erhält als einzigen Konstruktorparameter den Initialwert ihrer Variablen <code>value</code>, und soll, falls dieser nicht gegeben ist, diesen auf 0 setzen.</p> 
+        <p>Öffne die Datei im Browser, öffne mit F12 die Entwicklertools und initialisiere deine Klasse: <code>a = new Number(3)</code></p>
+        <p>Stelle sicher, dass eine Initialisierung ohne Parameter zum gewollten Wert 0 führt.</p>
     </article>
     <article>
-        <h2>02. Es lebe die Struktur</h2>
+        <h2>02.Grundrechenarten</h2>
         <hr>
-        <p> Verwenden Sie die Webseite aus Übungsaufgabe 1. Erstellen Sie anstelle des
-        Textabsatzes auf der Seite einen Artikel, der jeweils einen Kopf- und einen
-        Fußbereich besitzt. Fügen Sie dem Artikel zwei Textabsätze hinzu.
-        </p>
-        <p>Im ersten Textabsatz sollten noch ein wenig Text mit hervorgehobenen
-        <code>&lt;em&gt;</code> ) Wörtern, kursiven ( <code>&lt;i&gt;</code> ) Ausdrücken und fett ( <code>&lt;strong&gt;</code> )
-        dargestellten Zahlen geschrieben werden. Im zweiten Absatz sollten
-        Informationen zum Autor ( <code>&lt;address&gt;</code> ) und zur letzten Erstellungszeit
-        ( <code>&lt;time&gt;</code> ) der Seite angezeigt werden.</p>
+        <p>Füge nun Funktionen für die Grundrechenarten zu der Klasse <code>Number</code> hinzu: <code>add()</code>, <code>subtract()</code>, <code>multiply()</code>, <code>divide()</code></p>
+        <p>Schau dir an was passiert, wenn du in Javascript durch 0 teilst. In unsere Klasse wollen wir dies unterbinden, und bei einer Division durch 0 den Wert nicht verändern.</p>
+        <p>Kontrolliere wieder in der Konsole deinen Fortschritt. <code>a = new Number(); a.add(4);</code> sollte dazu führen dass <code>a.value</code> 4 zurückgibt.</p>
     </article>
     <article>
-        <h2>03. Weitere Funktionalitäten</h2>
+        <h2>03. Chaining</h2>
         <hr>
-        <p> Ergänzen Sie nun die Webseite aus Aufgabe 2 um zwei eigenständige
-        Sektionen. Diese sollen jeweils Überschriften der zweiten Ebene sowie
-        (beliebige) Randinformationen ( <code>&lt;aside&gt;</code> ) besitzen.
-        </p>
-        <p>Verwenden Sie für die Randinformationen der ersten Sektion eine nicht
-        nummerierte Liste ( <code>&lt;ul&gt;</code> ) mit entsprechenden Einträgen. Für die zweite
-        Sektion sollten Sie eine kleine Tabelle mit drei Spalten, vier Zeilen und
-        entsprechenden Kopf- und Fußzeilen ( <code>&lt;thead&gt;</code> und  <code>&lt;tfoot&gt;</code> ) einfügen.</p>
+        <p>Wir wollen nun Ausdrücke wie <code>a.add(4).multiply(3)</code> ermöglichen, dies schaffen wir mithilfe von Chaining.</p>
+        <p>Chaining erfordert einfach nur, dass jede (chainable) Funktion einer Klasse die aktuelle Instanz dieser zurückgibt. Dies erreichen wir indem wir <code>this</code> zurückgeben.</p>
+        <p>Spiel ein wenig mit den neuen Funktionalitäten in der Konsole.</p>
     </article>
     <article>
-        <h2>04. Fakultätsfunktion</h2>
+        <h2>04. Potenz</h2>
         <hr>
-        <p> Schreiben Sie eine Funktion namens  <code>faculty()</code>, die ein Argument  <i>n </i>
-        erhalten soll. Das Argument soll als (ganze) Zahl behandelt werden. Als
-        Rückgabewert der Funktion soll  <i>n! </i> berechnet werden. Die genaue Formel hierzu
-        lautet
-         <code> 
-        n! = Π_ i = 1 ^n i = n ⋅ (n - 1) ⋅ (n - 2) ⋅ ... ⋅ 1
-         </code>.
-        </p><p> Die Ausgabe soll über die eingebaute Funktion  <span class="jfunc">alert </span> erfolgen. Die
-        Eingabe kann über die eingebaute Methode  <span class="jfunc">prompt </span> geschehen.</p>
+        <p>Füge nun eine Funktion <code>pow()</code> hinzu, die uns erlaubt zu potenzieren.</p>
+        <p>Verwende intern <strong>nicht</strong> die in Javascript eingebaute <code>Math.pow()</code> Methode, du kannst aber mithilfe dieser in der Konsole dein Ergebniss kontrollieren.</p>
+        <p>Eine For-Schleife könnte hier hilfreich sein. Beachte, dass diese Lösung keine negativen Potenzen (Wurzeln) vorsieht. Überprüfe deswegen ob die übergebene Potenz positiv ist.</p>
     </article>
     <article>
-        <h2>05. Zahlen sortieren</h2>
+        <h2>05. Fakultät</h2>
         <hr>
-        <p> Über eine  <code>while </code>-Schleife soll solange ein  <code>prompt()</code> angezeigt
-    werden, wie der Benutzer eine gültige Zahl eingibt (d.h. Abbruch der Schleife
-    bei ungültiger Eingabe). Die Zahlen sollen in einem Array <code>zahlen</code>
-    gespeichert werden. Nach dem Abbruch der  <code>while</code>-Schleife soll das
-    eingegebene Array zahlen aufsteigend sortiert werden.
-    </p><p> Abschließend soll das Array über  <code>alert()</code> ausgegeben werden. Benutzen
-    Sie hierzu  <code>zahlen.toString()</code>.</p>
+        <p> Schreibe eine Funktion <code>faculty()</code>, die ein Argument die Fakultät <i>n!</i> des aktuellen Wertes unserer <code>Number</code> berechnet.</p>
+        <p> Die Formel hierzu lautet:
+        <code> 
+        n! = n ⋅ (n - 1) ⋅ (n - 2) ⋅ ... ⋅ 1
+        </code></p>
+        <p>Die Fakultät ist nur für Ganzzahlen definiert, überprüfe deswegen vorher ob deine aktuelle Zahl dies erfüllt. Dies ist mit <code>n % 1 === 0</code> überprüfbar, der Modulo-Operator <code>%</code> berechnet hier den Rest der Division durch 1, der bei Ganzzahlen immer 0 ist.</p>
+        <p>Falls dies nicht erfüllt ist, ignoriere die Anweisung und ändere den Wert nicht.</p>
+    </article>
+    <article>
+        <h2>06. Auslagerung</h2>
+        <hr>
+        <p>Erstelle die Datei <i>number.js</i> und velagere die Klasse <code>Number</code> dort hin.</p>
+        <p>Füge ein export statement zur Datei hinzu und importiere die Klasse in <i>number.html</i>. <code>&lt;script type="module"&gt; import Number from "number.js"; &lt;/script&gt;</code> </p>
+        <p>Stelle sicher, dass alle Funktionalität fortbesteht.</p>
     </article>
 </section>
-<section id="Bonus Aufgaben"></section>
+<section id="Taschenrechner (Bonus)"></section>
     
 </main>
 </div><script type="text/javascript" src="./resources/js/JsFills.js"></script>

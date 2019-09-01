@@ -1,0 +1,24 @@
+th img {
+	width: 80px;
+}
+
+tr  {
+	height: 30px;
+}
+
+.tdyes,
+.tdno {
+	color: black;
+}
+
+.tdyes {
+	background-color: green;
+}
+
+.tdno {
+	background-color: red;
+}
+
+.tdish {
+	background-color: orange;
+}

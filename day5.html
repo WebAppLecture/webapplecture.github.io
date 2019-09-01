@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Webapplecture</title>
+    <link rel="shortcut icon" href="resources/images/html5.png">
+    <link rel="stylesheet" href="resources/css/main.css"/>
+    <link rel="stylesheet" href="resources/css/codeEditor.css"/>
+    <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
+    <link rel="stylesheet" href="resources/css/table.css"/>
+    <link rel="stylesheet" href="resources/css/header.css"/>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <img src="resources/images/html5.png">
+        <nav>
+            <ul>
+                <li>
+                    <h2>Tag</h2>
+                </li>
+                <li>
+                    <a href="index.html"><h2>0</h2></a>
+                </li>
+                <li>
+                    <a href="day1.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="day2.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="day3.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="day4.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="day5.html"><h2>5</h2></a>
+                </li>
+                <li>
+                    <a href="day6.html"><h2>6</h2></a>
+                </li>
+                <li>
+                    <a href="day7.html"><h2>7</h2></a>
+                </li>
+                <li>
+                    <h2>Übung</h2>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>5</h2></a>
+                </li>
+            </ul>
+        </nav>
+        <span id="toTop">
+            <a><h2>Top</h2></a>
+        </span>
+    </div>
+</header>
+<div class="wrapper">
+<nav class="column left">
+
+</nav>
+<main class="column middle">
+<section id="Drag-&-Drop">
+    <article>
+        <h2>Drag and Drop</h2>
+        <div class="doubleleft">
+        <ul>
+        <li>Die Drag-And-Drop API kommt vom IE(5) - sie wurde für HTML5 Reverse Engineered</li>
+        <li>Alle Browser sollten die API mittlerweile im Prinzip unterstützen</li>
+        <li>Die API gilt leider als eine der schlechteren - hat aber durch seine Verbreitung Vorteile</li>
+        <li>Im Fokus stand die Standardisierung des Drag and Drop Vorgangs</li>
+        <li>Standardmäßig <code>draggable</code> sind Text, Bilder und Links</li>
+        <li>Um solche Elemente ablegen zu können müssen Ereignisse in den Ablagezonen gesetzt werden</li>
+        <li>Über <code>return false</code> in <code>ondrop</code> erlauben wir das Ablegen</li>
+        </ul>
+        </div>
+        <div class="halfright">
+        <figure><img src="./resources/images/slides/dnd.png" alt="Verdeutlichung eines Drag and Drop Vorgangs"><figcaption>Dank Drag and Drop ist es möglich Objekte direkt miteinander interagieren zu lassen</figcaption></figure>
+        </div>
+        <div class="clear">
+        <ul>
+        <li>Beim IE muss man hier noch <code>ondragenter</code> und <code>ondragover</code> (analog zu <code>ondrop</code>) setzen</li>
+        <li><code>ondragover</code> gibt uns die Chance bei Ablage etwas mit den Daten anzufangen, z.B. mit Text über 
+        <pre lang="javascript">element.ondrop = function(event) { var text = event.dataTransfer.getData('Text'); }
+        </pre>
+        </li>
+        </ul></div>
+    </article>
+    <article>
+        <h2>Raus aus dem Browser</h2>
+        <ul>
+        <li>Es ist möglich Interaktionen zwischen dem Browser und anderen Applikationen über die API zu beschreiben</li>
+        <li>Das Objekt <code>dataTransfer</code>, das wir mit einem DnD-Ereignis erhalten enthält Methoden:
+        <ul>
+        <li><code>getData(mime)</code> mit einem Mime-Type z.B. <code>'text/plain'</code></li>
+        <li><code>setData(mime, data)</code> mit einem zusätzlichen String von Daten</li>
+        </ul></li>
+        <li>Ein Problem ist, dass man sich schon bei <code>ondragstart</code> entscheiden muss, was man für Daten setzt</li>
+        <li>Dies bedeutet, dass man nicht auf erst beim Ablegen (Worauf wird abgelegt?) entscheiden kann</li>
+        <li>Alles in allem hat man am Ende sieben Ereignisse mit <code>ondragend</code>, <code>ondrag</code> und <code>ondragleave</code></li>
+        <li>Neben den erwähnten Elementen kann in HTML5 jedes Element gezogen werden</li>
+        <li>Hierzu benötigt man das Attribut <code>draggable</code> (bzw. <code>draggable="true"</code>)</li>
+        <li>Bei älteren Safaris wird daneben noch eine CSS-Regel benötigt:
+        <pre lang="css">[draggable] { -webkit-user-drag: element; }
+        </pre>
+        </li>
+        <li>Ein großes Problem ist leider die Cross-Browser-Unterstützung...</li>
+        </ul>
+    </article>
+
+
+</section>
+<section id="Daten-speichern-und-übertragen">
+    <article>
+        <h2>Daten speichern - Überblick</h2>
+        <ul>
+        <li>Beim clientseitigen Speichern von Daten kann man prinzipiell zwei Unterschiedliche Arten festhalten:
+        <ul>
+        <li>Flüchtige Speicherung (Nur solange der Browser läuft)</li>
+        <li>Permanente Speicherung (Wird i.d.R. auch beim nächsten Browserstart noch vorhanden sein)</li>
+        </ul>
+        </li>
+        <li>In der 1. Kategorie gab es die sog. <strong>Sessions</strong>, in der 2. die <strong>Cookies</strong></li>
+        <li>Eine Session ist jedoch nichts anderes wie ein Cookie ohne Ablaufdatum (daher nur gültig bis der Browser geschlossen wird)</li>
+        <li>In HTML5 sind noch zwei weitere Möglichkeiten hinzugekommen:
+        <ul>
+        <li><strong>WebStorage</strong> um eine effizientere Zugriffsmöglichkeit zu schaffen (für 1. und 2. Kategorie)</li>
+        <li><strong>WebSQL</strong> um eine integrierte Datenbank einzubauen (nur für 2. Kategorie)</li>
+        </ul>
+        </li>
+        <li>Im Gegensatz zu Cookies (und damit auch Sessions) sind die neuen Technologien nur Clientseitig verfügbar</li>
+        <li>Bei WebSQL ist das letzte Wort noch nicht gefallen - mittlerweile geht es eher in die Richtung <strong>IndexedDB</strong> bzw. ehemals WebSimpleDB</li>
+        <li>Fakt ist, dass es bald eine (auf allen Browsern laufende) per SQL anzusprechende Datenquelle gibt</li>
+        </ul>
+    </article>
+    <article>
+    <h2>Das Cookie</h2>
+        <div class="left">
+        <figure><img src="./resources/images/slides/cookie-monster.jpg" alt="Das Cookie Monster"><figcaption>Cookies sind eine nützliche, aber auch gefährliche Technologie - außerdem sind sie nicht gerade Entwicklerfreundlich</figcaption></figure>
+        </div>
+        <div class="right">
+        <ul>
+        <li>Über JavaScript hat man durch <code>document.cookie</code> Zugriff auf die Cookies</li>
+        <li>Da der Zugriff nicht straight-forward ist empfiehlt es sich Peter-Paul Kochs Skript<sup>1</sup> zu verwenden</li>
+        <li>Restriktionen gibt es aber überall: Nur <strong>4 kB</strong> pro Cookie und nur <strong>Texte</strong> können gespeichert werden</li>
+        <li>Cookies dienen dazu Informationen <i>zwischen</i> Seiten auszutauschen</li>
+        <li>Ein Cookie besteht immer aus einem Name-Wert Paar (maximal 20 davon)</li>
+        <li>Daneben werden noch Attribute wie Domäne, Pfad, Ablaufdatum (oder max. Alter), sowie Sicherheit (z.B. Secure oder httpOnly) eingestellt</li>
+        <li>Die Browser schicken die Attribute nicht an Server</li>
+        <li>Durch Cross-Site-Scripting und Abhören von Verbindungen sind Cookiediebstähle etc. möglich</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Die Session</h2>
+        <ul>
+        <li>Die Session ist ein Spezialfall eines Cookies - ein Cookie ohne Ablaufdatum</li>
+        <li>Die Session funktioniert daher nicht bei deaktivierten Cookies - hier muss man sich andere Wege überlegen</li>
+        <li>Die Aufgabe der Session besteht im wesentlich darin Benutzer eine Programminstanz vorzugaukeln</li>
+        <li>Die Problemstellung liegt darin, dass Webserver instanzlos agieren (d.h. Benutzerinfos vergessen)</li>
+        <li>Daher muss man das bisher gemachte (z.B. Artikel in einen Warenkorb gelegt) auf dem Server speichern und eine ID für den Datensatz festlegen; für eine richtige Zuordnung muss sich der Client mit dieser ID identifizieren</li>
+        <li>Beispiel des Erstellens und Auslesens einer Session in JavaScript:
+        <pre lang="javascript">function createSession(name, value) { //Funktion zum Erstellen einer Sessionvariable
+            document.cookie = name + "=" + value + "; path=/"; //Kein Ablaufdatum etc.
+        }
+        function readSession(name) { //Funktion zum Auslesen einer Sessionvariable 
+            var ca = document.cookie.split(';'); //Immer am Strichpunkt aufspalten
+            for(var i = 0; i &lt; ca.length; i++) { //Über alle Unterelemente iterieren
+                while (ca[i].charAt(0) == ' ') ca[i] = ca[i].substring(1, ca[i].length); //Leerzeichen entfernen
+                if (ca[i].indexOf(name + "=") == 0) return ca[i].substring(name.length + 1, ca[i].length); }
+        }
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>WebStorage</h2>
+        <ul>
+        <li>Mit WebStorage haben wir nun ein mächtiges Werkzeug, dass uns nicht nur jede Menge Speicher garantiert (min. <strong>5 MB</strong>), sondern auch nur Clientseitig abläuft</li>
+        <li>Um nicht über die Begrenzung hinaus zu schießen hilft folgender Code:
+        <pre lang="javascript">try { /* try-catch-Block analog zu C++ / C# / ... mit Code um Items zu setzen */ }
+        catch (e) { /* Ein Fehler tritt auf - Fehlerbehandlung */
+            if (e === QUOTA_EXCEEDED_ERR) { //Wir haben unser Quota (Speicherplatzbegrenzung) gesprengt!
+                /* ... */ }
+        }
+        </pre>
+        </li>
+        <li>Das <code>window</code>-Objekt enthält zwei Objekte, <code>localStorage</code> (permanent, sofort über mehrere Fenster hinweg verfügbar) und <code>sessionStorage</code> (flüchtig, nur in dem aktuellen Fenster solange die Seite läuft aktiv)</li>
+        <li>Bei den Storage-Elementen kann man im Prinzip nur die folgenden Zugriffen tätigen:
+        <pre lang="javascript">var enthalteneElemente = localStorage.length; /* Liefert die Anzahl der enthaltenen Elemente zurück */
+        var name = localStorage.key(0); /* Fragt den Schlüsselnamen über den Index ab */
+        var value = localStorage.getItem(name); /* Liest einen Eintrag aus */
+        localStorage.removeItem(name); /* Entfernt einen Eintrag */
+        localStorage.setItem(name, value); /* Erstellt / Ersetzt einen Wert */
+        localStorage.clear(); /* Entfernt alle Einträge */
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>WebSQL</h2>
+        <ul>
+        <li><strong>Alle Browser</strong> unterstützen die Storage-Objekte (IE ab 8, Chrome ab 4, Firefox ab 2, ...):
+        <pre lang="javascript">if (typeof(localStorage) == 'undefined') //Gibt das localStorage Objekt (oder z.B. sessionStorage) Objekt nicht
+            alert('Das LocalStorage-Element wird nicht unterstützt - bitte den Browser erneuern...');
+        </pre>
+        </li>
+        <li>Aufgrund der Verbreitung und Sicherheit (Zugriff nur auf Objekte der selben Domäne) eignen sich die Storage Objekte v.a. für clientseitige optimierte Cookies mit Cache-Verhalten (z.B. verwendet von Google-Mail)</li>
+        <li>Dieses Konzept sollte daher auch für komplexere Objekte (Datenbanken) übernommen werden</li>
+        <li>Leider wurde das ursprüngliche Konzept (<strong>WebSQL</strong>) nicht gut umgesetzt</li>
+        <li>Mittlerweile wurde diese API gestrichen und durch eine neue, <strong>IndexedDB</strong> ersetzt:
+        <pre lang="javascript">var request = indexedDB.open("DBName", "Beschreibung"); //Öffnen die Datenbank
+        request.onsuccess = function(event) { //Öffnen erfolgreich - Erstellen eine Datenbank
+            var db = event.result; //Benutzen die Event-Argumente
+            request = db.createObjectStore("TabName", "id", true); //Tabellenname, Schlüssel, Auto-Inkrement setzen
+            request.onsuccess = function() { db.setVersion("1").onsuccess = function(event) { loadData(db); }; }; };
+        </pre>
+        </li>
+        <li>Vorteil an der neuen API ist die Einfachheit und Ausrichtung auf asynchrone Aufrufe</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Begrenzungen</h2>
+        <ul>
+        <li>Die Webdatenbanken sind im Moment noch nicht komplett unterstützt - Wird von Chrome und Safari unterstützt, Firefox und Edge/IE noch nicht</li>
+        <li>Bei Webstorage ist immer die maximale Größe zu beachten - hier hilft der try-catch-Block wie vorhin gelistet</li>
+        <li>Eine weitere Einschränkung erhält man durch die Verwendung von Strings</li>
+        <li>Wir können außer Strings keine weiteren Daten verwenden - dies kann aber durch <strong>JSON</strong> umgangen werden</li>
+        <li>JSON ist fast immer die Lösung für "Wir akzeptieren alle Daten, solange diese Daten Strings sind"-Probleme</li>
+        <li>Leider sind die Ereignisse für das Ändern von Storage-Daten bisher nur in Opera implementiert</li>
+        </ul>
+    </article>
+    <article>
+        <h2>JavaScript Object Notation</h2>
+        <ul>
+        <li>Wir haben bereits die grundlegende (literale) Schreibweise für ein neues Objekt kennengelernt:
+        <pre lang="javascript">var newObject = {};
+        newObject.newProperty = 2;
+        newObject.another = 'Hallo';
+        newObject.newFunction = function() {};
+        </pre>
+        Wir können dies aber auch direkt in der Deklaration schreiben und zwar über
+        <pre lang="javascript">var newObject = {
+            newProperty : 2,
+            another : 'Hallo',
+            newFunction : function() {}
+        };
+        </pre>
+        Dies nennt man die JavaScript Object Notation oder kurz <strong>JSON</strong></li>
+        <li>Um ein JavaScript Objekt in Text umzwandeln kann man die Methode <code>JSON.stringify()</code> verwenden, z.B.
+        <pre lang="javascript">var newObject = { text : 'Hallo', title : 'Dies ist ein Beispiel', count : 2};
+        var stringFromObject = JSON.stringify(newObject); //String aus Objekt erstellen
+        console.log(newObject, stringFromObject); //Loggen Anfangswert und Resultat in der Konsole mit
+        </pre>
+        Umgekehrt kann man über <code>JSON.parse()</code> einen String in ein JavaScript-Objekt umwandeln.</li>
+        </ul>
+    </article>
+    <article>
+        <h2>JSON als Datenformat</h2>
+        <ul>
+        <li>JSON kann man auch als Datenübertragungsformat nutzen - hier muss man strikte Regeln beachten</li>
+        <li>Abweichend von der laschen Notation in JavaScript-Code sind folgende Regeln:
+        <ul>
+        <li>Jeder Eintrag besteht aus einem Name-Wert-Paar, wobei der Name ein String ist</li>
+        <li>Strings werden immer in doppelte Anführungsstriche gesteckt - nie in einfache</li>
+        <li>Die Namen der Eigenschaften sind daher auch in <strong>doppelte Anführungsstriche</strong> zu stecken</li>
+        <li>Boolsche Werte lauten <code>true</code> und <code>false</code> und nicht <code>0</code>, <code>False</code> oder dergleichen</li>
+        <li>Für Arrays und Objekte gelten immer die entsprechende Literale, d.h. ein Array ist <code>[]</code></li>
+        <li>Ganzzahlen, sowie Gleitkommazahlen mit oder ohne wissenschaftlicher Notation, sind erlaubt</li>
+        <li>Folgende Escape-Sequenzen existieren: <code>\"</code>, <code>\\</code>, <code>\/</code>, <code>\b</code>, <code>\f</code>, <code>\n</code>, <code>\r</code>, <code>\t</code> und <code>\uXXXX</code> (4 stellig Hex.)</li>
+        </ul>
+        </li>
+        <li>Natürlich gibt es für fast jede Programmiersprache bereits entsprechende Parser und Ersteller von JSON Strings</li>
+        <li>Wenn man sich einen eigenen Serverseitigen Parser / Generator schreiben möchte, sollte man diesen vorher testen</li>
+        <li>Für Tests auf korrekte Syntax kann man Webseiten wie JSONLint nutzen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Was ist AJAX?</h2>
+        <figure><img src="./resources/images/slides/ajax.png" alt="Unterschied zwischen mit und ohne AJAX"><figcaption>Mit AJAX können Inhalte direkt auf einer Seite untergebracht werden und somit Ladezeiten sowie Verzögerungen durch Seitenaufbau verringert werden</figcaption></figure>
+        <ul>
+        <li>AJAX steht für Asynchronous Javascript And XML - damit sind zwei Technologien gemeint:
+        <ul>
+        <li>Asynchroner JavaScript, d.h. eine Anweisung die <strong>nicht-blockend</strong> ist und auf ein Ergebnis <strong>wartet</strong></li>
+        <li>Das Ergebnis kann in Form eines XML-Dokuments, welches <strong>geparst</strong> werden kann, vorliegen</li>
+        </ul>
+        </li>
+        <li>Die Vorteile von AJAX liegen auf der Hand und schaffen auch die Basis für den Erfolg einiger Webseiten</li>
+        <li>Ein Problem in der Verwendung bestand darin, dass Browser unterschiedlich behandelt werden müssen</li>
+        <li>jQuery erledigt diese nervige Aufgabe unter anderem für uns - außerdem parst jQuery die erhaltenen Daten und gibt uns sofort verwendbare Daten zurück</li>
+        </ul>
+    </article>
+    <article>
+        <h2>AJAX</h2>
+        <ul>
+        <li>Die grundsätzliche Syntax lautet
+        <pre lang="javascript">
+            function loadDoc() {
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                 callbackFunction(this);
+                }
+              };
+              xhttp.open("GET", "ajax_info.txt", true); // Auch POST, PUT, usw. möglich
+              xhttp.send();
+            }
+        </pre>
+        Mit der zurückgegebenen Variable ist es z.B. möglich mit <code>.abort()</code> den Vorgang abzubrechen </li>
+        <li>AJAX kann auch sehr gut mit PHP kommuniezieren, um z.B. auf eine Datenbank zuzugreifen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die Messaging API</h2>
+        <ul>
+        <li>Die Messaging API erfreut sich optimaler Browserunterstützung und bietet uns eine einfache Möglichkeit Text zwischen Seiten <strong>unterschiedlicher Herkunft</strong> zu versenden oder zu empfangen</li>
+        <li>Im Regelfall wird die Messaging API dazu verwendet, dass Webseiten miteinander kommunizieren</li>
+        <li>Normalerweise wird die Seite mit der man kommunizieren möchte in einem neuen Fenster oder <code>&lt;iframe&gt;</code> geladen - und zwar von unserer Seite aus, da wir sonst keinen Zugriff haben</li>
+        <li>Wichtig ist, dass wir eine Referenz auf das <code>window</code> Objekt dieser Seite erhalten</li>
+        <li>Weiterhin muss eine Nachricht natürlich aufgenommen werden können</li>
+        <li>Dies kann man durch eine Ereignisbehandlung auf das <code>message</code> Ereignis ermöglichen, z.B.
+        <pre lang="javascript">window.addEventListener('message', function(event) {
+            //event.data gibt uns die Nachricht an
+            //event.origin gibt uns die URL (der sendenden Seite) an
+            //event.source gibt uns eine Referenz zum window-Objekt der Quelle
+            event.source.postMessage('Howdy Cowboy!', event.origin); //Schreiben eine Nachricht zurück
+        }, false); //Wir wollen nur Message Ereignisse an das window-Objekt behandeln
+        </pre></li>
+        <li>Somit kann man sehr leicht Kommunikationsschnittstellen in einer Webseite einbauen oder ausnutzen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die Zukunft: WebSockets!</h2>
+        <div class="doubleleft">
+        <ul>
+        <li>Es wird eine <strong>ständige</strong> <strong>TCP</strong>-Verbindung zum Server hergestellt</li>
+        <li>Dadurch erhält man gegenüber AJAX mehrere Vorteile:
+        <ul>
+        <li>Direkter Zugang zum Server - keine Beschränkung mehr auf http</li>
+        <li>Viel weniger Overhead (User-Agent, Content-Type, ...)</li>
+        <li>Kein neues Erstellen von Objekten inkl. Öffnen und Schließen der Verbindung notwendig</li>
+        </ul>
+        </li>
+        <li>Die Syntax ist sehr einfach (ganz im Gegensatz zu echter Socket-Programmierung) und analog zur Messaging API:
+        <pre lang="javascript">let socket = new WebSocket('ws://example:8080'); //Erstellen
+        socket.onmessage = function(event) { //Beim Eintreffen
+            alert(event.data); }; //Nachricht als Msg-Box
+        socket.onclose = function() { //Beim Schließen
+            socket.send('See you Dudes!'); }; //Senden
+        socket.onopen = function() { //Beim Öffnen
+            socket.send('Hiyo!'); }; //Senden
+        </pre>
+        </li>
+        </ul>
+        </div>
+        <div class="halfright">
+        <figure><img src="./resources/images/slides/websockets.png" alt="Kommunikation bei Websockets"><figcaption>Im Gegensatz zu AJAX läuft die Kommunikation bei Websockets in beide Richtungen und findet direkt auf TCP/IP Basis anstelle des HTTP-Headers statt</figcaption></figure>
+        </div>
+        <div class="clear">
+        <ul>
+        <li>Für Ultra-Responsive Applications (z.B. Multiplayer Spiele) sind die WebSockets daher essentiell</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Das richtige Datenformat</h2>
+        <ul>
+        <li>Eine wichtige Entscheidung ist die Wahl des Datenformats. Folgende Möglichkeiten existieren:
+        <ul>
+        <li>HTML: Naheliegend und besitzt durchaus Vorteile wenn Teile der Seite komplett ersetzen wollen. Allerdings sind Auswertungen direkt nur schwer möglich sind und großer Overhead inbegriffen.</li>
+        <li>XML: Aufgrund des X in AJAX ein beliebtes Format, u.a. weil es das Standardaustauschformat von Webservices (SOAP) ist. Dokumente sind sehr schnell (vom Browser) geparsed. Der Nachteil ist, dass es zum direkten Anzeigen schlechter als HTML geeignet ist und noch immer zu viel Overhead besitzt.</li>
+        <li>JSON: Von allen Formaten am schlechtesten zur direkten Anzeige zu gebrauchen - allerdings auch mit dem geringsten Overhead. Der Hauptvorteil liegt darin, dass JSON fast natives JavaScript ist und daher die Auswertung am schnellsten durchgeführt werden kann.</li>
+        </ul>
+        </li>
+        </ul>
+        <div class="left">
+        <pre lang="xml">
+        &lt;data&gt;
+            &lt;seasons&gt;
+                &lt;season&gt;Winter&lt;/season&gt;
+                &lt;season&gt;Sommer&lt;/season&gt;
+            &lt;/seasons&gt;
+            &lt;days&gt;
+                &lt;day name="Montag" short="Mo" abbr="M"/&gt;
+                &lt;day name="Dienstag" short="Di" abbr="D"/&gt;
+                &lt;day name="Mittwoch" short="Mi" abbr="M"/&gt;
+            &lt;/days&gt;
+        &lt;/data&gt;
+        </pre>
+        </div>
+        <div class="right">
+        <pre lang="javascript">
+        {
+            "seasons":[
+                "Winter",
+                "Sommer"
+            ],
+            "days":[
+                {"name":"Montag","short":"Mo","abbr":"M"},
+                {"name":"Dienstag","short":"Di","abbr":"D"},
+                {"name":"Mittwoch","short":"Mi","abbr":"M"}
+            ]
+        }
+        </pre>
+        </div>
+    </article>
+    <article>
+        <h2>JavaScript Promises</h2>
+        <ul>
+        <li>Durch Promises ist es möglich auf ein Ergebnis zu warten ohne dass diese Wartezeit die Seite blockiert</li>
+        <li>Das Konzept wurde von Microsoft wg. einer ähnlichen Technologie in .NET 4.5 eingeführt</li>
+        <li>Man verringert die Zahl der notwendigen Callbacks und schafft mehr Übersichtlichkeit</li>
+        <li>Außerdem kann man durch dieses Konzept wieder <strong>Chaining</strong> sehr gut nutzen</li>
+        <li>Ein JavaScript Promise ist definiert durch folgende Zustände:
+        <ul>
+        <li>Zustandslos</li>
+        <li>Erfolgreich</li>
+        <li>Fehlgeschlagen</li>
+        </ul>
+        </li>
+        <li>Der Code einer asynchronen (d.h. einer Methode die länger als 50 ms benötigt und nicht-blockend sein soll) Methode würde nun so ausgewertet werden
+        <pre lang="javascript">
+        var promise = new Promise(function(resolve, reject) {
+          // do a thing, possibly async, then…
+
+          if (/* everything turned out fine */) {
+            resolve("Stuff worked!");
+          }
+          else {
+            reject(Error("It broke"));
+          }
+        });
+
+        promise.then(function(result) {
+          console.log(result); // "Stuff worked!"
+        }, function(err) {
+          console.log(err); // Error: "It broke"
+        });
+        </pre>
+        </li>
+        </ul>
+    </article>
+
+</section>
+<section id="Dateizugriff">
+    <article>
+        <h2>Die File API</h2>
+        <ul>
+        <li>Mit dem <code>FileReader</code> und der File API sind Zugriffe auf Dateien möglich</li>
+        <li>Es gibt ein Objekt <code>Blob</code>, der Inhalt aus dem Objekt <code>File</code> aus dem Objekt <code>FileList</code></li>
+        <li>Zunächst stellt sich die Frage, wie man Dateien auswählen kann</li>
+        <li>Aus Sicherheitsgründen muss der Benutzer die Dateien auswählen - dies kann man folgendermaßen erreichen:
+        <ul>
+        <li>Klassisch über den <code>input</code> Typ <code>file</code>, z.B. auch mit <code>multiple</code>:
+        <pre lang="html">&lt;input type="file" id="files" name="files[]" multiple /&gt;
+        </pre>
+        </li>
+        <li>Elegant und modern über Drag-and-Drop und das <code>dataTransfer.files</code> Objekt des Events, z.B.
+        <pre lang="javascript">function handleFileSelect(event) {
+            var files = event.dataTransfer.files;
+            /* Etwas damit machen */
+        }
+        </pre>
+        </li>
+        </ul>
+        </li>
+        <li>Anschließend kann man jede Menge Methoden verwenden um die Dateien auszulesen oder die Dateien per Ajax auf einen Server laden</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Methoden im Detail</h2>
+        <ul>
+        <li>Hat man die entsprechende(n) Datei(en) ausgewählt, kann man deren Inhalt auslesen</li>
+        <li>Zunächst benötigt man dafür eine neue Instanz eines <code>FileReader</code>-Objektes</li>
+        <li>Anschließend kann man folgenden Code verwenden:
+        <pre lang="javascript">var currentfile = evt.target.files[i];//Eine Datei aus der Auswahl auswählen
+        var reader = new FileReader();//Neue Instanz
+        reader.onload = (function(file) { //Anonyme Methode erstellt eigentliche Methode
+            return function(e) {
+                //Zugriff auf die aktuelle Datei des Readers über 'file'
+                //Zugriff auf den Lesenvorgang über 'e.target.result'
+            };
+        })(currentfile);//'currentfile' bezeichnet die Variable der aktuellen Datei
+        </pre>
+        </li>
+        <li>Jetzt können wir das <code>reader</code>-Objekt verwenden um eine der folgenden Methoden auszuführen:
+        <ul>
+        <li><code>readAsBinaryString(file)</code> liest die Datei als Binärobjekt ein mit <code>int</code>-Werten zwischen 0 und 255</li>
+        <li><code>readAsText(file, encoding)</code> liest die Datei als Text ein - <code>encoding</code> ist hierbei optional</li>
+        <li><code>readAsDataURL(file)</code> wandelt den Inhalt der Datei in eine DataURL um</li>
+        <li><code>readAsArrayBuffer(file)</code> liest die Datei in eine <code>ArrayBuffer</code> Instanz ein</li>
+        </ul>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Beispiel Dateiupload</h2>
+        <style>
+        #ex31-drop_zone { 
+            border: 3px dashed #ccc; 
+            height: 100px; 
+            border-radius: 15px; 
+        }
+        #ex31-drop_zone.hover { 
+            border: 3px dashed #333; 
+            background: rgba(255, 0, 0, 0.1); 
+        }
+        </style>
+        <pre lang="javascript">function handleFileSelect(evt) {
+            /* Drag und Drop beenden */
+            var files = evt.dataTransfer.files;// FileList Objekt verwenden
+            var output = [];//Buffer für Ausgabe erstellen
+            for (var i = 0, f; f = files[i]; i++) //Ein paar Eigenschaften auflisten (mit Formatierungen)
+                output.push(f.name, f.type, f.size, f.lastModifiedDate.toLocaleDateString());
+            document.querySelector('#ex31-list').innerHTML = output.join('');
+        }
+        //Die EventListener hinzufügen
+        var dropZone = document.querySelector('#ex31-drop_zone');
+        /* Eventlistener für dragover und dragleave festlegen */
+        dropZone.addEventListener('drop', handleFileSelect, false);
+        </pre>
+        <div class="hide">
+        <div id="ex31-drop_zone"></div> 
+        <output id="ex31-list"></output>
+        </div>
+        <script>
+        function handleFileSelect(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            this.className = '';//Optischen Drag beenden
+            var files = evt.dataTransfer.files;// FileList object
+            var output = [];//Buffer für Ausgabe
+            for (var i = 0, f; f = files[i]; i++) //Ein paar Eigenschaften auflisten
+                output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ', f.size, ' Bytes, letzte Änderung: ', f.lastModifiedDate.toLocaleDateString(), '</li>');
+            document.querySelector('#ex31-list').innerHTML = '<ul>' + output.join('') + '</ul>';
+        }
+
+        //Die EventListener auflisten
+        var dropZone = document.querySelector('#ex31-drop_zone');
+        dropZone.addEventListener('dragover', function (ev) { 
+            this.className = 'hover';
+            ev.stopPropagation(); 
+            ev.preventDefault(); 
+            ev.dataTransfer.dropEffect = 'copy'; }, false);
+        dropZone.addEventListener('dragleave', function (ev) {
+            this.className = '';
+            ev.stopPropagation(); 
+            ev.preventDefault(); }, false);
+        dropZone.addEventListener('drop', handleFileSelect, false);
+        </script>
+    </article>
+</section>
+    
+</main>
+</div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
+<script type="text/javascript" src="./resources/js/JsCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/HtmlCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/initEditors.js"></script>
+<script type="text/javascript" src="./resources/js/buildIndex.js"></script>
+</body>
+</html>

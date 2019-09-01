@@ -1,0 +1,82 @@
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+	}
+
+	.end-mask,
+	.middle-mask {
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		height: 100px;
+	}
+
+	.end-mask {
+		width: 50px;		
+	}
+
+	.end-mask.reverse {
+		transform: rotate(180deg);
+	}
+
+	.middle-mask {
+		width: 200px;
+	}
+
+	.end-mask > div,
+	.middle-mask > div:first-child,
+	.middle-mask > div:last-child {
+		position: absolute;
+		background-color: darkgrey;
+		background-clip: content-box;
+	}
+
+	.end-mask > div {
+		width: 200%;
+		height: 100%;
+		border: 12px dashed grey;
+		border-radius: 50%;
+		animation: rotate 2s linear infinite ;
+	}
+
+	.middle-mask > div:first-child,
+	.middle-mask > div:last-child {
+		width: 200%;
+		height: 50%;
+	}
+
+	.middle-mask > div:first-child {
+		border-top: 12px dashed grey;
+		animation: slide 1.2s linear infinite reverse;
+	}
+
+	.middle-mask > div:last-child {
+		top: 50%;
+		border-bottom: 12px dashed grey;
+		animation: slide 1.2s linear infinite;
+	}
+
+	@keyframes rotate {
+		from {transform: rotate(0)}
+		to {transform: rotate(360deg)}
+	}
+
+	@keyframes slide {
+		from {transform: translate(0,0)}
+		to {transform: translate(-50%,0)}
+	}
+</style>
+
+
+<div class="end-mask">
+	<div></div>
+</div><div class="middle-mask">
+	<div></div>
+	<div></div>
+</div><div class="end-mask reverse">
+	<div></div>
+</div>

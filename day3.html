@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Webapplecture</title>
+    <link rel="shortcut icon" href="resources/images/html5.png">
+    <link rel="stylesheet" href="resources/css/main.css"/>
+    <link rel="stylesheet" href="resources/css/codeEditor.css"/>
+    <link rel="stylesheet" href="resources/css/codeDisplay.css"/>
+    <link rel="stylesheet" href="resources/css/buttons.css"/>
+    <link rel="stylesheet" href="resources/css/header.css"/>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <img src="resources/images/html5.png">
+        <nav>
+            <ul>
+                <li>
+                    <h2>Tag</h2>
+                </li>
+                <li>
+                    <a href="index.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="day2.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="day3.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="day4.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="day5.html"><h2>5</h2></a>
+                </li>
+                <li>
+                    <a href="day6.html"><h2>6</h2></a>
+                </li>
+                <li>
+                    <a href="day7.html"><h2>7</h2></a>
+                </li>
+                <li>
+                    <h2>Übung</h2>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>1</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>2</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>3</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>4</h2></a>
+                </li>
+                <li>
+                    <a href="exercises.html"><h2>5</h2></a>
+                </li>
+            </ul>
+        </nav>
+        <span id="toTop">
+            <a><h2>Top</h2></a>
+        </span>
+    </div>
+</header>
+<div class="wrapper">
+<nav class="column left">
+
+</nav>
+<main class="column middle">
+
+<section id="CSS">
+    <article>
+        <h2>Einstieg in CSS</h2>
+        <ul>
+        <li>Über CSS definieren wir extern, intern oder im Element wie Elemente dargestellt werden sollen
+        <pre lang="html">&lt;link rel="stylesheet" href="beispieldatei.css"&gt;&lt;!--Externe gesetzte Regeln --&gt;
+        &lt;style&gt; /* Intern gesetzte CSS Regeln  */ &lt;/style&gt;
+        &lt;element style="/* Auf dieses Element gesetzte Regeln */" ...&gt;
+        </pre>
+        dazu muss man die entsprechenden Elemente auswählen (Selektor) und Regeln für diese festlegen</li>
+        <li>Die Grundlegende Syntax lautet daher immer:
+        <pre lang="CSS">selektor1, selektor2, ...
+        {
+            eigenschaft: regel;
+            /* Weitere Regeln stehen hier! */
+        }
+        </pre>
+        </li>
+        <li>Sog. <strong>Responsive Design</strong> ist möglich um andere Darstellungen auf Smartphones, Druckern etc. zu bieten</li>
+        <li>Um Elemente auszuwählen kann man deren Tagnamen, Struktur, Werte von Attributen sowie die Eigenschaften der Attribute <code>class</code> und <code>id</code> verwenden</li>
+        <li>Einige Eigenschaften vererben an Kindelemente, so dass es z.B. reicht die Schriftart nur einmal zu setzen</li>
+        </ul>
+    </article>
+    <article>
+        <h2>CSS Selektoren</h2>
+        <ul>
+        <li><code>*</code> wählt alle Elemente oder Unterelemente aus - sollte nicht verwendet werden</li>
+        <li><code>X</code> wählt alle Elemente mit einem Tag in Form von <code>&lt;X&gt;</code> aus</li>
+        <li><code>#X</code> wählt das Elemente mit dem Attribut <code>id="X"</code> aus</li>
+        <li><code>.X</code> wählt die Elemente mit dem Attribut <code>class="X"</code> aus</li>
+        <li><code>X:Y</code> wählt die Pseudoeigenschaft Y des Selektors X aus, bspw. <code>a:hover</code> oder <code>a:visited</code></li>
+        <li><code>X~Y</code> wählt alle Selektoren Y aus die <strong>nach</strong> einem Selektor X folgen</li>
+        <li><code>X+Y</code> wählt alle Selektoren Y aus die <strong>direkt nach</strong> einem Selektor X folgen</li>
+        <li><code>X Y</code> wählt alle Elemente mit dem Selektor Y <strong>unter</strong> dem Selektor X aus</li>
+        <li><code>X&gt;Y</code> wählt alle Selektoren Y aus die <strong>direkt unter</strong> einem Selektor X folgen</li>
+        <li><code>X[Y]</code> schränkt den Selektor X auf Elemente ein, die ein Attribut Y besitzen</li>
+        <li><code>X[Y=Z]</code> schränkt den Selektor X auf Elemente ein, die ein Attribut Y mit Wert Z besitzen</li>
+        <li><code>X[Y*=Z]</code> schränkt den Selektor X auf Elemente ein, die in deren Attribut Y einen Wert Z vorkommt</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Regeln festlegen</h2>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-rules.png" alt="CSS Regeln erklärt"><figcaption>Schema beim Aufbau von CSS-Regeln</figcaption></figure>
+        </div>
+        <div class="left">
+        <ul>
+        <li>Je nach Element (Tag) kann es spezielle Eigenschaften geben</li>
+        <li>Jedes Element besitzt u.a. folgende Eigenschaften
+        <ul>
+        <li><code>background-color</code> z.B. <code>#FF0000</code>, <code>red</code> oder <code>rgb(255,0,0)</code></li>
+        <li><code>background-image</code> z.B. <code>url('../../beispiel.png')</code></li>
+        <li><code>background-repeat</code> mit <code>no-repeat</code>, <code>repeat-x</code> und <code>repeat-y</code></li>
+        <li><code>background-position</code> mit <code>x y</code> z.B. <code>2px 0</code> oder <code>left top</code></li>
+        <li>Die oberen vier können in <code>background</code> kombiniert werden, z.B.
+        </li>
+        </ul>
+        <pre lang="css">#identifier /*Wir legen für das Element mit id=identifier fest*/
+        { /*Hintergrund soll dunkelgrau sein und ein Bild, das sich*/
+            background: #777 url('logo.png') no-repeat center center;
+        } /*nicht wiederholt im Zentrum des Elementes besitzen*/
+        </pre>
+        </li>
+        <li>Dieses Prinzip (Kombination) ist nicht auf <code>background</code> beschränkt, sondern auch bei anderen Regeln (z.B. <code>border</code>) verwendet worden</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Anzeigemodus setzen</h2>
+        <div class="left">
+        <ul>
+        <li>Eine Eigenschaft die alle Elemente besitzen ist <code>display</code> - bestimmt maßgeblich die Darstellung</li>
+        <li>Am häufigsten verwenden wir 
+        <ul>
+        <li><code>block</code> (Standard bei z.B. <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>)</li>
+        <li><code>inline-block</code> (Standard bei z.B. <code>&lt;img&gt;</code>)</li>
+        <li><code>inline</code> (Standard bei z.B. <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>)</li>
+        <li><code>list-item</code> (Standard bei z.B. <code>&lt;li&gt;</code>)</li>
+        <li><code>none</code> (Standard bei z.B. <code>&lt;head&gt;</code>)</li>
+        </ul>
+        </li>
+        <li>Mit der <code>float</code>-Eigenschaft können andere Elemente einen Block umfließen, wobei
+        <ul>
+        <li>Bei <code>float: left</code> soll das Element so weit links wie möglich sein</li>
+        <li>Mit <code>float: right</code> wird das Element rechts fließend ausgerichtet</li>
+        <li>Und bei <code>clear: both</code> soll das Element um kein Element herumfließen (im Gegensatz zu z.B. <code>clear: left</code>)</li>
+        </ul>
+        </li>
+        </ul>
+        </div>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-display.png" alt="Verdeutlichung der Diplay Eigenschaften"><figcaption>Durch die display-Eigenschaft wird der Zeichenmodus bestimmt; mit <code>none</code> gekennzeichnete Elemente werden nicht gezeichnet</figcaption></figure>
+        </div>
+    </article>
+    <article>
+        <h2>Elemente positionieren</h2>
+        <div class="left">
+        <ul>
+        <li>Die Eigenschaft <code>position</code> legt die Positionierung von Elementen fest:
+        <ul>
+        <li>Bei <code>position: static</code> bestimmt der Browser die Position</li>
+        <li>*Bei <code>position: fixed</code> bestimmt man die Position relativ im Fenster</li>
+        <li>*Bei <code>position: relative</code> ändert man die Stelle relativ zu der vom Browser festgelegten static-Position</li>
+        <li>*Bei <code>position: absolute</code> legt man die Position relativ zum ersten Oberelement mit <code>position: relative</code> fest</li>
+        </ul>
+        </li>
+        <li>Die Reihenfolge bei überlappenden Elementen bestimmt <code>z-index</code></li>
+        <li>Bei Elementen mit * wird über die Eigenschaften <code>left</code> oder <code>right</code> und <code>top</code> oder <code>bottom</code> die X und Y Koordinate festgelegt</li>
+        <li>Elemente mit fester Größe (<code>width</code>, <code>height</code>) bestimmen über die Eigenschaft <code>overflow</code> was mit zu viel Inhalt geschieht</li>
+        <li>Mögliche Werte sind <code>hidden</code>, <code>scroll</code> und <code>visible</code> - Standard ist <code>auto</code></li>
+        </ul>
+        </div>
+        <div class="right">
+        <figure><img src="./resources/images/slides/css-position.png" alt="Elemente positionieren"><figcaption>Verdeutlichung der einzelnen Positionierungseigenschaften</figcaption></figure>
+        </div>
+    </article>
+    <article>
+        <h2>Die Größe festlegen</h2>
+        <ul>
+        <li>Das CSS Box-Model bestimmt die Größe von Elementen auf der Seite (Vorsicht bei IE&lt;6<sup>1</sup>)</li>
+        <li>Wir können mit <code>min-width</code> bzw. <code>max-width</code> minimale bzw. maximale Größen einstellen</li>
+        </ul>
+        <div class="left">
+        <figure><img src="./resources/images/slides/css-box-model.png" alt="Veranschaulichung des Box-Models"><figcaption>Die reale Größe eines Elements wird durch die Kombination mehrere Eigenschaften bestimmt</figcaption></figure>
+        </div>
+        <div class="right">
+        <ul>
+        <li><code>width</code> bzw. <code>height</code> stellen eine feste Größe ein</li>
+        <li>Über <code>margin</code> kann man Abstand zu anderen Elementen einstellen - hier gibt es vier Wege:
+        <pre lang="css">margin: X; /*Links, Rechts, Oben, Unten Abstand X z.B. 5px*/
+        margin: X Y; /*Oben, Unten Abstand X und Links, Rechts Abstand Y*/
+        margin: O R U L; /*Oben, Rechts, Unten, Links einzeln*/
+        margin-top: 17px; /*Oder direkt*/
+        </pre>
+        </li>
+        <li><code>border</code> setzt den Rahmen (Breite, Stil, Farbe)</li>
+        <li><code>padding</code> setzt den inneren Abstand (Breite)</li>
+        </ul>
+        </div>
+    </article>
+    <article>
+        <h2>Noch einmal CSS3</h2>
+        <ul>
+        <li>In CSS3 kann man mehrere Hintergründe einbinden, z.B. über
+        <pre lang="css">selektor { background: url('hintergrund1.gif') no-repeat 0 0, url('hintergrund2.gif') no-repeat 100% 0; }
+        </pre>
+        </li>
+        <li>Neben Rahmen über <code>border</code> sind auch sog. <code>Outlines</code> möglich, z.B.
+        <pre lang="css">selektor {
+        border: 1px solid #000;
+        outline: 1px solid #699;
+        outline-offset: -9px; }
+        </pre>
+        </li>
+        <li>In CSS3 kann man nun auch explizit das Box-Model ersetzen:
+        <pre lang="css">
+        selektor { box-sizing: content-box; /* Reguläres Box-Model - *meistens* Standard */ }
+        selektor {  box-sizing: border-box; /* Rechnet Border und Padding mit in die Gesamtbreite eines Elements ein */ }
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die @-Regeln</h2>
+        <ul>
+        <li>Wir kennen bereits die @-Regeln <code>@fontface</code> und <code>@keyframes</code>
+        </li><li>Durch <code>@charset</code> kann man die Kodierung festlegen (UTF-8 ist Standard!), z.B.
+        <pre lang="css">@charset "ISO-8859-15";
+        </pre>
+        </li>
+        <li>Über <code>@import</code> können wir weitere (externe) Stylesheets einbinden, z.B.
+        <pre lang="css">@import url("/css/main.css"); /* Oder mit Media-Query */
+        @import url("style.css") screen and (max-width: 600px);
+        </pre>
+        </li>
+        <li>Dank <code>@media</code> haben wir Zugriff auf die Media-Queries, z.B.
+        <pre lang="css">@media print { /* Selektoren mit Regeln */ }
+        @media screen and (max-width: 600px) { /* Selektoren mit Regeln */ }
+        </pre>
+        </li>
+        <li>Mit <code>@page</code> können wir die Druckausgabe anpassen (mehr dazu später) und mit <code>@namespace</code> erlaubt uns Namensräume (für Elemente) einzustellen, z.B.
+        <pre lang="css">@namespace foo "http://example.com/ns/foo";
+        foo|#mydiv { /* Regeln */ } /* Für dieses Element mit diesem xmlns Attribut */
+        </pre>
+        </li>
+        </ul>
+    </article>
+    <article>
+        <h2>Die @media-Regel</h2>
+        <ul>
+        <li><code>@charset</code> und <code>@import</code> müssen immer vor allen Regeln festgelegt werden - um die in <code>@fontface</code> festgelegte Schrift nutzen zu können, muss diese ebenfalls vorab festgelegt sein</li>
+        <li>Analoges gilt für die <code>@namespace</code> Deklaration - auch hier muss die Regel vor der Verwendung festgelegt sein</li>
+        <li>Bei <code>@media</code> kann man folgende Gerätearten direkt aufrufen: <code>all</code> (Alles), <code>braille</code> und <code>embossed</code> (Blindenschrift), <code>handheld</code> bzw. <code>tty</code>, <code>print</code>, <code>projection</code>, <code>speech</code> (Sprachausgabe) bzw. (veraltet) <code>aural</code>, sowie <code>tv</code> und <code>screen</code></li>
+        <li>Wie kann dergleichen aussehen? Wir schreiben uns CSS-Dokument und bauen dies z.B. so auf:
+        <pre lang="css">/*Gemeinsame Regeln */
+        @media screen /* Nur für Screen */
+        {
+            body { width: 75%; }
+        }
+        @media print /* Nur für Print */
+        {
+            body { width: 100%; }
+        }
+        </pre>
+        </li>
+        <li>Die @media-Regeln können auch sehr speziell und kompliziert aufgebaut werden (AND, OR, ...)</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Responsive Design</h2>
+        <ul>
+        <li>Mit CSS3 wurde auch ein neuer Ansatz für Webseiten design eingeführt: sog. <strong>Media Queries</strong></li>
+        <li>Dies bedeutet, dass die Webseite auf das verwendete Gerät (z.B. Mobiltelefon, PC, ...) und seine Eigenschaften (z.B. Größe, Auflösung, ...) reagiert</li>
+        <li>Aus CSS 2.1 kennt man schon das <code>media</code> Attribut von Stylesheets, z.B.
+        <pre lang="html">&lt;link rel="stylesheet" media="print" href="druck.css" /&gt;
+        &lt;link rel="stylesheet" media="screen" href="layout.css" /&gt;
+        </pre>
+        Nun wurde in CSS3 das Attribut um weitere Möglichkeiten erweitert, z.B.
+        <pre lang="html">&lt;link rel="stylesheet" href="screenklein.css" media="screen and (max-width: 600px)" /&gt;
+        &lt;link rel="stylesheet" href="allesklein.css" media="all and (max-width: 600px)" /&gt;
+        &lt;link rel="stylesheet" href="smartphone.css" media="(max-device-width: 600px)" /&gt;
+        </pre>
+        </li>
+        <li>Neben <code>and</code> (Verknüpfen von Bedingungen) gibt es noch das Komma, welches als ODER eingesetzt wird</li>
+        <li>Weitere Abrufbare Eigenschaften sind (Auszug): <code>height</code> bzw. <code>device-height</code>, <code>orientation</code> (portrait, landscape), <code>aspect-ratio</code> bzw. <code>device-aspect-ratio</code>, <code>color</code> (Farbtiefe in Bits) und <code>resolution</code> (Dichte der Pixel in dpi)</li>
+        </ul>
+    </article>
+    <article>
+        <h2>Reactive Design</h2>
+        <ul>
+        <li>Im Prinzip handelt es sich bei dem Responsive Design um ein Reactive Design (es wird nicht geantwortet, d.h. auf den Benutzer eingegangen, sondern auf die Umgebung reagiert)</li>
+        <li>Designs sollten so aufgebaut werden, dass diese sehr schnell für verschiedene Plattformen portiert werden können</li>
+        <li>Dies schließt relative Schriften mit ein - wenn man jedem Element eine neue Schriftgröße zuweist sind mehr Änderungen notwendig als bei Zuweisung von Prozentangaben relativ zur im <code>body</code>-Selektor eingestellten Schriftgröße</li>
+        <li>Zusätzlich zu den <code>@media</code>-Regeln sollte man noch weitere (HTML) Spezifikationen beachten</li>
+        <li>So ist es essentiell den <strong>Viewport</strong> für Smartphones einzustellen</li>
+        <li>Die Einstellung des Viewports geschieht im <code>&lt;head&gt;</code>-Tag z.B. mit
+        <pre lang="html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /&gt;
+        </pre>
+        Legt in diesem Fall fest, dass die Seite die volle Breite hat und dies 100% Zoom (deaktiviert) entspricht</li>
+        <li>Bilder sollten mit <code>img { max-width: 100%; }</code> behandelt werden um bei Smartphones nicht zu stören</li>
+        <li>Für Smartphones gibt es noch jede Menge weiterer Tricks (Mobile First statt Desktop First) inklusive einiger besonderer CSS-Regeln wie z.B. <code>-webkit-tap-highlight-color: #FFF</code></li>
+        </ul>
+    </article>
+</section>
+<section id="CSS Grundlagen">
+<article>
+    <h2>CSS im Detail</h2>
+    <ul>
+    <li>Mit Hilfe von CSS legt man Designregeln fest (<strong>Write once use anywhere</strong>)</li>
+    <li>Durch CSS läßt sich Design sehr schnell und einfach verändern</li>
+    <li>Ein weiterer Vorteil von CSS liegt darin, dass jede Menge Traffic gespart wird (kürzere Ladezeit)</li>
+    <li>Neben den Verwenden von Tagnamen, ID, Klasse, Attributen und Pseudo-Selektoren kann man Selektoren auch Gruppieren: Durch ein Komma (<code>,</code>) getrennte Selektoren werden kombiniert, z.B. geht
+    <pre lang="CSS">h1 { /* Regeln */ }
+    h2 { /* Die gleichen Regeln wie h1 */ /* Eigene Regeln */ }
+    /* Viel besser wäre */
+    h1, h2 { /* Gemeinsame Regeln */ }
+    h2 { /* Eigene Regeln */}
+    </pre>
+    </li>
+    <li>Einige Pseudoklassen (sehr nützlich um optische Differenzierung bei Interaktionen zu ermöglichen!):
+    <ul>
+    <li>Vorher neben <code>:focus</code> v.a. für Links bekannt (<code>:visited</code>, <code>:active</code>, <code>:hover</code>, <code>:link</code>)</li>
+    <li>Mit CSS2 <code>:first-child</code>, <code>:last-child</code>, <code>:before</code>, <code>:after</code>, <code>:lang(<i>id</i>)</code>, <code>:first-letter</code>, <code>:first-line</code>)</li>
+    <li>In CSS3 <code>:nth-child(<i>N</i>)</code>, <code>:nth-last-child(<i>N</i>)</code>, <code>:nth-of-type(<i>N</i>)</code>, <code>:enabled</code>, <code>:disabled</code>, <code>:empty</code>, ...</li>
+
+    </ul>
+
+
+    </li></ul>
+</article>
+<article>
+    <h2>Möglichkeiten</h2>
+    <ul>
+    <li>Nochmals zum Einbinden von CSS - die drei Möglichkeiten beleuchtet:
+    <ul>
+    <li>Als <code>style</code>-Attribut im entsprechenden Element: Nur verwenden wenn sich die Regeln <strong>nie</strong> wiederholen</li>
+    <li>Im <code>&lt;style&gt;</code>-Tag: Wenn die Regeln <strong>nur</strong> auf dieser Seite vorkommen (und es nicht zu viele sind)</li>
+    <li>Im <code>&lt;link&gt;</code>-Tag: Wenn die Regel auf <strong>mehreren</strong> Seiten vorkommt (oder um schneller zu laden)</li>
+    </ul>
+    </li>
+    <li>Was hat man über CSS noch für Möglichkeiten:
+    <ul>
+    <li>In CSS kann man auch den Mauszeiger (<code>cursor</code> Eigenschaft) einstellen, z.B. ist <code>default</code> der Standardzeiger und <code>pointer</code> die Hand:
+    <div id="handoverexample" class="inline-hide"></div>
+    <pre lang="CSS">#beispiel { cursor: default; }
+    #beispiel:hover { cursor: pointer ; }
+    </pre>
+    </li>
+    <li>Über <code>@import</code> Regel können (weitere) externe CSS Dateien in CSS eingelesen werden</li>
+    <li>Konditionen gehen auch über @-Anweisungen (z.B. spezielle Darstellung bei kleineren Auflösungen)</li>
+    <li>Mit CSS3 können wir auch Berechnungen durchführen z.B. durch <code>calc(75% - 100px)</code></li>
+    <li>Bei Berechnungen sollte man allerdings aufpassen - dies war schon früher möglich führte jedoch häufig zu rekursiven Aufrufen!</li>
+    </ul>
+    </li>
+    </ul>
+</article>
+<article>
+    <h2>Neue Layout-Möglichkeiten</h2>
+    <ul>
+    <li>Mit CSS3 geht auch die Ära der div-Layouts dem Ende zu - wir haben nun besseres</li>
+    <li>Natürlich kehrt man nicht zur guten alten Tabelle zurück, sondern zu spezialisierten Layout-Mustern</li>
+    <li>Bisher am weitesten verbreitet sind Mehrspalten (siehe Inhaltsverzeichnis), z.B.
+    <pre lang="css">#zBeinDIV { /* Wir legen nur eins von beiden fest: Entweder */
+        column-count: 3; /* Feste Anzahl oder Feste Breite */ column-width: 100px;
+        column-gap: 10px; /* Abstand zwischen den Spalten */
+        column-rule-width: 1px; /* Breite der mittleren Trennlinie */
+        column-rule-color: #CCC; /* Farbe der Trennlinie - leicht grau */
+        column-rule-style: dashed; /* Analog zu den Styles bei border */ }
+    #zBeinDIV h1 { column-span: 3; } /* Geht über 3 Spalten hinweg */
+    </pre>
+    </li>
+    <li>Aber damit nicht genug! Es werden auch <strong>flexible Boxen</strong> mit <code>display: flexbox</code> eingeführt</li>
+    <li>Daneben soll noch ein Grid-Layout kommen (soz. Tabelle für Layouts) wie in Windows 8 Metro</li>
+    <li>Bei ersterem ist die Spezifikation zur Zeit noch unter ständiger Arbeit</li>
+    <li>Bei letzterem ist bis jetzt noch unklar ob die anderen Browserhersteller auf Microsofts Entwurf eingehen</li>
+    </ul>
+</article>
+<article>
+    <h2>Schrift und Text</h2>
+    <ul>
+    <li>Schriften mit CSS - Alle <code>font-</code>-Anweisungen können in <code>font</code> zusammengefasst werden</li>
+    <li><code>font-family</code> erwartet einen String (Schriftart) als Argument, Reihenfolge bestimmt Präferenzen</li>
+    <li><code>font-style</code> mit (<i>normal</i>, <i>italic</i>, <i>oblique</i>) bestimmt den Anzeigestil</li>
+    <li><code>font-variant</code> mit (<i>normal</i>, <i>small-caps</i>) bestimmt ebenfalls den Darstellungsstil</li>
+    <li><code>font-weight</code> mit (<i>normal</i>, <i>bold</i>, <i>bolder</i>, <i>lighter</i>, <i>100</i>-<i>900</i>) bestimmt die Dicke der Schrift</li>
+    <li><code>font-size</code> erwartet rel. Strings (<i>normal</i>, <i>smaller</i>, <i>larger</i>, ...) oder tot. Angaben z.B. <i>12pt</i>, <i>14px</i> oder <i>75%</i> etc.</li>
+    <li><code>line-height</code> mit Größenangaben wie z.B. <i>22px</i>, <i>150%</i> oder <i>1.5</i> (relativ)</li>
+    <li><code>text-decoration</code> gibt vor ob (<i>none</i>, <i>underline</i>, <i>overline</i>, <i>line-through</i>, <i>blink</i>) gilt</li>
+    <li><code>text-transform</code> kann weitere Darstellungsstile wie z.B. (<i>none</i>, <i>capitalize</i>, <i>uppercase</i>, <i>lowercase</i>) einstellen</li>
+    <li><code>text-align</code> definiert die Textausrichtung (<i>left</i>, <i>right</i>, <i>center</i>, <i>justify</i>)</li>
+    <li><code>white-space</code> stellt ein wie leerzeichen im Code interpretiert werden (<i>normal</i>, <i>pre</i>)</li>
+    <li><code>color</code> stellt die Schriftfarbe ein in z.B. hex <i>#112233</i> bzw. <i>#123</i> oder <i>rgb(r,g,b)</i></li>
+    </ul>
+</article>
+<article>
+    <h2>Mehr Schriftarten!</h2>
+    <ul>
+    <li>Mit CSS3 haben wir die Möglichkeit eigene Schriften zu definieren und zu verwenden</li>
+    <li>Wir können eigens auf unserem Server gespeicherte Schriften verwenden oder extern gespeicherte</li>
+    <li>Die Syntax hierfür definiert in CSS eine neue Schriftart, z.B.
+    <pre lang="css">@font-face {
+        font-family: 'Gentium'; /* Wird der neue Name! */
+        src: local('Gentium'), url('../fonts/Gentium.ttf'); /* Bevorzugt nicht downloaden */
+        font-style: italic; /* Optional: Charakterisiert Schriftart z.B. Verwendung nur bei italic*/ }
+    #Verwendung { font: italic bold 14pt 'Gentium'; }
+    </pre>
+    </li>
+    <li>Formate? true-type-font (<strong>ttf</strong>) geht mittlerweile <strong>überall</strong> - bevorzugt ist <strong>WOFF</strong> (Web Open Font Format)</li>
+    <li>Über Google Webfonts<sup>1</sup> kann man an Schriften kommen, die direkt über den Google Server abrufbar sind</li>
+    <li>Eine sehr stark Browser-unabhängige Schreibweise für die <code>@font-face</code> Regel is
+    <pre lang="css">@font-face { font-family: 'Whatever'; /* Erstellen neue Schriftart Whatever */
+        src: url('myfont.eot'); /* IE9 Compatibility Modus - Liefert Support für IE ab Version 4*/
+        src: url('myfont.eot?iefix') format('eot') /*IE6-IE8*/, url('myfont.woff') format('woff') /*Modern*/,
+                url('myfont.ttf') format('truetype'), /*Mobile*/ url('myfont.svg') format('svg'); /*Fallback*/ }
+    </pre>
+    </li>
+    </ul>
+</article>
+<article>
+    <h2>Der richtige Rahmen</h2>
+    <ul>
+    <li>Bereits erwähnt wurde die <code>border</code> Eigenschaft - hierzu ein Beispiel:
+    <pre lang="CSS">#someBox { 
+        border: 1px solid #CCC; /*Oben, rechts, unten, links 1px durchgezogen grau*/
+        border-left: 2px dashed #F00; /*Links 2px gestrichelt rot*/
+        border-bottom: 1em dotted green; /*Unten 1em (1 M in aktueller Schriftgröße) gepunktet Grün*/ } 
+    </pre>
+    <div style="width: 200px; height: 30px; border: 1px solid #CCC; border-left: 2px dashed #F00; border-bottom: 1em dotted green;">Die TestBox!</div>
+    </li>
+    <li>Mit CSS3 wurden Rahmen deutlich flexibler - wir können nun über <code>border-radius</code> <strong>runde Ecken</strong> erzeugen!</li>
+    <li>Wir setzen <code>border-radius: lo ro ru lu</code> von links oben nach links unten</li>
+    <li>Der Teufel liegt im Detail: Man kann auch mit zwei Angaben arbeiten - sozusagen elliptische Ecken!</li>
+    <li>z.B. über <code>border-radius: lo1 ro1 ru1 lu1 / lo2 ro2 ru2 lu2</code> - ist immer äquivalent ist zu:</li>
+    <li>den einzelnen Angaben z.B. <code>border-top-left-radius: lo1 lo2</code></li>
+    <div style="border-radius: 20px;" class="rightBorder">border-radius:20px</div>
+    <div style="border-radius: 20px / 10px;" class="rightBorder">border-radius:20px / 10px</div>
+    <div style="border-radius: 20px / 8px 2px;" class="rightBorder">border-radius:20px / 8px 2px</div>
+    </ul>
+</article>
+<article>
+    <h2>Farben in CSS3</h2>
+    <div class="left">
+    <ul>
+    <li>In CSS gibt es mehrere Wege Farben zu definieren, z.B. über den Namen <code>color: red</code></li>
+    <li>Es gibt auch noch die hexadezimale Darstellung, z.B. <code>background: #FF2266</code></li>
+    <li>Diese Darstellung wird immer im RGB-Modell durchgeführt, und kann auch Dezimal geschrieben werden: <code>background: rgb(255, 34, 102)</code></li>
+    <li>In CSS3 wurden transparente Farben eingeführt - das sog. RGBA-Modell. Um dies nutzen zu können schreibt man z.B. <code>color: rgba(255, 32, 102, 0.5)</code>, wobei hier Alpha auf 50% steht</li>
+    <li>Ein Alpha-Wert von 100% (1.0) bedeutet volle Deckung (keine Transparenz)</li>
+    <li>Daneben wurde in CSS3 das HSL (Hue Saturation Light, d.h. Farbwinkel Sättigung Licht) eingeführt
+    <pre lang="css">#hslexample /*Sättigung von 70%*/
+    { border-top: 2px solid hsl(120, 70%, 50%); }
+    /*Farbwinkel von 120° entspricht Blau*/
+    </pre>
+    </li>
+    </ul>
+    </div>
+    <div class="right">
+    <figure><img src="./resources/images/slides/rgb_cube.png" alt="Das RGB Farbmodell"><figcaption>Ausschnitte aus dem RGB Modell (Rot, Grün, Blau)</figcaption></figure>
+    <figure><img src="./resources/images/slides/hsv_cone.png" alt="Das HSL Farbmodell"><figcaption>Ausschnitte aus dem HSV Modell (Farbwinkel, Sättigung, Licht)</figcaption></figure>
+    </div>
+</article>
+<article>
+    <h2>Licht und Schatten</h2>
+    <div class="right">
+    <figure><div style="width: 250px; height: 70px; padding-top: 30px; background: #CCC; border: 1px solid #000; box-shadow: 5px 5px 3px #666; margin:auto; margin-bottom: 10px; color:#677;">#eins</div><figcaption>Die erste Box mit einem Schatten nach rechts unten (Dunkelgrau)</figcaption></figure>
+    <figure><div style="width: 250px; height: 70px; padding-top: 30px; background: #CCC; border: 1px solid #000; box-shadow: -5px 5px 10px #F00; margin: 10px auto; color:#677;">#zwei</div><figcaption>Die zweite Box mit einem Schatten nach links unten (Rot)</figcaption></figure>
+    <figure><div style="width: 250px; height: 30px; padding-top: 20px; background: #CCC; border: 1px solid #000; text-shadow: 3px 3px 5px #999; margin: 10px auto; color:#677; font-size: 2em;">#drei</div><figcaption>Die dritte Box mit einem Textschatten nach rechts unten (Grau)</figcaption></figure>
+    <figure><div style="width: 250px; height: 30px; padding-top: 20px; background: #CCC; border: 1px solid #000; text-shadow: -3px 3px 2px #0F0; margin: 10px auto; color:#677; font-size: 2em;">#vier</div><figcaption>Die vierte Box mit einem Textschatten nach links unten (Grün)</figcaption></figure>
+    </div>
+    <div class="left">
+    <ul>
+    <li>Mit CSS3 sind Schatten für Texte und Boxen möglich</li>
+    <li>Die Syntax für Boxen lautet
+    <pre lang="css">#eins { box-shadow: 5px 5px 3px #666; }
+    #zwei { box-shadow: -5px 5px 10px #F00; }
+    </pre>
+    </li>
+    <li>Bei Text ist die Syntax sehr ähnlich z.B.
+    <pre lang="css">#drei { text-shadow: 3px 3px 5px #999; }
+    #vier { text-shadow: -3px 3px 2px #0F0; }
+    </pre>
+    </li>
+    <li>Die Syntax ist also immer so aufgebaut:
+    <ul>
+    <li>Versatz horizontal (pos. rechts, neg. links)</li>
+    <li>Versatz vertikal (pos. unten, neg. oben)</li>
+    <li>Verschwommenheit (0 entspricht klar)</li>
+    <li>Farbe des Schattens</li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+</article>
+<article>
+    <h2>Farbverläufe</h2>
+    <ul>
+    <li>Im Moment ist die Spezifikation für Farbverläufe noch in permanenter Bewegung</li>
+    <li>Es läuft aber wohl ganz klar auf diese Syntax raus:
+    <pre lang="css">.linear { background-image: linear-gradient(to top, #00f, #fff); }
+    .linearStop { background-image: linear-gradient(to left top, #00f, #fff 80%); }
+    .linearMultiple { background-image: linear-gradient(to right, #F00, #0F0 50%, #00F); }
+    .radial { background-image: radial-gradient(farthest-corner at 45px 45px , #FF0000 0%, #0000FF 100%); }
+    </pre>
+    <div style="width: 800px; height: 50px; background-image: -o-linear-gradient(left, #F00, #0F0 50%, #00F); background-image: -moz-linear-gradient(left, #F00, #0F0 50%, #00F); background-image: -ms-linear-gradient(left, #F00, #0F0 50%, #00F); background-image: -webkit-linear-gradient(left, #F00, #0F0 50%, #00F); linear-gradient(left, #F00, #0F0 50%, #00F);"></div>
+    </li>
+    <li>Die Gradienten funktionieren leider (wie viele andere CSS3) Features im Moment nur über Browser-Spezifische Präfixe - nehmen wir als Beispiel <code>linear-gradient(...)</code></li>
+    <li>Daraus wird in Opera <code>-o-linear-gradient(...)</code> und in Firefox <code>-moz-linear-gradient</code></li>
+    <li>Microsoft hat als Präfix <code>-ms-</code>, Apple und Google verwenden <code>-webkit-</code></li>
+    <li>Wir werden uns später noch mit den Präfixen beschäftigen</li>
+    <li>Eine Möglichkeit die Präfixe zu umgehen ist JavaScript<sup>1</sup></li>
+    </ul>
+</article>
+<article>
+    <h2>Listen richtig stylen</h2>
+    <div class="left">
+    <ul>
+    <li>Listen eignen sich sehr gut für Menüs, da man hier sehr schönes Styling vornehmen kann und die Abwärtskompatibilität perfekt ist</li>
+    <li><code>list-style-type</code> kann durch Angabe von <i>disc</i>, <i>circle</i>, <i>square</i>, <i>decimal</i>, <i>lower-roman</i>, <i>upper-roman</i>, <i>lower-alpha</i>, <i>upper-alpha</i>, <i>none</i> gesetzt werden</li>
+    <li>Über <code>list-style-image</code> läßt sich ein Bild für die Auflistung einstellen, d.h. <i>url(...)</i></li>
+    <li><code>list-style-position</code> definiert wo sich der Punkt befinden soll, d.h. <i>inside</i> oder <i>outside</i></li>
+    <li>Alle Angaben können über <code>list-style</code> zusammengefasst werden</li>
+    </ul>
+    </div>
+    <div class="right">
+    <figure><img src="./resources/images/slides/listswocss.png" alt="Eine Liste ohne CSS"><figcaption>Das Aussehen der Liste ohne CSS auf die Listenelemente</figcaption></figure>
+    <figure><img src="./resources/images/slides/listswithcss.png" alt="Eine Liste mit CSS"><figcaption>Durch CSS hat sich das Aussehen der Liste komplett verändert</figcaption></figure>
+    </div>
+    <div class="clear">
+    <pre lang="css">ul#navlist { text-align: left; list-style: none; padding: 0; margin: 0 auto; width: 70%; }
+    ul#navlist li { display: block; margin: 0; padding: 0; }
+    ul#navlist li a { display: block; width: 100%; padding: 0.5em 0 0.5em 2em; border-width: 1px; border-color: #ffe #aaab9c #ccc #fff; border-style: solid; color: #777; text-decoration: none; background: #f7f2ea; }
+    ul#navlist li#active a { background: #f0e7d7; color: #800000; }
+    </pre>
+    </div>
+</article>
+</section>
+<section id="CSS Fortführung">
+<article>
+    <h2>Effekte mit CSS3</h2>
+    <ul>
+    <li>Vorher waren Änderungen am CSS Stil z.B. durch <code>:hover</code> beim Überfahren, immer direkt</li>
+    <li>Mit CSS3 haben wir die Möglichkeit Änderungen an Eigenschaften durch Pseudoklassen zu animieren</li>
+    <li>Dies wird als <strong>Transition</strong> bzw. Effekt bezeichnet (nicht als Animation - dazu gleich mehr)</li>
+    <li>Die Syntax benutzt dazu folgende Elemente (kann wiederholt durch <code>,</code> angegeben werden):
+    <ul>
+    <li>Welche Eigenschaften sind von der Transition betroffen? (<code>all</code> meint alle)</li>
+    <li>Wie lange soll der Effekt gehen? z.B. <code>1s</code> oder ab wann und wie lang z.B. <code>0.5s 1s</code></li>
+    <li>Welcher Effekt soll genau benutzt werden? z.B. <code>ease</code> (Standard) oder <code>linear</code></li>
+    </ul>
+    <pre lang="css">.beispiele:hover { background: #F00; width: 100px; } .beispiele { background: #0F0; width: 50px; }
+    #eins { transition: background-color 1s linear; }
+    #zwei { transition: background-color 1s ease; }
+    #drei { transition: background-color 1s ease-in; }
+    #vier { transition: background-color 1s ease-out; }
+    #fuenf { transition: background-color 1s ease-in-out, width 0.5s 1s linear; }
+    </pre>
+    <div class="hide">
+    <div class="transitionbeispiele" id="transitionbeispieleeins">#eins</div>
+    <div class="transitionbeispiele" id="transitionbeispielezwei">#zwei</div>
+    <div class="transitionbeispiele" id="transitionbeispieledrei">#drei</div>
+    <div class="transitionbeispiele" id="transitionbeispielevier">#vier</div>
+    <div class="transitionbeispiele" id="transitionbeispielefuenf">#fuenf</div>
+    </div>
+    </li>
+    </ul>
+</article>
+<article>
+    <h2>Transformationen</h2>
+    <ul>
+    <li>Neu in CSS3 sind auch Koordinatentransformationen - hier haben wir mehrere Möglichkeiten:
+    <ul>
+    <li>Translation mit <code>translate(dx,dy)</code> zum Verschieben (Standard: 0, 0)</li>
+    <li>Rotation mit <code>rotate(alpha)</code> zum Drehen (Standard: 0)</li>
+    <li>Skalieren mit <code>scale(zoomfaktor)</code> zum Verändern der Größe (Standard: 1)</li>
+    <li>Verzerren mit <code>skew(phi,psi)</code> zur Schrägstellung (Standard: 0, 0)</li>
+    </ul>
+    <pre lang="css">#eins { transform: translate(10px, -10px); }
+    #zwei { transform: rotate(45deg); }
+    #drei { transform: scale(1.5); }
+    #vier { transform: skewX(15deg); }
+    #fuenf { transform: skew(15deg, 15deg); }
+    #sechs { transform: scale(0.5) rotate(-20deg) translate(0, 10px);  }
+    </pre>
+    <div style="margin: 20px 0;">
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px;">ohne</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: translate(10px, -10px);  -webkit-transform: translate(10px, -10px); -moz-transform: translate(10px, -10px); -ms-transform: translate(10px, -10px);">#eins</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); -moz-transform: rotate(45deg);">#zwei</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: scale(1.5); -webkit-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5);">#drei</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: skewX(15deg); -webkit-transform: skewX(15deg); -ms-transform: skewX(15deg); -moz-transform: skewX(15deg);">#vier</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: skew(15deg, 15deg); -webkit-transform: skew(15deg, 15deg); -ms-transform: skew(15deg, 15deg); -moz-transform: skew(15deg, 15deg);">#fuenf</div>
+    <div style="display: inline-block; width: 50px; height: 50px; background: #ffffa2; border: 1px solid #000; margin: 0 25px; -o-transform: scale(0.5) rotate(-20deg) translate(0, 10px); -webkit-transform: scale(0.5) rotate(-20deg) translate(0, 10px); -ms-transform: scale(0.5) rotate(-20deg) translate(0, 10px); -moz-transform: scale(0.5) rotate(-20deg) translate(0, 10px);">#sechs</div>
+    </div>
+    </li>
+    <li>Daneben sind noch 3D-Transformationen möglich, hier ist die Unterstützung allerdings noch zu gering</li>
+    </ul>
+</article>
+<article>
+    <h2>Animationen ohne JS</h2>
+    <div class="doubleleft">
+    <ul>
+    <li>Effekte wie eben können wir natürlich auch ohne CSS3 in JavaScript erledigen (per CSS ist schneller!)</li>
+    <li>Wie sieht es aber nun aus wenn wir nicht nur Übergänge handhaben wollen sondern echte Animationen?</li>
+    <li>Selbst hier können wir auf JavaScript verzichten - CSS3 Animationen!
+    <pre lang="css">@-webkit-keyframes beispiel { /* Definition der Keyframes */
+        0% { background-color: #F00; } /* Erster Frame am Start */
+        20% { background-color: #0F0; } /* Frame bei 20% der Zeit */
+        60% { background-color: #00F; } /* Dritter Frame */
+        100% { background-color: #FFF; } /* Abschlussframe */
+    }
+    #someDiv {
+        -webkit-animation-name: beispiel; /* Verweis auf keyframes */
+        -webkit-animation-duration: 10s; /* Analog Transitions */
+        -webkit-animation-iteration-count: infinite; /* auch 1, ... */
+        -webkit-animation-timing-function: linear; /* Analog Trans. */
+    }
+    </pre>
+    </li>
+    <li>Animationen gehen bislang nur auf Safari, Chrome, Firefox (<code>-moz-</code>)</li>
+    </ul>
+    </div>
+    <div class="halfright">
+    <figure><img src="./resources/images/slides/css-animations.png" alt="Animationen über Keyframes"><figcaption>Die Schlüsselbilder legen die Fixpunkte fest</figcaption></figure>
+    </div>
+</article>
+<article>
+    <h2>3D Effekte mit CSS3</h2>
+    <div class="halfleft">
+    <figure><img src="./resources/images/slides/css3-3d.png" alt="CSS3 ermöglicht die Anordnung von Elementen in drei Dimensionen"><figcaption>Boxen können nun in 3D durch CSS3 angeordnet und animiert werden</figcaption></figure>
+    </div>
+    <div class="doubleright">
+    <ul>
+    <li>Mit CSS3 kann man auch 3D Transformationen einer Webseite hinzufügen</li>
+    <li>Die Vorteile liegen auf der Hand:
+    <ul>
+    <li>Der Browser kann mit <code>&lt;div&gt;</code> Objekten viel besser Umgehen als mit Zeichnungen auf einem Canvas</li>
+    <li>Somit erhält man Vorteile durch mögliche Hardwarebeschleunigung</li>
+    <li>Text und weitere Elemente (z.B. auch Videos etc.) kann man direkt in HTML leichter einbinden als in einem Canvas</li>
+    <li>HTML und CSS benötigen keinen Code und laufen somit selbst auf Browsern mit deaktiviertem JavaScript</li>
+    </ul>
+    </li>
+    <li>Prinzipiell wird die bekannte Syntax zu Transformationen ergänzt, z.B.
+    <pre lang="css">... { transform: perspective(5); } /*Stellt Perspektive ein*/
+    ... { transform: scaleZ(2); } /*Skaliert die z-Koordinaten*/
+    ... { transform: rotateZ(10deg); } /*Rotiert um z-Achse*/
+    ... { transform: skewZ(15px); } /*Verzerrt z-Richtung*/
+    </pre>
+    </li>
+    </ul>
+    </div>
+</article>
+<article>
+    <h2>CSS3 ohne Präfixe</h2>
+    <ul>
+    <li>Bis jetzt haben wir die Präfixhölle unter den Tisch gekehrt (<code>-ms-</code>, <code>-o-</code>, <code>-webkit-</code>, <code>-moz</code>)</li>
+    <li>Der Grund liegt darin, dass es sich bei den entsprechenden Eigenschaften noch nicht um endgültig abgesegnete Spezifikationen handelt</li>
+    <li>Neben der Lösung, dass man die zusätzlich notwendigen Zeilen selbst schreibt (bzw. kopiert, einfügt und dann das Präfix ändert) gibt es noch elegantere Lösungen</li>
+    <li>Eine Möglichkeit besteht darin, Seiten wie prefixmycss<sup>1</sup> zu verwenden - hier fügt man seinen Code ein und erhält den entsprechenden Code zurück</li>
+    <li>Der Vorteil an dieser Methode liegt darin, dass eben kein JavaScript aktiviert sein muss damit das CSS richtig funktioniert</li>
+    <li>Wenn JavaScript aktiv ist, stellt die Bibliothek prefixfree<sup>2</sup> eine ausgezeichnete Lösung dar</li>
+    <li>Der Vorteil ist, dass man die CSS Datei nicht unnötig aufbläht und nur die Präfixes angewandt werden, die notwendig sind</li>
+    <li>Ein sauberer CSS Code der auf Präfixe verzichtet ist sicherlich die Zukunft</li>
+    <li>Ein Beispiel für prefixfree stellt dieses Skript dar (siehe Quellcode)</li>
+    </ul>
+</article>
+</section>
+<section id="CSS Beispiele">
+    <article>
+    <h2>Beispiel (12)</h2>
+    <pre lang="css">@font-face {
+        font-family: 'Ubuntu'; /* Verwenden die populäre Schrift Ubutunu die wir von Google kriegen */
+        src: local('Ubuntu'), url('.../_xyN3apAT_yRRDeqB3sPRg.woff') format('woff'); /* Wuff Wuff */
+    }
+    #beispiel12 {
+        list-style-type: none; /* Schalten den Listen-Typ ab - keine Aufzählungszeichen */
+        font: 16pt 'Ubuntu'; /* Verwenden unsere eigene Schrift */
+        background: hsl(25, 90%, 60%); /* Hintergrund über HSL definieren */
+        border-radius: 30px 30px 15px 15px / 15px; /* Runde Ecken versteht sich, oben elliptisch */
+    }
+    #beispiel12 &gt; li:nth-child(odd) { background: rgba(140, 200, 92, 0.2); } /* Ungerade li */
+    #beispiel12 &gt; li:nth-child(even) { background: rgba(140, 200, 92, 1); } /* Gerade li */
+    #beispiel12 &gt; li {
+        color: white; vertical-align: middle; /* Textfarbe und Ausrichtung */
+        display: inline-block; /* Anzeige in einer Zeile */
+        border: 1px solid #CCC; /* Rahmen bestimmen */
+        margin: 0 25px; /* Abstand 0 nach oben und unten, 25 pixel links und rechts */
+        width: 150px; height: 50px; /* Setzen der Größe */
+    }
+    #beispiel12 &gt; li:empty { border: 1px dashed #F00; } /* Regel für leere li */
+    </pre>
+    <ul id="beispiel12" class="hide">
+    <li>Das ist ein erster Test</li>
+    <li>Und noch ein Test</li>
+    <li></li>
+    <li>Letzter Test</li>
+    </ul>
+</article>
+<article>
+    <h2>Beispiel (13)</h2>
+    <pre lang="css">#beispiel13 { /* Wählen Farbverlauf als Hintergrund */
+        background-image: linear-gradient(top, #F00, #FF0 25%, #0F0 50%, #0FF 75%, #00F);
+        transition: all 1s ease; /* Wollen Übergänge beim Ändern JEDER Eigenschaft */
+        width: 200px; height: 30px; padding: 20px; /* Festlegen der Größe */
+        text-shadow: 2px 2px 2px #000; box-shadow: 5px -5px 2px #F0F; /* Schatteneffekte */
+        color: white; font-size: 20pt; text-align: center; /* Texteinstellungen */
+    }
+    #beispiel13:hover { /* Veränderung beim Drüberfahren */
+        transform: rotate(30deg) scale(1.2); /* Skalieren und Rotieren! */
+    }
+    #beispiel13:empty { /* Veränderungen wenn es eine leere Box ist */
+        transform: skew(45deg, 0) scale(0.5); /* Verzerren und Skalieren */
+        background: #CCC; /* Grauer Hintergrund */
+    }
+    </pre>
+    <div id="beispiel13" class="hide">HERE I GO!</div>
+    <div class="hide">
+    Interaktion mit dem Beispiel: <a href="#" onclick="document.getElementById('beispiel13').innerHTML = 'HERE I GO'; return false;">Füllen!</a> | <a href="#" onclick="document.getElementById('beispiel13').innerHTML = ''; return false;">Leeren!</a>
+    </div>
+</article>
+</section>
+
+    
+</main>
+</div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
+<script type="text/javascript" src="./resources/js/JsCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/HtmlCodeEditor.js"></script>
+<script type="text/javascript" src="./resources/js/initEditors.js"></script>
+<script type="text/javascript" src="./resources/js/buildIndex.js"></script>
+</body>
+</html>

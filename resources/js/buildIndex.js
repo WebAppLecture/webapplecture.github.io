@@ -1,7 +1,7 @@
 let sections = document.querySelectorAll("main > section"),
-    navigation = document.querySelector("body > div.wrapper > nav"),
-    sectionsList = document.createElement("ul"),
-    backToTop = document.querySelector("#toTop a");
+navigation = document.querySelector("body > div.wrapper > nav"),
+sectionsList = document.createElement("ul"),
+backToTop = document.querySelector("#toTop a");
 
 backToTop.href = "#" + sections[0].id;
 
@@ -32,4 +32,3 @@ for(let section of sections) {
     sectionsList.appendChild(sectionEntry);
 }
 navigation.appendChild(sectionsList);
-
