@@ -1,30 +1,58 @@
-<script>
-class Number {
+<html>
+    <body>
+        <textarea disabled ></textarea>
+        <div class="num-pad">
+            <button value=7>+</button>
+            <button value=7>-</button>
+            <button value=7>*</button>
+            <br>
+            <button value=7>/</button>
+            <button value=7>n!</button>
+            <button value=7>x^y</button>
+            <br>
+            <button value=7>7</button>
+            <button value=7>8</button>
+            <button value=7>9</button>
+            <br>
+            <button value=7>4</button>
+            <button value=7>5</button>
+            <button value=7>6</button>
+            <br>
+            <button value=7>1</button>
+            <button value=7>2</button>
+            <button value=7>3</button>
+            <br>
+            <button value=7>0</button>
+        </div>
+        <script>
+        class Number {
 
-    constructor(initialVal) {
-        this.value = initialVal || 0;
-    }
-
-    add(a) {
-        this.value += a;
-        return this;
-    }
-
-    subtract(a) {
-        this.value -= a;
-        return this;
-    }
-
-    multiply(a) {
-        this.value *= a;
-        return this;
-    }
-
-    divide(a) {
-        if(a !== 0) {
-            this.value /= a;
+            constructor(initialVal) {
+                this.value = initialVal || 0;
+            }
+        
+            add(a) {
+                this.value += a;
+                return this;
+            }
+        
+            subtract(a) {
+                this.value -= a;
+                return this;
+            }
+        
+            multiply(a) {
+                this.value *= a;
+                return this;
+            }
+        
+            divide(a) {
+                if(a !== 0) {
+                    this.value /= a;
+                }
+                return this;
+            }
         }
-        return this;
-    }
-}
-</script>
+        </script>
+    </body>
+</html>
