@@ -19,31 +19,28 @@
                     <h2>Tag</h2>
                 </li>
                 <li>
-                    <a href="index.html"><h2>1</h2></a>
+                    <a href="index.html"><h2>0</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>2</h2></a>
+                    <a href="day1.html"><h2>1</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>3</h2></a>
+                    <a href="day2.html"><h2>2</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>4</h2></a>
+                    <a href="day3.html"><h2>3</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>5</h2></a>
+                    <a href="day4.html"><h2>4</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>6</h2></a>
+                    <a href="day5.html"><h2>5</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>7</h2></a>
+                    <a href="day6.html"><h2>6</h2></a>
                 </li>
                 <li>
-                    <a href="index.html"><h2>8</h2></a>
-                </li>
-                <li>
-                    <a href="index.html"><h2>9</h2></a>
+                    <a href="day7.html"><h2>7</h2></a>
                 </li>
                 <li>
                     <h2>Übung</h2>
@@ -75,7 +72,7 @@
 
 </nav>
 <main class="column middle noSpacing">
-<section id="Empfohlene Aufgaben">
+<section id="Website (Empfohlen)">
     <article>
         <h2>01. Das Grundgerüst</h2>
         <hr>
@@ -100,40 +97,56 @@
         <h2>03. Weitere Funktionalitäten</h2>
         <hr>
         <p> Ergänzen Sie nun die Webseite aus Aufgabe 2 um zwei eigenständige
-        Sektionen. Diese sollen jeweils Überschriften der zweiten Ebene sowie
-        (beliebige) Randinformationen ( <code>&lt;aside&gt;</code> ) besitzen.
+        Sektionen. Diese sollen jeweils Überschriften der zweiten Ebene (<code>&lt;h2&gt;</code> besitzen.
         </p>
-        <p>Verwenden Sie für die Randinformationen der ersten Sektion eine nicht
-        nummerierte Liste ( <code>&lt;ul&gt;</code> ) mit entsprechenden Einträgen. Für die zweite
+        <p>Verwende in der ersten Sektion eine nicht nummerierte Liste ( <code>&lt;ul&gt;</code> ) mit entsprechenden Einträgen. Für die zweite
         Sektion sollten Sie eine kleine Tabelle mit drei Spalten, vier Zeilen und
         entsprechenden Kopf- und Fußzeilen ( <code>&lt;thead&gt;</code> und  <code>&lt;tfoot&gt;</code> ) einfügen.</p>
     </article>
+</section>
+<section id="Taschenrechner (Empfohlen)">
     <article>
-        <h2>04. Fakultätsfunktion</h2>
+        <h2>01. Ziffernblock: Tasten</h2>
         <hr>
-        <p> Schreiben Sie eine Funktion namens  <code>faculty()</code>, die ein Argument  <i>n </i>
-        erhalten soll. Das Argument soll als (ganze) Zahl behandelt werden. Als
-        Rückgabewert der Funktion soll  <i>n! </i> berechnet werden. Die genaue Formel hierzu
-        lautet
-         <code> 
-        n! = Π_ i = 1 ^n i = n ⋅ (n - 1) ⋅ (n - 2) ⋅ ... ⋅ 1
-         </code>.
-        </p><p> Die Ausgabe soll über die eingebaute Funktion  <span class="jfunc">alert </span> erfolgen. Die
-        Eingabe kann über die eingebaute Methode  <span class="jfunc">prompt </span> geschehen.</p>
+        <p>Erstelle einen Ziffernblock, wie er auf einem Taschenrechner zu finden ist. (vgl. Num-pad auf der Tastatur)</p>
+        <p>Erstelle zuerst eine Div-box in der die anderen Elemente eingefügt werden. 
+            Gib dieser Div-box einen Klasse <code>class=""</code>, um sie später addressieren zu können. </p>
+        <p>Nutze für die einzelnen Ziffern <code>&lt;button&gt;</code> Elemente.
+        Um diese in Zeilen zu bringen, verwende den Zeilenumbruch <code>&lt;br&gt;</code>.</p>
     </article>
     <article>
-        <h2>05. Zahlen sortieren</h2>
+            <h2>02. Ziffernblock: Interaktion</h2>
+            <hr>
+            <p>Erstelle ein Javascript Modul, welches du extern einbindest.</p>
+            <p>Erstelle darin die Klasse <code>Calculator</code> mit leerem Konstruktor.</p>
+            <p>Füge eine Methode <code>onInputNumber(number)</code> hinzu, welche den übergebenen Parameter in der Konsole ausgibt.</p>
+            <p>Füge eine Methode <code>addNumpadListeners()</code> hinzu und rufe diese im Konstruktor auf.</p>
+            <p>Setze in dieser Methode für jeden Button einen Listener <code>document.addEventListener("eventName", function)</code> hinzu der auf Klicks die Methode <code>onInputNumber(number)</code> aufruft.</p>
+        </article>
+    <article>
+        <h2>03. Bildschirm</h2>
         <hr>
-        <p> Über eine  <code>while </code>-Schleife soll solange ein  <code>prompt()</code> angezeigt
-    werden, wie der Benutzer eine gültige Zahl eingibt (d.h. Abbruch der Schleife
-    bei ungültiger Eingabe). Die Zahlen sollen in einem Array <code>zahlen</code>
-    gespeichert werden. Nach dem Abbruch der  <code>while</code>-Schleife soll das
-    eingegebene Array zahlen aufsteigend sortiert werden.
-    </p><p> Abschließend soll das Array über  <code>alert()</code> ausgegeben werden. Benutzen
-    Sie hierzu  <code>zahlen.toString()</code>.</p>
+        <p>Erstelle eine <code>&lt;textarea&gt;</code> und füge dieser folgende Attribute hinzu:
+        <ul>
+            <li>class="bildschirm"</li>
+            <li>disabled</li>
+            <li>style="resize: none" (Morgen mehr dazu)</li>
+            <li>value="Hallo Welt"</li>
+        </ul></p>
+        <p>Du solltest nun weder in die textarea schreiben können, noch sie skalieren können. </p>
+        <p>Greife nun per <code>document.querySeletor()</code> aus der Konsole auf die Textarea zu und ändere ihren Inhalt.</p>
     </article>
 </section>
-<section id="Bonus Aufgaben"></section>
+<section id="Taschenrechner (Bonus)">
+    <article>
+        <h2>01. Ziffernblock: erweitert</h2>
+        <hr>
+        <p>Falls du den Ziffernblock manuell erstellt hast, ersetze dies nun mit einem programmatischen Ansatz.
+        d.h. füge eine Methode zum Calculator hinzu die mit einer Schleife die Div-Box mit Buttos füllt. 
+        Verbinde dies sinnvoll mit dem Setzen der Listener auf diesen Elementen.
+        </p>
+    </article>
+</section>
     
 </main>
 </div><script type="text/javascript" src="./resources/js/JsFills.js"></script>
