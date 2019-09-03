@@ -1,58 +1,219 @@
-<html>
-    <body>
-        <textarea disabled ></textarea>
-        <div class="num-pad">
-            <button value=7>+</button>
-            <button value=7>-</button>
-            <button value=7>*</button>
-            <br>
-            <button value=7>/</button>
-            <button value=7>n!</button>
-            <button value=7>x^y</button>
-            <br>
-            <button value=7>7</button>
-            <button value=7>8</button>
-            <button value=7>9</button>
-            <br>
-            <button value=7>4</button>
-            <button value=7>5</button>
-            <button value=7>6</button>
-            <br>
-            <button value=7>1</button>
-            <button value=7>2</button>
-            <button value=7>3</button>
-            <br>
-            <button value=7>0</button>
-        </div>
-        <script>
-        class Number {
+<style>
+* {
+    box-sizing: border-box;
+}
 
-            constructor(initialVal) {
-                this.value = initialVal || 0;
-            }
-        
-            add(a) {
-                this.value += a;
-                return this;
-            }
-        
-            subtract(a) {
-                this.value -= a;
-                return this;
-            }
-        
-            multiply(a) {
-                this.value *= a;
-                return this;
-            }
-        
-            divide(a) {
-                if(a !== 0) {
-                    this.value /= a;
-                }
-                return this;
-            }
+body {
+    height: 100vh;
+    background: #111;
+    overflow: hidden;
+}
+
+.calculator {
+    width: 140px;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 20vh auto;
+    background: linear-gradient(to right bottom, #ff8a00, purple);
+    box-shadow: 0 0 8px 2px #42003d inset,
+        6px 6px 9px 0px #42003d;
+}
+
+.screen {
+    resize: none;
+    margin: 2px 2px 10px 2px;
+    height: 60px;
+    width: calc(100% - 4px);
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 0;
+    background: #020;
+    color: #484;
+    box-shadow: 0 0 8px 2px #42003d inset;
+    overflow-y: hidden;
+    transition: .5s;
+}
+
+.screen.on {
+    background: #040;
+    transition: .5s;
+}
+
+.screen.stutter {
+    animation: stutter .15s cubic-bezier(0.25, -0.25, 0.26, 0.68) 6;
+}
+
+.screen:focus {
+    outline: none;
+}
+
+.numpad {
+    width: 100%;
+}
+
+.numpad button {
+    width: calc(25% - 4px);
+    margin: 2px;
+    padding: 0 0 2px 0;
+    font-family: monospace;
+    background-color: #ff8a00;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 10px 15px;
+    border-bottom-right-radius: 10px 15px;
+
+    border-top-color: rgba(255,255,255,0.4);
+    border-left-color: rgba(255,255,255,0.4);
+    border-right-color: rgba(0,0,0,0.3);
+    border-bottom-color: rgba(0,0,0,0.3);
+    border-image: none;
+
+    box-shadow: 0 0 4px 1px #42003d;
+
+    text-align: center;
+}
+
+.numpad button:active {
+    border-top-color: rgba(0,0,0,0.3);
+    border-left-color: rgba(0,0,0,0.3);
+    border-right-color: rgba(255,255,255,0.4);
+    border-bottom-color: rgba(255,255,255,0.4);
+    border-image: none;
+}
+
+.numpad button:focus {
+    outline: none;
+}
+
+.lamp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(255, 216, 0, 0.18) 20%,black 60%);
+    animation: search-light 8s ease-in-out forwards 1;
+    box-shadow: 0 0 0 100vw black,
+        0 0 0 10px black inset;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.lamp.off {
+    background: radial-gradient(rgba(0, 0, 0, 1) 0%,black 60%);
+}
+
+@keyframes search-light {
+    0% {transform: translate(0,0)}
+    32% {transform: translate(50vw, 35vh)}
+    56% {transform: translate(20vw, -100px)}
+    80% {transform: translate(calc(50vw - 150px), calc(20vh - 50px))}
+    100% {transform: translate(calc(50vw - 150px), calc(20vh - 50px)) scale(2)}
+}
+
+@keyframes stutter {
+    from {padding-left: 10px;}
+    to {padding-left: 5px;}
+}
+</style>
+
+<div class=lamp></div>
+<div class=calculator>
+<textarea class="screen" disabled></textarea>
+<div class=numpad></div>
+</div>
+
+
+<script>
+
+function fillNumpad() {
+    let numpad = document.querySelector(".numpad");
+    ["n!","x<sup>y</sup>","DEL","AC",7,8,9,"/",4,5,6,"*",1,2,3,"-",":)",0,"+","="].forEach((e, i) => {
+        let button = document.createElement("button");
+        button.innerHTML = e;
+        numpad.appendChild(button);
+        (i+1)%4==0 ? numpad.appendChild(document.createElement("br")) : 0;
+    })
+}
+function helloWorld() {
+    let helloWorld = "Hello World! \n1 + 1 = 2  :)",
+        printedString = "",
+        screen = document.querySelector(".screen"),
+        i = 0;
+
+    let loop = setInterval(() => {
+        printedString += helloWorld[i];
+        screen.value = printedString;
+        i++;
+        if(printedString === helloWorld) {
+            clearInterval(loop);
         }
-        </script>
-    </body>
-</html>
+    },300);
+}
+function turnOn(){
+    let screen = document.querySelector(".screen");
+    screen.classList.add("on");
+}
+function goodbye() {
+    let screen = document.querySelector(".screen");
+    screen.classList.add("stutter"); 
+}
+function turnOff() {
+    let screen = document.querySelector(".screen");
+    screen.value = "";
+    screen.classList.remove("on");
+}
+function lightOut() {
+    let lamp = document.querySelector(".lamp");
+    lamp.classList.add("off");
+}
+
+function showcase() {
+    let lamp = document.querySelector(".lamp"),
+        screen = document.querySelector(".screen");
+    lamp.classList.remove("off");
+    screen.classList.add("on");
+    screen.value = "Press F12 to see how i work"
+}
+
+fillNumpad();
+
+setTimeout(turnOn, 9000);
+setTimeout(helloWorld, 10000);
+setTimeout(goodbye, 20000);
+setTimeout(turnOff, 21000);
+setTimeout(lightOut, 22000);
+setTimeout(showcase, 25000);
+
+class Number {
+
+    constructor(initialVal) {
+        this.value = initialVal || 0;
+    }
+
+    add(a) {
+        this.value += a;
+        return this;
+    }
+
+    subtract(a) {
+        this.value -= a;
+        return this;
+    }
+
+    multiply(a) {
+        this.value *= a;
+        return this;
+    }
+
+    divide(a) {
+        if(a !== 0) {
+            this.value /= a;
+        }
+        return this;
+    }
+}
+</script>
