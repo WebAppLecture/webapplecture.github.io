@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	* {box-sizing: border-box;}
+
+	@keyframes border-pulse {
+		0% { border-color:  #ff8a00;}
+		50% { border-color:  transparent;  }
+		100% { border-color: purple; }
+	}
+
+	html {
+	  height: 100%;
+	  background: #001;
+	  color: #ddd;
+	  display: flex;
+	}
+
+	body {
+	  margin: auto;
+	}
+	body .codeEditor style,
+	body .codeEditor script {
+		color: orange;
+		font-size: 13px;
+		font-family: "Operator Mono SSm A","Operator Mono SSm B","Operator Mono","Source Code Pro",Menlo,Consolas,Monaco,monospace;
+		padding: 5px 20px;
+		white-space: pre;
+		tab-size: 4;
+
+		display: flex;
+		align-items: center;
+		width: 90%;
+		margin: auto;
+		max-width: 22em;
+		position: relative;
+
+		box-sizing: border-box;
+		background: #001;
+		background-clip: padding-box;
+		/* !importanté */
+		border: solid 5px transparent;
+		/* !importanté */
+		border-radius: 1em;
+	}
+
+	body .codeEditor style:before,
+	body .codeEditor script:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		margin: -5px;
+		/* !importanté */
+		border-radius: inherit;
+		/* !importanté */
+		background: linear-gradient(to right bottom, #ff8a00, purple);
+	}
+
+
+
+	body .codeEditor style:focus,
+	body .codeEditor script:focus {
+		outline: none;
+		color: turquoise;
+		animation: border-pulse;
+		animation-duration: 1s;
+		animation-direction: alternate;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+	a:hover,
+	a:focus {
+		background: linear-gradient(to right,#ff8a00,#da1b60);
+		-webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+	    -webkit-box-decoration-break: clone;
+	    text-shadow: none;
+	}
+
+	*::selection {
+		background: purple;
+		color: #ffe200;
+	}
+
+	.gear {
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-color: #777;
+		border: 10px dashed #bbb;
+		border-radius: 50%;
+		background-clip: padding-box;
+		box-shadow: 0 0 0 8px inset #ccc, 
+			0 0 5px 12px inset #777, 
+			0 0 5px 20px inset #aaa, 
+			0 0 0 25px inset #777, 
+			0 0 0px 30px inset #ccc,
+			0 0 0px 50px inset #001;
+		animation: rotation;
+		animation-duration: 5s;
+		animation-direction: normal;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.reverse {
+		animation-direction: reverse;
+		animation-delay: 1s;
+	}
+
+	@keyframes rotation {
+		0% { transform: scale(1.07) rotate(0deg) translate(2px, 4px);}
+		25% { transform: scale(1.07) rotate(90deg) translate(3px,1px);}
+		50% { transform: scale(1.07) rotate(180deg) translate(-3px,1px);}
+		75% { transform: scale(1.07) rotate(270deg) translate(0px,-3px);}
+		100% { transform: scale(1.07) rotate(360deg) translate(2px, 4px); }
+	}
+
+	.editor {
+		width: 200px;
+		height: 200px;
+		background: linear-gradient(to right bottom, #ff8a00, purple);
+		padding: 5px 0 5px 0;
+		display: flex;
+		flex-direction: row;
+		margin: 0 auto;
+		border-radius: 15px;
+		flex-shrink: 1;
+		min-height: 60px;
+	}
+
+	.editor > textarea {
+		display: inline-flex;
+		resize: none;
+		font-family: monospace;
+		background: linear-gradient(to bottom right,#001,#003);
+		color: #5ad8ee;
+		margin: 0 .5em 0 0;
+		padding: 0.5em;
+		border: none;
+		border-radius: 10px;
+		overflow-y: auto;
+	}
+
+	.editor > textarea:focus {
+		outline: none;
+		box-shadow: 0 0 8px 2px purple inset;
+	}
+
+	@keyframes bg-pulse {
+		0% { background:  #ff8a00;}
+		50% { background:  linear-gradient(to bottom right,#001,#003);  }
+		100% { background: purple; }
+	}
+
+	.editor:focus {
+		outline: none;
+		color: turquoise;
+		animation: bg-pulse;
+		animation-duration: 1s;
+		animation-direction: alternate;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.uprightTitle {
+		display: inline-flex;
+		vertical-align: middle;
+		font-family: monospace;
+		writing-mode: vertical-lr;
+		justify-content: center;
+		color: white;
+		margin: 0;
+		width: 2em;
+		line-height: 2em;
+		border-radius: .75em 0 0 .75em;
+	}
+
+	@keyframes rgb-fade {
+		from {background-color: hsl(0, 100%, 50%); width: 100px;}
+		25% {background-color: hsl(90, 100%, 50%); width: 300px;}
+		50% {background-color: hsl(180, 100%, 50%); width: 50px;}
+		75% {background-color: hsl(270, 100%, 50%); width: 150px;}
+		to {background-color: hsl(360, 100%, 50%); width: 100px;}
+	}
+
+	@keyframes squareToCircle {
+		from { border-radius: 50%; transform: scale(1.2)  }
+		to { border-radius: 0}
+	}
+
+	.rgb {
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-color: hsl(0deg, 100%, 50%);
+		animation: rgb-fade;
+		animation-timing-function: cubic-bezier(0.7,-0.01, 0.29, 1);
+		animation-duration: 5s;
+		animation-iteration-count: infinite;
+	}
+
+	.circle {
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-color: hsl(0deg, 100%, 50%);
+		animation: squareToCircle;
+		animation-timing-function: cubic-bezier(0.7,-0.01, 0.29, 1);
+		animation-direction: alternate;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+	}
+
+	.relief {
+		display: inline-block;
+		width: 200px;
+		height: 100px;
+		font-size: 75px;
+		font-family: monospace;
+		background-color: #aaa;
+		border: 10px solid #ccc;
+		border-radius: 20px;
+		text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		box-shadow: 0 0 5px 4px #777 inset;
+	}
+
+	@keyframes stroker{
+		from {transform: rotate(18.43deg);} 
+		12.5% {transform: rotate(-45deg) rotate(13.26deg);}
+		25% {transform: rotate(-90deg);}
+		37.5% {transform: rotate(-135deg) rotate(-15.26deg);}
+		50% {transform: rotate(-180deg) rotate(-20deg);}
+		62.5% {transform: rotate(-225deg) rotate(-14.26deg);}
+		75% {transform: rotate(-270deg);}
+		87.5% {transform: rotate(-315deg) rotate(13.26deg);}
+		to {transform: rotate(-360deg) rotate(18.43deg);}
+	}
+
+	@keyframes turn{
+		from {transform: rotate(0)}
+		50% {transform: rotate(180deg)}
+		to {transform: rotate(360deg)}
+	}
+
+	.flywheel {
+		position: relative;
+		display: inline-block;
+		width: 250px;
+		height: 250px;
+		background-color: #777;
+		border: 10px dashed #bbb;
+		border-radius: 50%;
+		background-clip: padding-box;
+		box-shadow: 0 0 0 10px inset #ccc, 
+			0 0 5px 15px inset #777, 
+			0 0 5px 75px inset #aaa, 
+			0 0 0 80px inset #777, 
+			0 0 0px 95px inset #ccc,
+			0 0 0px 150px inset #001;
+		animation: turn;
+		animation-duration: 3s;
+		animation-direction: normal;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		
+		z-index: 0;
+	}
+
+	@keyframes piston-stroke {
+		from { transform: translateX(400px) }
+		to { transform: translateX(200px) }
+	}
+
+	@keyframes rod-rotate {
+		from { transform: rotate(19.47deg) }
+		to { transform: rotate(-19.47deg) }
+	}
+
+	.rod {
+		position: absolute;
+		left: -300px;
+		top: 0;
+		display: inline-block;
+		width: 300px;
+		height: 50px;
+		background-image: linear-gradient(to bottom, #ccc, #aaa 30%,#aaa 70%, #777);
+
+		transform-origin: 100% 50%;
+		animation: rod-rotate 1.5s ease-in-out infinite alternate;
+		z-index: 10;
+	}
+
+	.rod::before {
+		content: '';
+		display: block;
+		margin-top: -12.5px;
+		margin-left: -37.5px;
+		width: 75px;
+		height: 75px;
+		border-radius: 50%;
+		background-color: #69b6d5;
+
+		box-shadow: 0 0 0 8px inset #ccc, 
+			0 0 5px 12px inset #777, 
+			0 0 5px 20px inset #aaa, 
+			0 0 0 25px inset #777, 
+			0 0 0px 30px inset #ccc,
+			0 0 0px 50px inset #001;
+	}
+
+	.rod::after {
+		content: '';
+		display: block;
+		margin-top: -75px;
+		margin-left: 265px;
+		width: 75px;
+		height: 75px;
+		border-radius: 50%;
+		background-color: #69b6d5;
+
+		box-shadow: 0 0 0 8px inset #ccc, 
+			0 0 5px 12px inset #777, 
+			0 0 5px 20px inset #aaa, 
+			0 0 0 25px inset #777, 
+			0 0 0px 30px inset #ccc,
+			0 0 0px 50px inset #001;
+	}
+
+	.piston {
+		position: relative;
+		left: -128.5px;
+		top: -102.5px;
+		display: inline-block;
+		width: 300px;
+		height: 50px;
+		background-image: linear-gradient(to bottom, #ccc, #aaa 50%,#aaa 50%, #777);
+
+		z-index: 0;
+		
+		animation: piston-stroke 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+		animation-delay: .75s;
+	}
+
+	.bearing {
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background: radial-gradient(red, blue);
+		border: 15px dotted #bbb;
+		border-radius: 50%;
+		background-clip: content-box;
+		box-shadow: 0 0 0 10px #ccc,
+			0 0 0 8px inset #ccc, 
+			0 0 5px 12px inset #777, 
+			0 0 5px 25px inset #aaa, 
+			0 0 0 30px inset #777, 
+			0 0 0px 35px inset #ccc,
+			0 0 0px 50px inset #001;
+		animation: turn;
+		animation-duration: 5s;
+		animation-direction: normal;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.test {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		border: 25px dotted #555;
+		box-shadow: 0 0 0 2px #bbb,
+			0 0 0 10px #ddd;
+		
+		animation-name: turn;
+		
+		animation-duration: 3s;
+		animation-direction: normal;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.test::before {
+		content: '';
+		display: block;
+		margin-top: -8px;
+		margin-left: -8px;
+		width: 68px;
+		height: 68px;
+		border-radius: 50%;
+		border: 4px solid transparent;
+		background-color: transparent;
+		box-shadow: 0 0 0 2px #aa8,
+			0 0 0 8px #dda,
+			0 0 0 10px #aa8,
+			0 0 0 5px #aaa inset;
+	}
+
+	.wrapper {
+		box-sizing: border-box;
+		margin: 1rem auto 2rem;
+		padding: 1rem;
+		width: 80%;
+		max-width: 25rem;
+		background: linear-gradient(to right bottom, #ff8a00, purple);
+		border: 5px solid transparent;
+		background-repeat: no-repeat;
+		background-origin: border-box;
+		box-shadow: 0 0 8px 2px #42003d inset,
+		0 0 0px 40px rgba(0,0,0,0.2) inset;
+	}
+
+	.wrapper--rounded {
+		border-radius: 1rem;
+		border-width: 10px;
+		position: relative;
+	}
+
+	textarea.wrapper {
+		resize: none;
+		font-family: monospace;
+		color: #5ad8ee;
+		overflow-y: auto;
+	}
+
+	textarea.wrapper:focus {
+		outline: none;
+		box-shadow: 0 0 8px 2px #42003d inset;
+	}
+
+	</style>
+</head>
+<body>
+
+<span class="gear"></span><span class="gear reverse"></span>
+<br>
+<span class="rgb"></span><span class="circle"></span>
+<br>
+<span class="relief">CSS</span>
+<br>
+<span class="flywheel"></span><span class="piston"><span class="rod"></span></span>
+<br>
+<span class="bearing"></span>
+<br>
+<div class="test"></div>
+<br>
+
+
+<div class="wrapper wrapper--rounded"></div>
+<textarea class="wrapper wrapper--rounded" data-title="Editor"></textarea>
+
+<div class="editor">
+	<span class="uprightTitle">CSS</span>
+	<textarea></textarea>
+</div>
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur corporis quaerat voluptatum eos tempora temporibus nisi voluptates sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde reprehenderit ea molestias.
+<div class="codeEditor">
+<style contenteditable="true" class="editable">
+a {
+	color: red;
+}
+input,
+input:focus,
+output,
+output:focus {
+	padding: 2px;
+	border-radius: 5px;
+	background-color: #333;
+	color: orange;
+}
+</style>
+<script contenteditable="true" class="editable" autocorrect="false">
+	let Editor = {
+		test: function(a) {
+			return a*10;
+		}
+	}	
+</script>
+<a href="http://www.google.com">Google</a>
+<form onsubmit="return false;">
+<input id="input"></input>
+<button id="run" onclick="output.value = Editor.test(input.value)">Run</button>
+<output id="output"></output>
+</form>
+<div contenteditable="true">
+	<ol>
+		<li>Lol</li>
+	</ol>
+</div>
+</div>
+</body>
+</html>
+
+
+
