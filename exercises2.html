@@ -135,6 +135,7 @@
         </ul></p>
         <p>Du solltest nun weder in die textarea schreiben können, noch sie skalieren können. </p>
         <p>Greife nun per <code>document.querySeletor()</code> aus der Konsole auf die Textarea zu und ändere ihren Inhalt.</p>
+        <p>Positioniere die textarea über deinem Ziffernblock.</p>
     </article>
 </section>
 <section id="Taschenrechner (Bonus)">
@@ -144,6 +145,20 @@
         <p>Falls du den Ziffernblock manuell erstellt hast, ersetze dies nun mit einem programmatischen Ansatz.
         d.h. füge eine Methode zum Calculator hinzu die mit einer Schleife die Div-Box mit Buttos füllt. 
         Verbinde dies sinnvoll mit dem Setzen der Listener auf diesen Elementen.
+        </p>
+    </article>
+    <article>
+        <h2>02. Taschenrechner</h2>
+        <hr>
+        <p>Importiere in der <code>Calculator</code> Klasse die <code>Number</code> Klasse von Gestern.</p>
+        <p>Füge zu deinem Ziffernblock die dort implementierten Rechenoperationen hinzu (das layout kannst du dir aussuchen).</p>
+        <p>Implementiere folgende Funktionalität:
+            <ul>
+                <li>Der erste Klick auf eine Zahl erzeugt eine Instanz von <code>Number</code> mit diesem Wert.</li>
+                <li>Die Abfolge von Klicks auf eine Rechenoperation und dann eine Zahl soll die entsprechende Rechenoperation auf dieser Instanz ausführen.</li>
+                <li>Der jeweilige Wert der Instanz soll in der <code>textarea</code> angezeigt werden.</li>
+                <li>(Bonus) Zeige den gesamten Rechenweg in der <code>textarea</code></li>
+            </ul>
         </p>
     </article>
 </section>
