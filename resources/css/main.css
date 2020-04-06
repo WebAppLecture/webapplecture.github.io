@@ -176,7 +176,7 @@ body > main a:visited {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     .column.left {
         display: none;
     }
@@ -188,6 +188,7 @@ body > main a:visited {
         flex-grow: 1;
         flex-shrink: 1;
         padding-left: 10px;
+        margin-left: 0;
     }
 
     section > article {
