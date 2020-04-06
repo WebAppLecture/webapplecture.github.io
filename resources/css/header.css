@@ -40,6 +40,8 @@ body > header a:visited {
     font-weight: 400;
     color: white;
     text-transform: none;
+    transform: rotate(-20deg);
+    margin-right: -.5em;
 }
 
 body > header a:hover {
