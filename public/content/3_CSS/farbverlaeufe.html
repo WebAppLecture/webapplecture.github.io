@@ -1,0 +1,47 @@
+<h2>Farbverläufe</h2>
+<ul>
+<li>Eins der mächtigsten Werkzeuge in CSS sind Farbverläufe.</li>
+<li>Grundsätzlich sind sie nicht alzu komplex, aber wie Schatten können wir sie beliebig aufeinander stapeln.</li>
+<li>Im Vergleich zur <code>box-shadow</code> Regel hat <code>background</code> jedoch viel mehr Optionen.</li>
+<li>Es gibt vier Gradienten
+    <ul>
+        <li><code>radial-gradient</code></li>
+        <li><code>linear-gradient</code></li>
+        <li><code>repeating-radial-gradient</code></li>
+        <li><code>repeating-linear-gradient</code></li>
+    </ul>
+</li>
+</ul>
+
+<!-- Code -->
+<style>
+.linear { 
+    background-image: linear-gradient(to top, #00f, #fff); 
+}
+.linearStop { 
+    background-image: linear-gradient(to left top, #00f, #fff 50%); 
+}
+.linearRepeat {
+    background-image: repeating-linear-gradient(to left top, #00f, #fff 10%, #00f 20%); 
+}
+.linearMultiple { 
+    background-image: linear-gradient(to right, #F00, #0F0 50%, #00F); 
+}
+.radial { 
+    background-image: radial-gradient(farthest-corner at 45px 45px , #FF0000 0%, #0000FF 100%); 
+}
+div {
+    flex: 1 1 10%;
+}
+body {
+    margin: 0;
+    display: flex;
+}
+</style>
+<html>
+<div class="linear"></div>
+<div class="linearStop"></div>
+<div class="linearRepeat"></div>
+<div class="linearMultiple"></div>
+<div class="radial"></div>
+</html>

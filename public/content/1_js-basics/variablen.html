@@ -1,0 +1,32 @@
+<h2>Variablen deklarieren</h2>
+
+Javascript ist dynamisch Typisiert.
+<ul>
+    <li>Keine Deklaration des Variablentyps wie z.B in Java <code>int i = 0</code> oder <code> String s = "test"</code></li>
+    <li>Die Typen werden dynamisch während der Laufzeit bestimmt und können sich auch ändern! <code>let i = 0; i = "test";</code></li>
+    <li>Deklaration einer Variablen erfolgt mit ihrer ersten Aufzählung (<code>let a</code>)</li>
+    <li>Es gibt auch eine streng typisierte Sprachvariante Typescript, die deswegen besonders bei großen Projekten sehr beliebt ist.</li>
+</ul>
+
+Mit ES 6 erhiel Javascript zwei neue Bezeichner für Variablen: <code>const</code> und <code>let</code>
+
+<ul>
+    <li>Der alte <code>var</code> Bezeichner sollte nicht mehr benutzt werden!</li>
+    <li><code>let</code> verhält sich wie eine normale Variable, ohne <code>var</code>'s Eigenheiten</li>
+    <li><code>const</code> bezeichnet eine nicht veränderbare Konstante.
+        <ul>
+            <li><strong>Konvention:</strong> Verwende GROSSBUCHSTABEN für Konstanten. z.B. <code>const BG_COLOR = "#fff"</code></li>
+            <li>Verhindert nicht das Verändern von Eigenschaften der Variable! (siehe Beispiel)</li>
+        </ul>
+    </li>
+    <li>Variablendeklarationen lassen sich kurz fassen: <code>let a = 1, b = 2;</code> enspricht <code>let a = 1; let b = 2;</code></li>
+</ul>
+
+<!-- Code -->
+
+<script>
+const PI = 3.14; 
+let pi = 3.14;
+pi = 3;
+PI = 4;
+</script>

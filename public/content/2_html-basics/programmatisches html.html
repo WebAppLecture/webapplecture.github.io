@@ -1,0 +1,53 @@
+<h2>Programmatisches HTML</h2>
+HTML kann nicht nur direkt, sondern auch per Javascript generiert werden.
+<ul>
+    <li>So kann man während der Laufzeit Inhalte verändern/hinzufügen/löschen</li>
+    <li>Wichtige Befehle:
+        <ul>
+            <li><code>document.createElement(X)</code> um ein Element <code>&lt;X&gt;</code> zu erstellen.</li>
+            <li><code>.appendChild()</code> um es einem anderen Element unterzuordnen. </li>
+            <li><code>.innerHTML</code> bzw <code>.innerText</code> um den Inhalt eines Elements direkt zu verändern.</li>
+            <li><code>.classList</code> gibt uns Zugriff auf die gesetzten Klassen.</li>
+            <li><code>.dataset</code> gibt uns Zugriff auf alle <code>data-</code> Attribute.</li>
+            <li><code>.stlye</code> gibt uns Zugriff auf das Styling.</li>
+            <li><code>.setAttribute(name, value)</code> setzt eine eigenschaft auf einem Element.</li>
+            <li><code>.remove()</code> löscht das Element.</li>
+            <li><code>.children</code> gibt uns eine Liste der Kindelemente. <strong>Achtung: ist kein normales Javascript Array!</strong> Mit <code>Array.from()</code> konvertieren.</li>
+        </ul>
+    </li>
+    <li>Wichtig: Objekte hinzuzufügen (<code>.appendChild()</code>) ist effizienter als <code>innerHTML</code> zu verändern</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let list = document.querySelector("ul"),
+    items = ["CSS","HTML","Javascript"],
+    done = list.dataset.done;
+
+items.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    li.setAttribute("done", done);
+    li.addEventListener('click', () => {
+        li.classList.toggle("done");
+    });
+    list.appendChild(li);
+});
+</script>
+<style>
+li.done {
+    text-decoration: line-through;
+}
+
+li.done::after {
+    content: attr(done);
+    display: inline-block;
+    margin-left: 5px;
+}
+</style>
+<html>
+Was ich diese Woche lernen will:
+<ul data-done="erledigt!">
+</ul>
+</html>

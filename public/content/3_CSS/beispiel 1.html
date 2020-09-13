@@ -1,0 +1,50 @@
+<!-- Code -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+#beispiel12 {
+    list-style-type: none; /* Schalten den Listen-Typ ab - keine Aufzählungszeichen */
+    font-family: 'Ubuntu', sans-serif; /* Verwenden unsere eigene Schrift */
+    border-radius: 85px; /* Runde Ecken */
+    border: 5px solid #ccc;
+    padding: 10px; /* Inhalt einrücken */
+    width: max-content; /* Breite auf Inhalt begrenzen */
+    margin: 0 auto; /* zentrieren */
+}
+
+#beispiel12 > li {
+    color: white; /* Textfarbe */
+    vertical-align: middle; /* Ausrichtung */
+    text-align: center;
+    font-size: 120;
+    display: inline-block; /* Anzeige in einer Zeile */
+    border: 5px solid #ccc; 
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 150px; 
+    height: 150px;
+}
+
+#beispiel12 > li:nth-child(odd) { background: rgba(140, 200, 92, 0.2); } /* Ungerade li */
+
+#beispiel12 > li:nth-child(even) { background: rgba(140, 200, 92, 1); } /* Gerade li */
+
+#beispiel12 > li:last-child { margin-right: 0px; } /* letzte li */
+
+#beispiel12 > li:empty { border: 5px dashed #F00; } /* Regel für leere li */
+</style>
+
+<html>
+
+<ul id="beispiel12">
+<li>1</li>
+<li>2</li>
+<li></li>
+<li>4</li>
+</ul>
+</html>

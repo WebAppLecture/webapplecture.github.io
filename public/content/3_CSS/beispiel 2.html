@@ -1,0 +1,33 @@
+<!-- Code -->
+
+<style>
+:root {
+  --cell-count: 4;
+  --cell: calc(100vh / var(--cell-count));
+
+  --hue: 17;
+  --saturation: 80%;
+  --light: 10%;
+  --alpha: 1;
+  --light-spread: 10%;
+  --base-color: hsla(var(--hue), var(--saturation), var(--light), var(--alpha));
+  --light-color: hsla(var(--hue), var(--saturation), calc(var(--light) + 2 * var(--light-spread)), var(--alpha));
+  --medium-color: hsla(var(--hue), var(--saturation), calc(var(--light) + var(--light-spread)), var(--alpha));
+  --dark-color: hsla(var(--hue), var(--saturation), calc(var(--light) - var(--light-spread)), var(--alpha));
+
+  --weave-straight-attributes: 0 0 / var(--cell) var(--cell) repeat;
+
+  --weave-straight: 
+    linear-gradient(135deg, transparent 65%,var(--medium-color) 66%, var(--light-color) 70%, var(--dark-color) 74%, transparent 75%) var(--weave-straight-attributes),
+    linear-gradient(45deg, transparent 75%,var(--medium-color) 76%, var(--light-color) 80%, var(--dark-color) 84%, transparent 85%) var(--weave-straight-attributes),
+    linear-gradient(45deg, transparent 40%, var(--base-color) 41% 46%, var(--medium-color) 46.1% 53.9%, var(--base-color) 54% 59%, transparent 60%) var(--weave-straight-attributes),
+    linear-gradient(135deg, transparent 40%,var(--light-color) 41% 46%, var(--medium-color) 46.1% 53.9%, var(--dark-color) 54% 59%, transparent 60%) var(--weave-straight-attributes),
+    linear-gradient(135deg, transparent 15%,var(--medium-color) 16%, var(--light-color) 20%, var(--dark-color) 24%, transparent 25%) var(--weave-straight-attributes),
+    linear-gradient(45deg, transparent 25%,var(--medium-color) 26%, var(--light-color) 30%, var(--dark-color) 34%, transparent 35%) var(--weave-straight-attributes);
+}
+
+body {
+  overflow: hidden;
+  background: var(--weave-straight), #1d1e22;
+}
+</style>

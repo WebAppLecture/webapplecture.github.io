@@ -1,0 +1,48 @@
+<h2>Code Examples</h2>
+<p>Das Skript enthält interaktive Codebespiele.</p>
+<ul>
+    <li>Im oberen Teil gibt es je ein Eingabefeld für HTML, CSS und Javascript.
+        <ul>
+            <li>Diese können beliebig verändert werden, die Änderungen werden jedoch nicht gespeichert!</li>
+            <li>Ihr könnt aber natürlich hier Code ausprobieren und ihn dann herauskopieren.</li>
+        </ul>
+    </li>
+    <li>Im unteren Teil werden diese in einem <code>&lt;iframe&gt;</code> als komplett separate Seite geladen.
+        <ul>
+            <li>Der Code wird ausgeführt sobald man einmal in den Editor klickt.</li>
+            <li>Wenn man auf einen anderen Teil der Seite klickt beendet dies die Ausführung um Resourcen zu sparen.</li>
+        </ul>
+    </li>
+    <li>Javascript Fehler werden, wenn sie auftreten, unter dem Ausgabefenster angezeigt.
+        <ul>
+            <li>Es wird auch angegeben wo genau der Fehler auftritt. (at Zeile:Spalte)</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- Code -->
+<script>
+window.parent.postMessage(
+    {message: "Hier werden Javascript Fehler angezeigt",
+    lineNumber: 4, 
+    columnNumber: 20, 
+    id: window.id}, 
+    '*');
+</script>
+
+<style>
+p {
+    color: red;
+}
+</style>
+
+<html>
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Meine erste Überschrift</h2>
+    <p>Mein erster <em>Absatz</em></p>
+</body>
+</html>
+</html>
+

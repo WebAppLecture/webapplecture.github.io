@@ -1,0 +1,107 @@
+<h2>Klassen in JavaScript (ab ES6)</h2>
+<div class="left">
+<h3>Syntax</h3>
+<ul>
+<li>In JavaScript gab es vor ES 6 <strong>kein</strong> Schlüsselwort um Klassen <strong>direkt</strong> zu erzeugen </li>
+<li>Jedoch bietet uns JS jetzt das <code>class</code> Schlüsselwort um Klassen zu erstellen </li>
+<li>Jede Klasse hat einen <code>constructor</code>, mit diesem werden Instanzen der Klasse erstellt </li>
+<li>Methoden in Klassen werden direkt mit ihrem Namen erstellt und sind danach als <code>myClass.methodenName()</code> aufrufbar</li>
+<li>Interne Eigenschaften und Methoden einer Klasse müssen <strong>intern</strong> über das <code>this</code> Schlüsselwort aufgerufen werden!</li>
+</ul>
+<h3>Statische Felder und Funktionen</h3>
+<ul>
+    <li>Statische Eigenschaften und Methoden (Felder) können ebenfalls hinzugefügt werden</li>
+<code><pre>
+class NameDerKlasse {
+
+    constructor(parameter) {
+        this.parameter = parameter;
+    }
+
+    static compare(a, b) {
+        return a.parameter - b.parameter;
+    }
+
+}
+</pre></code>
+<li>Statische Felder sind instanzlos (d.h. unabhängig) und können von jeder Instanz aufgerufen werden</li>
+<li>Statische Methoden sehen nur weitere statische bzw. im aktuellen Kontext vorhandene Felder</li>
+</ul>
+
+
+<!-- Code -->
+<script>
+class Person {
+    constructor(alter) {
+        this.alter = alter ?? (Math.random() * 120).toFixed(0);
+    }
+    geburtstag() {
+        this.alter++;
+    }
+    static istÄlter(a, b) {
+        return a.alter - b.alter;
+    }
+}
+let feldA = document.querySelector("#person-a"),
+    feldB = document.querySelector("#person-b"),
+    personA, 
+    personB, 
+    vergleich = document.querySelector("#vergleich"),
+    ergebnis = document.querySelector("#ergebnis");
+
+init(feldA, personA);
+init(feldB, personB);
+
+vergleich.addEventListener('click', () => {
+    console.log(personA, personB, Person.istÄlter(personA, personB));
+    ergebnis.value = (Person.istÄlter(personA, personB) ? "A" : "B") + " ist älter!";
+})
+
+function init(target, person) {
+    let neu = target.querySelector(".neu"),
+        geburtstag = target.querySelector(".geburtstag"),
+        output = target.querySelector("input");
+    
+    person = new Person();
+
+    neu.addEventListener("click", () => {
+        person = new Person();
+        output.value = person.alter;
+    });
+    geburtstag.addEventListener("click", () => {
+        person.geburtstag();
+        output.value = person.alter;
+    });
+}
+
+</script>
+<style>
+fieldset > *:not(legend) {
+    width: 32%;
+}
+
+fieldset {
+    border-radius: 10px;
+    margin: 10px;
+}
+
+legend {
+    color: #ddd;
+    font-family: monospace;
+}
+</style>
+<html>
+<fieldset id="person-a">
+    <legend>Person A</legend>
+    <button class="neu">Neue Person</button>
+    <button class="geburtstag">Geburtstag</button>
+    <input/>
+</fieldset>
+<button id="vergleich">Vergleich</button><input id="ergebnis"/>
+<fieldset id="person-b">
+    <legend>Person B</legend>
+    <button class="neu">Neue Person</button>
+    <button class="geburtstag">Geburtstag</button>
+    <input/>
+</fieldset>
+</html>

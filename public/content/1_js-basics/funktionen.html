@@ -1,0 +1,83 @@
+<h2>Funktionen</h2>
+<ul>
+<li>Diese werden über das Schlüsselwort <code>function</code> erstellt. <code>function f(x) {}</code></li>
+<li>Jeder Parameter ist in JavaScript <strong>optional</strong> - daher können Funktionen nicht überladen werden</li>
+<li><code>arguments</code> (Array) gibt Zugriff auf alle übergebenen Parameter</li>
+<li><code>this</code> gibt Zugriff auf den Scope in dem die Funktion aufgerufen wurde</li>
+<li>Man kann Standardwerte für Parameter definieren: <code>function f(x = 5) { }</code></li>
+<li>Funktionsaufrufe geschehen über den Funktionsnamen und den Parameterwerten in Klammern <code>f(5)</code></li>
+<li>JavaScript kennt keine explizit genannten Rückgabewerte, da die Sprache dynamisch ist</li>
+<li>Standardmäßig wird <code>undefined</code> zurückgegeben - außer man gibt mit <code>return</code> etwas zurück</li>
+<li>Funktionen können auch anonym erstellt werden <code>function(x) {}</code>
+    <li>Für einmalige Verwendung, als IIFE (Immediatly-Invoked Funtion Expression): <code>(function(){})()</code></li>
+    <li>Zum speichern in einer Variable (verhindert Hoisting!): <code>const f = function(){}</code></li>
+    <li>Als Parameter in einer anderen Funktion <code>f(function(){})</code></li>
+</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let a = document.querySelector("#a"),
+    b = document.querySelector("#b"),
+    button = document.querySelector("button"),
+    fnSelect = document.querySelector("#functions")
+    output = document.querySelector("#output"),
+    functions = [
+        add,
+        multiply,
+        subtract,
+        divide,
+    ];
+
+fillOptions(functions, fnSelect);
+
+function add(a, b) {
+    return a + b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function subtract() {
+    return arguments[0] - arguments[1];
+}
+
+function divide(a, b) {
+    if(b*1 === 0) {
+        return "durch Null geteilt!"
+    }
+    return a / b;
+}
+
+button.addEventListener("click", function() {
+    let fnId = fnSelect.selectedOptions[0].value,
+        f = functions[fnId];
+    output.value = f(a.value, b.value);
+});
+
+function fillOptions(list, select) {
+    list.forEach(function(item, i) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = item?.name;
+        select.appendChild(option);
+    });
+}
+</script>
+<style>
+div > * {
+    width: 19%;
+}
+
+</style>
+<html>
+<div>
+<input id="a" type="text"/>
+<input id="b" type="text"/>
+<select id="functions"></select>
+<button>apply</button>
+<input id="output" type="text"/>
+</div>
+</html>

@@ -1,0 +1,28 @@
+<h2>3D Effekte mit CSS3</h2>
+
+<figure><img src="./images/slides/css3-3d.png" alt="CSS3 ermöglicht die Anordnung von Elementen in drei Dimensionen"><figcaption>3D CSS</figcaption></figure>
+
+<ul>
+<li>Mit CSS3 kann man auch 3D Transformationen einer Webseite hinzufügen</li>
+<li>Die Vorteile liegen auf der Hand:
+<ul>
+<li>Der Browser kann mit <code>&lt;div&gt;</code> Objekten viel besser Umgehen als mit Zeichnungen auf einem Canvas</li>
+<li>Somit erhält man Vorteile durch mögliche Hardwarebeschleunigung</li>
+<li>Text und weitere Elemente (z.B. auch Videos etc.) kann man direkt in HTML leichter einbinden als in einem Canvas</li>
+<li>HTML und CSS benötigen keinen Code und laufen somit selbst auf Browsern mit deaktiviertem JavaScript</li>
+</ul>
+</li>
+</ul>
+
+<!-- Code -->
+<style>
+body { transform: perspective(5); } /*Stellt Perspektive ein*/
+div { 
+    transform: scaleZ(2); /*Skaliert die z-Koordinaten*/
+    transform: rotateZ(10deg); /*Rotiert um z-Achse*/
+    transform: skewZ(15px); /*Verzerrt z-Richtung*/
+}
+</style>
+<html>
+<div></div>
+</html>
