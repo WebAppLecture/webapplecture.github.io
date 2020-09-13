@@ -1,0 +1,41 @@
+<h2>Die Größe festlegen</h2>
+<ul>
+<li><code>width</code> bzw. <code>height</code> stellen eine feste Größe ein</li>
+<li>Wir können mit <code>min-width</code> bzw. <code>max-width</code> minimale bzw. maximale Größen einstellen</li>
+<li>Nicht nur </li>
+<li>Über <code>margin</code> kann man Abstand zu anderen Elementen einstellen </li>
+<li><code>border</code> setzt den Rahmen (Breite, Stil, Farbe)</li>
+<li><code>padding</code> setzt den inneren Abstand (Breite)</li>
+<li>Das CSS Box-Model bestimmt die Größe von Elementen auf der Seite. </li>
+<li>Wie groß das Element dann genau ist berechnet sich auf Basis des gewählten Box-Models:
+    <ul>
+        <li><code>border-box</code>: <code>width</code>/<code>height</code> legen die Gesamtgröße des Elements fest, border und padding verkleinern die Größe des Inhalts</li>
+        <li><code>content-box</code>: Die Größe des Contents wird gesetzt, padding und border addieren sich dazu (Standard des Browsers!)</li>
+    </ul>
+</li>
+</ul>
+<figure><img src="./images/slides/css-box-model.png" alt="Veranschaulichung des Box-Models"><figcaption>content-box model</figcaption></figure>
+
+<!-- Code -->
+
+<style>
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    border: 5px solid black;
+    padding: 5px 10px;
+    margin: 10px;
+    /* Background auf content begrenzen */
+    background-clip: content-box; 
+}
+
+.border {
+    box-sizing: border-box
+}
+</style>
+
+<html>
+<div class="border"></div>
+<div></div>
+</html>

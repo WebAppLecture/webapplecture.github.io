@@ -1,0 +1,78 @@
+<h2>Licht und Schatten</h2>
+
+<ul>
+    <li>Mit CSS3 sind Schatten für Texte und Boxen möglich</li>
+    <li>Die Syntax für Boxen lautet
+        <pre lang="css">#eins { box-shadow: 5px 5px 0 0 #666; }
+        #zwei { box-shadow: 0 0 5px 10px #F00 inset; }
+        </pre>
+    </li>
+    <li>Bei Text ist die Syntax sehr ähnlich z.B.
+        <pre lang="css">#drei { text-shadow: 0 0 5px red; }
+        #vier { text-shadow: -3px 3px 2px #0F0; }
+        </pre>
+    </li>
+    <li>Die Syntax ist also immer so aufgebaut:
+        <ul>
+            <li>Versatz horizontal (pos. rechts, neg. links)</li>
+            <li>Versatz vertikal (pos. unten, neg. oben)</li>
+            <li>Breite (nur bei box-shadow)</li>
+            <li>Verschwommenheit (0 entspricht klar)</li>
+            <li>Farbe des Schattens</li>
+            <li>Richtung <code>outset</code> (Standard) bzw. <code>inset</code></li>
+        </ul>
+    </li>
+    <li>Schatten können auch überlagert werden, wodurch sehr komplexe Effekte erstellt werden können.
+        <pre>
+box-shadow: 
+    0 0 5px 0 black inset,
+    0 0 0px 10px #aaa inset,
+    0 0 5px 12px black inset;
+        </pre>
+    </li>
+</ul>
+
+<!-- Code -->
+<style>
+div {
+    width: 250px; 
+    height: 60px; 
+    background: #CCC; 
+    border: 1px solid #000; 
+    margin: 10px auto; 
+    color:#677;
+    font-size: 3em;
+    text-align: center;
+}
+
+div:nth-of-type(1) {
+    box-shadow: 5px 5px 0 0 #666; 
+}
+
+div:nth-of-type(2) {
+    box-shadow: 0 0 5px 10px #F00 inset;
+}
+
+div:nth-of-type(3) {
+    text-shadow: 0 0 5px red;
+}
+
+div:nth-of-type(4) {
+    text-shadow: -3px 3px 2px #0F0;
+}
+
+div:nth-of-type(5) {
+    box-shadow: 
+      0 0 5px 0 black inset,
+      0 0 0px 10px #aaa inset,
+      0 0 5px 12px black inset;    
+}
+
+</style>
+<html>
+<div>#eins</div>
+<div>#zwei</div>
+<div>#drei</div>
+<div>#vier</div>
+<div>komplex</div>
+</html>

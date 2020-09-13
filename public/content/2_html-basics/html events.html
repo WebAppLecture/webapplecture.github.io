@@ -1,0 +1,64 @@
+<h2>Interaktion über Ereignisse</h2>
+<div class="left">
+<ul>
+    <li>Ereignisse (Events) sind Aktionen die von JavaScript detektiert werden können</li>
+    <li>Jedes HTML Element hat einige bestimmte Ereignisse, die wir nutzen können</li>
+    <li>Mit <code>.addEventlistener(event, function)</code> melden wir Funktionen an, welchen beim Eintreten des Events aufgerufen werden.</li>
+    <li>Mit <code>.removeEventlistener(event, function)</code> entfernen wir sie wieder.</li>
+    <li>Beispiele für Ereignisse:
+        <ul>
+            <li>Ein Mausklick (<code>click</code>)
+                <ul>
+                    <li>Start: <code>mousedown</code></li>
+                    <li>Ende: <code>mouseup</code></li>
+                </ul>
+            </li>
+            <li>Ein Tastendruck (<code>keypress</code>)
+                <ul>
+                    <li>Start: <code>keydown</code></li>
+                    <li>Ende: <code>keyup</code></li>
+                </ul>
+            </li>
+            <li>Absenden des Formulars (<code>submit</code>)</li>
+            <li>Eingabe / Änderung von Formelement (<code>change</code>)</li>
+            <li>Betreten der Seite (<code>load</code>)</li>
+            <li>Mit der Maus über ein Element fahren (<code>mouseover</code>)</li>
+        </ul>
+    </li>
+    <li>JavaScript ist komplett ereignisgesteuert</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let colorDiv = document.querySelector("#colorSetExample"),
+    button = colorDiv.querySelector("button"),
+    select = colorDiv.querySelector("select");
+
+button.addEventListener('click', 
+    setName.bind(button, colorDiv));
+select.addEventListener('change', 
+    setColor.bind(select, colorDiv));
+
+function setName(colorDiv) {
+    this.innerHTML = colorDiv.style.background;
+}
+function setColor(colorDiv) {
+    if(this.selectedIndex) {
+        colorDiv.style.background = 
+            this.options[this.selectedIndex].value;
+    }
+}
+</script>
+<html>
+<div id="colorSetExample" style="background: none;">
+    <select>
+        <option>---</option>
+        <option value="#F00">Red</option>
+        <option value="#0F0">Green</option>
+        <option value="#00F">Blue</option>
+    </select>
+
+    <button>Anklicken</button>
+</div>
+</html>

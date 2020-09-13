@@ -1,0 +1,46 @@
+<h2>Kurzgefasst</h2>
+<p>
+    <code>document.querySelector</code> und <code>.addEventlistener()</code> werden sehr oft benutzt und sind viel Schreibaufwand.
+</p>
+<p>
+    Deswegen ersetzten viele Entwickler sie durch andere Begriffe, was in Javascript überhaupt kein Problem ist.
+</p>
+
+<!-- Code -->
+<script>
+HTMLElement.prototype.on = 
+    HTMLElement.prototype.addEventListener;
+$ = selector => document.querySelector(selector);
+$$ = selector => document.querySelectorAll(selector);
+
+$("button").on("click", () => {
+    $("body").style.background = 
+    `hsl(${Math.random() * 360}, 50%, 50%)`;
+});
+
+/*
+document.querySelector("button")
+    .addEventListener("click", () => {
+    document.querySelector("body").style.background =
+    `hsl(${Math.random() * 360}, 50%, 50%)`;
+  });
+*/
+</script>
+<style>
+button {
+    width: 100px;
+    height: 100px;
+    border: 5px solid white;
+    border-radius: 50%;
+    transform: translate(
+      calc(50vw - 50%), calc(50vh - 50%)
+    );
+    background: black;
+    color: white;
+    font-size: 30;
+    outline: none;
+}
+</style>
+<html>
+<button>Go!</button>
+</html>

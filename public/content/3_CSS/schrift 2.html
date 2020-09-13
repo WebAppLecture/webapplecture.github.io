@@ -1,0 +1,25 @@
+<h2>Mehr Schriftarten!</h2>
+<ul>
+<li>Mit CSS3 haben wir die Möglichkeit eigene Schriften zu definieren und zu verwenden</li>
+<li>Wir können eigens auf unserem Server gespeicherte Schriften verwenden oder extern gespeicherte</li>
+<li>Die Syntax hierfür definiert in CSS eine neue Schriftart, z.B.
+<pre lang="css">@font-face {
+    font-family: 'Gentium'; /* Wird der neue Name! */
+    src: local('Gentium'), url('../fonts/Gentium.ttf'); /* Bevorzugt nicht downloaden */
+    font-style: italic; /* Optional: Charakterisiert Schriftart z.B. Verwendung nur bei italic*/ }
+#Verwendung { font: italic bold 14pt 'Gentium'; }
+</pre>
+</li>
+<li>Formate? true-type-font (<strong>ttf</strong>) geht mittlerweile <strong>überall</strong> - bevorzugt ist <strong>WOFF</strong> (Web Open Font Format)</li>
+<li>Über <a href="https://fonts.google.com">Google Webfonts</a> kann man an Schriften kommen, die direkt über den Google Server abrufbar sind</li>
+<li>Einbindung von Externen Schriften
+    <ul>
+        <li>Im HTML header:
+            <pre>&lt;link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet"&gt;</pre>
+        </li>
+        <li>Im CSS per <code>@import</code>
+            <pre>@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');</pre>
+        </li>
+    </ul>
+</li>
+</ul>

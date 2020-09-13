@@ -1,0 +1,40 @@
+<h2>Transformationen</h2>
+Neu in CSS3 sind auch Koordinatentransformationen <code>transform: values</code> - hier haben wir mehrere Möglichkeiten:
+<ul>
+<li>Translation mit <code>translate(dx,dy)</code> zum Verschieben (Standard: 0, 0)</li>
+<li>Rotation mit <code>rotate(alpha)</code> zum Drehen (Standard: 0)</li>
+<li>Skalieren mit <code>scale(zoomfaktor)</code> zum Verändern der Größe (Standard: 1)</li>
+<li>Verzerren mit <code>skew(phi,psi)</code> zur Schrägstellung (Standard: 0, 0)</li>
+<li>Dies geht auch alles in 3D, einstellung der Perspektive über <code>perspective: value</code></li>
+</ul>
+<figure><img src="./images/slides/css3-3d.png" alt="CSS3 ermöglicht die Anordnung von Elementen in drei Dimensionen"><figcaption>3D CSS</figcaption></figure>
+
+<!-- Code -->
+<style>
+div:nth-of-type(2) { transform: translate(10px, -10px); }
+div:nth-of-type(3) { transform: rotate(45deg); }
+div:nth-of-type(4) { transform: scale(1.5); }
+div:nth-of-type(5) { transform: skewX(15deg); }
+div:nth-of-type(6) { transform: skew(15deg, 15deg); }
+div:nth-of-type(7){ transform: scale(0.5) rotate(-20deg) translate(0, 10px);  }
+body { perspective: 80px;}
+div:nth-of-type(8){ perspective: 50px; transform: rotateX(45deg) rotateY(80deg);  }
+div {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: black;
+    color: white;
+    margin: 10px;
+}
+</style>
+<html>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</html>

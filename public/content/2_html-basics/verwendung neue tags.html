@@ -1,0 +1,60 @@
+<h2>Wann verwende ich die neuen Tags?</h2>
+<ul>
+<li>Für das <code>header</code> Element gilt:
+<ul>
+<li>Sollte das erste Element mit Inhalt auf der Seite sein</li>
+<li>Enthält im Regelfall Logos, Titel, Such- und Loginformulare sowie essentielle Links (z.B. Homepage)</li>
+<li>Es können aber auch <code>article</code> Elemente o.ä. einen <code>header</code> haben</li>
+</ul>
+</li>
+<li>Mit dem <code>main</code> Tag kann man den Hauptteil (Inhalt) einer Seite markieren</li>
+<li>Die Spezifikation für den <code>nav</code> Tag sagt:
+<ul>
+<li>Markiert eine Navigationsgruppe, aber sollte nicht für jede Sammlung von Links, z.B. Sponsorenlinks, verwendet werden</li>
+<li>Eine Suchergebnisseite stellt auch kein <code>nav</code> dar, da hier die Suchergebnisse den Inhalt darstellen</li>
+</ul>
+</li><li>Der <code>footer</code> dient für folgende Zwecke:
+<ul>
+<li>Letztes Element mit Inhalt (z.B. weiterführende rechtliche Links und Hinweise)</li>
+<li>Hier können Informationen über den Autor (<code>address</code>), das Erstellungsdatum (<code>time</code>) sowie Links platziert werden</li>
+</ul>
+</li>
+</ul>
+
+<!-- Code -->
+
+<style>
+article {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 2px;
+}
+article > article {
+    border-radius: 8px;
+}
+header {
+    border: 1px solid red;
+    border-radius: 8px;
+}
+article > article > header{
+    border-radius: 6px;
+}
+</style>
+<html>
+<article> 
+    <header>
+        <h2>Physics of the future</h2>
+        <time datetime=2011-10-13 pubdate>13. Oktober 2011</time>
+    </header>
+    <p>Michio Kaku's Buch ist jetzt schon ein Klassiker ohne Ablaufdatum.</p>
+    <footer> 
+        Veröffentlicht in Bücher von <address>Anonymous</address> mit 1 Kommentar
+    </footer>
+    <article> 
+        <header>
+            Kommentar von <a href="http://www.florian-rappl.de">Florian Rappl</a> um <time datetime="2011-10-14T08:45Z">8:45 Uhr am 14.10.2011</time>
+        </header>
+        <p>Hört sich gut an - das muss ich mir mal durchlesen!</p>
+    </article> 
+</article> 
+</html>

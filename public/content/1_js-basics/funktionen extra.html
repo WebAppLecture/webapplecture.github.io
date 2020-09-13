@@ -1,0 +1,66 @@
+<h2>Fat-Arrow Funktionen</h2>
+<p>Seit ES 6: Verwendung des "Fat-Arrow-Operators" <code>=></code></p>
+<ul>
+    <li>Alternative Kurzschreibweise für Funktionen</li>
+    <li><code>arguments</code> ist nicht verfügbar</li>
+    <li><code>this</code> referenziert den Scope bei Definiton der Funktion, nicht Aufruf!</li>
+    <li>Standardwerte setzten: <code>let f = (x = 5) => </code></li>
+    <li>fat arrow ist immer anonym, kann aber in Variablen gespeichert werden.</li>
+    <li>Syntax:
+        <ul>
+            <li><code>(param1, param2, ..., paramN) => { statements }</code> Parameter in runden Klammern, gefolgt vom Funktionskörper in geschweiften.</li>
+            <li><code>(param1, param2, ..., paramN) => expression</code> Falls Funktionskörper ein einziger Ausdruck ist, keine Klammern nötig.</li>
+            <li><code>(param1, param2, ..., paramN) => { return expression }</code> bei geschweiften Klammern muss return explizit definiert sein</li>
+            <li><code>param1 => { statements }</code> bei einzelnen Parametern sind die Klammern optional</li>
+            <li><code>param1 => ({ x: param1 })</code> Körper einklammern um Objektliterale zurück zu geben</li>
+            <li><code>() => ({ x: 5 })</code> parameterlose Parameterliste muss mit Klammern umgeben sein</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let a = document.querySelector("#a"),
+    b = document.querySelector("#b"),
+    button = document.querySelector("button"),
+    fnSelect = document.querySelector("#functions")
+    output = document.querySelector("#output"),
+    functions = [
+        add = (a, b) => a + b,
+        muliply = (a, b) => a * b,
+        subtract = (a, b) => a - b,
+        divide = (a, b) => b*1 === 0 ? "durch Null geteilt" : a / b,
+    ];
+
+((list, select) => {
+    list.forEach((item, i) => {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = item?.name;
+        select.appendChild(option);
+    });
+})(functions, fnSelect);
+
+button.addEventListener("click", () => {
+    let fnId = fnSelect.selectedOptions[0].value,
+        f = functions[fnId];
+    output.value = f(a.value, b.value);
+});
+
+
+</script>
+<style>
+div > * {
+    width: 19%;
+}
+</style>
+<html>
+<div>
+<input id="a" type="text"/>
+<input id="b" type="text"/>
+<select id="functions"></select>
+<button>apply</button>
+<input id="output" type="text"/>
+</div>
+</html>

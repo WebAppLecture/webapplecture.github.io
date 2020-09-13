@@ -1,0 +1,95 @@
+<h2>Arrays (2)</h2>
+Array bieten umfangreiche Funktionen um ihren Inhalt zu verarbeiten. <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array#">Komplette Liste</a>
+<ul>
+<li><code>includes()</code> Array auf die Existenz eines Eintrags überprüfen</li>
+<li><code>join()</code> Verbindet alle Elemente zu einem String <code>[1,2,3].join(",") -> "1,2,3"</code></li>
+<li><code>reverse()</code> dreht die Reihenfolge um</li>
+<li><code>fill()</code> füllt das Array <code>[1,2,3].fill("a",1,2) -> [1,"a",3]</code></li>
+<li><code>flat(tiefe)</code> vereinfacht geschachtelte Arrays bis zur gegebenen Tief. <code>[[1,2],[3]].flat(1) -> [1,2,3]</code></li>
+</ul>
+Vielen muss man eine Funktion übergeben.
+<ul>
+    <li><code>sort(f)</code> sortiert das Array - optional unter Angabe einer Sortierfunktion; Standardmäßig lexikalisch.</li>
+    <li><code>find(f)</code> gibts das erste Element zurück für das <code>f(element)</code> <code>true</code> zurückgibt.</li>
+    <li><code>filter(f)</code> gibt ein Array aller Elemente zurück für die <code>f(element)</code> <code>true</code> zurückgibt.</li>
+    <li><code>some(f)</code> bestimmt ob mindestens für ein Element <code>f(element)</code> <code>true</code> zurückgibt.</li>
+    <li><code>every(f)</code> bestimmt ob für alle Elemente <code>f(element)</code> <code>true</code> zurückgibt.</li>
+    <li><code>map(f)</code> ersetzt jeden Eintrag durch das Ergebnis von <code>f(el, i, arr)</code>.</li>
+    <li><code>reduce(f)</code> reduziert das Array auf einen einzigen Wert, indem es jeweils zwei Elemente (von links nach rechts) mit <code>f(a,b)</code> reduziert.</li>
+    <li><code>flatMap(f)</code> identisch zu <code>map(f)</code> gefolgt von <code>flat(1)</code>, etwas effizienter.</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let input = document.querySelector("#array"),
+    button = document.querySelector("button"),
+    opsSelect = document.querySelector("#ops"),
+    fnSelect = document.querySelector("#functions")
+    output = document.querySelector("textarea"),
+    ops = [
+        (a, f) => a.sort(f),
+        (a, f) => a.find(f),
+        (a, f) => a.filter(f),
+        (a, f) => a.some(f),
+        (a, f) => a.every(f),
+        (a, f) => a.map(f),
+        (a, f) => a.reduce(f),
+    ],
+    functions = [
+        undefined,
+        (i, j) => i - j,
+        (i, j) => j - i,
+        (i, j) => i + j,
+        i => i === 1,
+        i => i !== 1,
+        i => i > 10,
+        i => i + 2,
+        i => i % 2,
+    ];
+
+fillOptions(ops, opsSelect);
+fillOptions(functions, fnSelect);
+
+button.addEventListener("click", () => {
+    let opId = opsSelect.selectedOptions[0].value,
+        fnId = fnSelect.selectedOptions[0].value,
+        array = input.value.split(",").map(i => i * 1),
+        op = ops[opId],
+        f = functions[fnId];
+    output.value = op(array, f);
+});
+
+function fillOptions(list, select) {
+    list.forEach((item, i) => {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = item?.toString();
+        select.appendChild(option);
+    });
+}
+</script>
+<style>
+#array,
+textarea {
+    width: 100%;
+}
+
+#ops, #functions {
+    width: 40%;
+}
+
+button {
+    width: 18%;
+}
+
+</style>
+<html>
+<div>
+<input id="array" type="text" value="1,5,12,23,100"/>
+<select id="ops"></select>
+<select id="functions"></select>
+<button>apply</button>
+<textarea></textarea>
+</div>
+</html>

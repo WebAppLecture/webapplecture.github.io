@@ -1,0 +1,93 @@
+<h2>Kontrollstrukturen</h2>
+<ul>
+<li>Bis jetzt geht unser Code immer linear runter - keine Verzweigung möglich</li>
+<li>Viele (z.B. aus C) bekannte Schlüsselwörter gibt es auch hier:
+<ul>
+<li><code>for(_;_;_) {...}</code> für eine Zählerschleife (Vor Ausführung, Bedingung, Ende d. Iteration)</li>
+<li><code>for(...) {...}</code> für eine implizite Zählerschleife ("foreach"), z.B. <code>for(var name in names)</code></li>
+<li><code>while(_) {...}</code> für eine kopfgesteuerte Schleife (Bedingung)</li>
+<li><code>do {...} while(_);</code> für eine fußgesteuerte Schleife (Bedingung)</li>
+<li><code>switch(_) { case _: ... break; }</code> für eine Fallunterscheidung (Variable, Wert)</li>
+<li><code>if(_) {...} else {...}</code> für eine bedingte Anweisung (Bedingung)</li>
+</ul>
+</li>
+<li>Beachte den Unterschied zwischen <code>for(var name in names)</code> und <code>for(var name of names)</code>! (Merke: <code>in</code> wie Index, <code>of</code> wie Object)</li>
+<li>Die Bedingung wird als boolscher Wert abgefragt - also <code>true</code> oder <code>false</code></li>
+<li>Bedingte Anweisungen können analog zu allen C ähnlichen Sprachen beliebig verschachtelt werden</li>
+<li>Um in Fallunterscheidungen einen Standardblock zu definieren, verwendet man anstelle von <code>case</code> das Schlüsselwort <code>default</code></li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let a = document.querySelector("#a"),
+    button = document.querySelector("button"),
+    fnSelect = document.querySelector("#functions")
+    output = document.querySelector("#output"),
+    functions = [
+        forIn,
+        forOf,
+        forIncrementing,
+        forDecrementing,
+    ];
+
+((list, select) => {
+    list.forEach((item, i) => {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = item?.name;
+        select.appendChild(option);
+    });
+})(functions, fnSelect);
+
+button.addEventListener("click", () => {
+    let fnId = fnSelect.selectedOptions[0].value,
+        f = functions[fnId],
+        result = [];
+    f(a.value.split(","), item => result.push(item));
+    output.value = result.join(",");
+});
+
+function forIn(array, callback) {
+    for(let n in array) {
+        callback(n); // hier müsste array[n] stehen!
+    }
+}
+
+function forOf(array, callback) {
+    for(let n of array) {
+        callback(n);
+    }
+}
+
+function forIncrementing(array, callback) {
+    for(let i = 0; i <= array.length; i++) {
+        callback(array[i]);
+    }
+}
+
+function forDecrementing(array, callback) {
+    for(let i = array.length; i--; ) {
+        callback(array[i]);
+    }
+}
+
+
+</script>
+<style>
+#a, #output {
+    width: 100%;
+}
+select, button {
+    width: 49%;
+}
+
+</style>
+<html>
+<div>
+<input id="a" type="text" value="C#,Java,Python,Ruby"/>
+<select id="functions"></select>
+<button>apply</button>
+<input id="output" type="text"/>
+</div>
+</html>

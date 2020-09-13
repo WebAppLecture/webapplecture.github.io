@@ -1,0 +1,82 @@
+<h2>Der richtige Rahmen</h2>
+<code>border: breite style farbe;</code> Bsp: <code>border: 2px solid red;</code>
+<ul>
+<li>Mit CSS3 wurden Rahmen deutlich flexibler - wir können nun über <code>border-radius</code> <strong>runde Ecken</strong> erzeugen!</li>
+<li>Wir setzen <code>border-radius: lo ro ru lu</code> von links oben nach links unten</li>
+<li>Der Teufel liegt im Detail: Man kann auch mit zwei Angaben arbeiten - sozusagen elliptische Ecken! 
+    z.B. <code>border-radius: lo1 ro1 ru1 lu1 / lo2 ro2 ru2 lu2</code> 
+    - ist immer äquivalent ist zu den einzelnen Angaben z.B. 
+    <code>border-top-left-radius: lo1 lo2</code>
+</li>
+<li>Außerdem haben wir viele <code>border-style</code>s zu Auswahl (siehe Beispiel)</li>
+<li>Es gibt auch noch eine <code>outline</code> ähnlich zur <code>border</code>, aber ohne radius optionen</li>
+</ul>
+<h2>Margin und Padding</h2>
+<ul>
+    <li>Margin definiert den Freiraum um jedes Element</li>
+    <li>Padding definiert den Abstand des Inhalts eines Element vom Rand</li>
+    <li>Es gibt mehrere Arten die bBreite zu definieren:
+    <ul>
+        <li><code>margin: X;</code> - Links, Rechts, Oben, Unten Abstand X z.B. 5px</li>
+        <li><code>margin: X Y;</code> - Oben, Unten Abstand X und Links, Rechts Abstand Y</li>
+        <li><code>margin: O R U L;</code> - Oben, Rechts, Unten, Links</li>
+        <li><code>margin-top: 17px;</code> - Oder direkt</li>
+    </ul>
+    </li>
+</ul>
+
+<!-- Code -->
+<script>
+let button = document.querySelector("button"),
+    styles = ["dashed","dotted","double","groove","inset","outset","ridge","solid"],
+    i = 0;
+
+button.addEventListener("click", ()=> {
+    button.style.setProperty("border-style",styles[i]);
+    button.innerText = styles[i];
+    i < styles.length - 1 ? i++ : i = 0;
+});
+</script>
+<style>
+div { 
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    background: white;
+    border: 5px solid #CCC;
+    border-left: 15px dashed #F00; 
+    border-bottom-width: 1em;
+    border-bottom-style: dotted;
+    border-bottom-color: green; 
+    outline: 2px solid yellow;
+}
+
+div:nth-of-type(2) {
+    border-radius: 50%;
+}
+
+div:nth-of-type(3) {
+    border-radius: 50% / 10px;
+}
+
+div:nth-of-type(4) {
+    border-radius: 5% 10% 25% 50% / 50%;
+    background-clip: padding-box;
+}
+
+button {
+  background: black;
+  border: 20px solid red;
+  width: 300px;
+  height: 100px;
+  color: white;
+}
+</style>
+<html>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<button>Klick für border-styles Demo</button>
+</html>

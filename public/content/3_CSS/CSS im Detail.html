@@ -1,0 +1,23 @@
+<h2>CSS im Detail</h2>
+<ul>
+<li>Mit Hilfe von CSS legt man Designregeln fest (<strong>Write once use anywhere</strong>)</li>
+<li>Durch CSS läßt sich Design sehr schnell und einfach verändern</li>
+<li>Ein weiterer Vorteil von CSS liegt darin, dass jede Menge Traffic gespart wird (kürzere Ladezeit)</li>
+<li>Neben den Verwenden von Tagnamen, ID, Klasse, Attributen und Pseudo-Selektoren kann man Selektoren auch Gruppieren: Durch ein Komma (<code>,</code>) getrennte Selektoren werden kombiniert, z.B. geht
+<pre lang="CSS">h1 { /* Regeln */ }
+h2 { /* Die gleichen Regeln wie h1 */ /* Eigene Regeln */ }
+/* Viel besser wäre */
+h1, h2 { /* Gemeinsame Regeln */ }
+h2 { /* Eigene Regeln */}
+</pre>
+</li>
+<li>Einige Pseudoklassen (sehr nützlich um optische Differenzierung bei Interaktionen zu ermöglichen!):
+<ul>
+<li>Vorher neben <code>:focus</code> v.a. für Links bekannt (<code>:visited</code>, <code>:active</code>, <code>:hover</code>, <code>:link</code>)</li>
+<li>Mit CSS2 <code>:first-child</code>, <code>:last-child</code>, <code>:before</code>, <code>:after</code>, <code>:lang(<i>id</i>)</code>, <code>:first-letter</code>, <code>:first-line</code>)</li>
+<li>In CSS3 <code>:nth-child(<i>N</i>)</code>, <code>:nth-last-child(<i>N</i>)</code>, <code>:nth-of-type(<i>N</i>)</code>, <code>:enabled</code>, <code>:disabled</code>, <code>:empty</code>, ...</li>
+
+</ul>
+
+
+</li></ul>

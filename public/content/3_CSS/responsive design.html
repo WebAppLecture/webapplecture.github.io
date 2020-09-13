@@ -1,0 +1,26 @@
+<h2>Responsive Design</h2>
+<ul>
+<li>Mit CSS3 wurde auch ein neuer Ansatz für Webseiten Design eingeführt: sog. <strong>Media Queries</strong></li>
+<li>Dies bedeutet, dass die Webseite auf das verwendete Gerät (z.B. Mobiltelefon, PC, ...) und seine Eigenschaften (z.B. Größe, Auflösung, ...) reagiert</li>
+<li>Dies geschieht durch das <code>media</code> Attribut von Stylesheets, z.B.
+<pre lang="html">&lt;link rel="stylesheet" href="screenklein.css" media="screen and (max-width: 600px)" /&gt;
+&lt;link rel="stylesheet" href="allesklein.css" media="all and (max-width: 600px)" /&gt;
+&lt;link rel="stylesheet" href="smartphone.css" media="(max-device-width: 600px)" /&gt;
+</pre>
+<li>Alternativ auch direkt im Stylesheet mittels <code>@media</code></li>
+<li>Wie kann dergleichen aussehen? Wir schreiben uns CSS-Dokument und bauen dies z.B. so auf:
+<pre lang="css">/*Gemeinsame Regeln */
+@media screen /* Nur für Screen */
+{
+    body { width: 75%; }
+}
+@media print /* Nur für Print */
+{
+    body { width: 100%; }
+}
+</pre>
+</li>
+<li>Die media bzw @media-Regeln können auch sehr speziell und kompliziert aufgebaut werden (AND, OR, ...)</li>
+</li>
+<li>Weitere Abrufbare Eigenschaften sind (Auszug): <code>height</code> bzw. <code>device-height</code>, <code>orientation</code> (portrait, landscape), <code>aspect-ratio</code> bzw. <code>device-aspect-ratio</code>, <code>color</code> (Farbtiefe in Bits) und <code>resolution</code> (Dichte der Pixel in dpi)</li>
+</ul>

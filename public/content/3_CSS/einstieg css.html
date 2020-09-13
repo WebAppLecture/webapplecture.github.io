@@ -1,0 +1,32 @@
+<h2>Einstieg in CSS</h2>
+<figure><img src="./images/slides/css-rules.png" alt="CSS Regeln erklärt"><figcaption>Schema beim Aufbau von CSS-Regeln</figcaption></figure>
+
+<ul>
+    <li>CSS (Cascading Style Sheets) erlaubt uns HTML Dokumente graphisch zu erweitern.</li>
+    <li>Style sheets bestehen aus Regeln die mit Selektoren HTML Elementen graphische Eigenschaften zuordnen:
+        <pre lang="CSS">selektor1, selektor2, ... {
+    eigenschaft: wert;
+    eigenschaft: wert;
+}
+        </pre>
+    </li>
+    <li>Wo die Regeln definiert werden ist uns überlassen
+        <ul>
+            <li>Einbindung über eine externe Datei, üblicherweise im <code>&lt;head&gt;</code> des HTML Dokuments
+                <pre lang="html">&lt;link rel="stylesheet" href="beispieldatei.css"&gt;</pre>
+            </li>
+            <li>Direkt im HTML Dokument definiert
+                <pre lang="html">&lt;style&gt; ... &lt;/style&gt;</pre>
+            </li>
+            <li>Direkt im HTML Element definiert, hier definierte Regeln überstimmen andere Regeln!
+                <pre lang="html">&lt;element style="..."&gt;</pre>
+            </li>
+            <li>Über <code>@import</code> können wir weitere Stylesheets innerhalb eines Stylesheets einbinden, z.B.
+                <pre lang="css">@import url("/css/main.css");</pre>
+            </li>
+        </ul>
+    </li>
+<li>Einige Eigenschaften vererben an Kindelemente, so dass es z.B. reicht die Schriftart nur einmal zu setzen</li>
+<li>Es wird die spezifischste Regel angewendet</li>
+<li>Später geladene Regeln überstimmen frühere (Dokumente werden von oben nach unten geladen)</li>
+</ul>

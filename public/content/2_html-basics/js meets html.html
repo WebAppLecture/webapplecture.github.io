@@ -1,0 +1,27 @@
+<h2>JavaScript in HTML nutzen</h2>
+<ul>
+<li>Wir können mit JavaScript Werte aus HTML auslesen und manipulieren:
+<ul>
+<li>Die Seite ist im <code>document</code> Objekt gekapselt (hier ist z.B. auch das <code>&lt;body&gt;</code> Element als Objekt enthalten)</li>
+<li>Um im <code>document</code> gezielt auf Elemente zuzugreifen benutzen wir <code>document.querySelector()</code> oder <code>document.querySelectorAll()</code> wenn wir mehrere Elemente suchen, der Selektor Syntax entspricht dem von CSS und jQuery.
+    <ul>
+    <li><code>querySelector("#target")</code> um auf <code>&lt;div id="target"&gt;</code> zuzugreifen.</li>
+    <li><code>querySelector(".target")</code> um auf <code>&lt;div class="target"&gt;</code> zuzugreifen.</li>
+    <li><code>querySelector("[data-value='33']")</code> um auf <code>&lt;div data-value="33"&gt;</code> zuzugreifen.</li>
+    <li>Es gibt noch unzählige <a href="https://www.w3schools.com/cssref/css_selectors.asp">weitere Möglichkeiten</a>.</li>
+    </ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+
+</script>
+<html>
+    <button onclick="alert('Das ist ein Test');">
+        
+    </button>
+</html>

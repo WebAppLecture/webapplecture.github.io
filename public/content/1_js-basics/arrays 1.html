@@ -1,0 +1,48 @@
+<h2>Arrays (1)</h2>
+<ul>
+<li>Damit sich hinter einer Variablen mehr Objekte verstecken können, muss es sich um ein Array handeln</li>
+<li>Arrays können auf sehr unterschiedliche Art und Weise initialisiert werden, üblicherweise aber <code>let myArray = [];</code></li>
+<li>Der Zugriff auf Array Elemente erfolgt über eckige Klammern, z.B. <code>myArray[3]</code></li>
+<li>Der Zugriff ist 0 basiert, wie in anderen C ähnlichen Sprachen</li>
+<li>Bei nicht-definierten Zugriffen gibt es keinen Fehler, sondern <code>undefined</code> als Rückgabe</li>
+<li>Möglichkeiten zum Hinzufügen eines Elements mit <code>push()</code> (ans Ende) und <code>unshift()</code> (an den Anfang)</li>
+<li>Entfernen von Elementen: 
+    <ul>
+        <li><code>splice(index, anzahl)</code> Elemente von <code>array[index]</code> bis <code>array[index + anzahl - 1]</code></li>
+        <li><code>pop()</code> das letzte Element</li>
+        <li><code>shift()</code> das erste Element</li>
+    </ul>
+</li>
+<li>Die Eigenschaft <code>length</code> gibt eine Zahl zurück, welche 1 größer als der größte Integer Key ist.</li>
+<li>Wir können ein Array einfach kopieren mit <code>let b = a.slice()</code> oder <code>let b = [...a]</code> (<strong>beide shallow copies!</strong>)</li>
+
+</ul>
+
+<!-- Code -->
+
+<script>
+let output = document.querySelector("output"),
+    leer1 = [], //Empfohlen
+    leer2 = new Array(), //Nicht empfohlen
+    reserviert = new Array(14), //Bringt keine Performance-Vorteile
+    belegt1 = new Array('Milch', 'Zucker', 'Mehl'),
+    belegt2 = ['Milch', 'Mehl', 'Äpfel'],
+    ausString = "C#,Java,Ruby".split(",");
+
+ausString.push("Haskell"); 
+
+let outputString = ausString; // probiers aus
+
+output.value = `[${outputString}](${outputString.length})`; 
+
+</script>
+<style>
+    output {
+        color: white;
+        background: black;
+        padding: 5px;
+    }
+</style>
+<html>
+<output></output>
+</html>
