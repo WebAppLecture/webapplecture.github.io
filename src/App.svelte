@@ -14,7 +14,7 @@
 
 	onMount(() => {
 		intersection = false;
-		fetch("/content/index.json")
+		fetch("./content/index.json")
 		.then(repsonse => repsonse.json())
 		.then(list => {
 			days = list;
