@@ -1,0 +1,37 @@
+<h2>Auf Eingaben reagieren</h2>
+<ul>
+    <li>Entweder über <code>onchange</code>, <code>onkeyup</code> (ein Element) etc. oder <strong>neu</strong> über <code>onforminput</code> (alles) im Form</li>
+    <li>Oder beim Versenden des Formulars über das Ereignis <code>onsubmit</code> im entsprechenden <code>&lt;form&gt;</code> Element</li>
+    <li>Haben über den Rückgabewert der Methode die Möglichkeit den Versand abzubrechen (<code>return false</code>)</li>
+    <li>Ein kleines Beispiel (WICHTIG: Code erst einmal ausführen, damit die Validierung funktioniert!):</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let form = document.querySelector('form');
+form.onsubmit = onSubmit;
+
+function onSubmit() {
+    var error = [];            
+    if(this.name.value.length === 0)
+        error.push('Bitte das Namens-Feld ausfüllen');  
+    if(this.tel.value.length == 0)
+        error.push('Bitte das Telefon-Feld ausfüllen');
+    else if(!/^\([1-9][0-9]{2}\)\s?[0-9]{4}(\-[0-9]+)?/.test(this.tel.value))
+        error.push('Bitte das Format des Telefon-Felds beachten');
+    output.value = error.join('\n');
+    form.querySelector('#formerror').innerHTML = error.join('<br/>');
+    return error.length === 0;     
+}
+</script>
+<html>
+<form action="http://html5.florian-rappl.de/submitted.html" method="GET" target="_blank" name="vform">
+    <div><label style="display: inline-block; width: 100px">Name*</label><input type="text" name="name" placeholder="Bitte Namen eingeben" style="width: 150px"></div>
+    <div><label style="display: inline-block; width: 100px">Telefon*</label><input type="tel" name="tel" placeholder="Format: (941) 1234-56789" style="width: 150px"></div>
+    <div><label>Anmerkung</label><br>
+    <textarea name="remark" style="width: 150px"></textarea></div>
+    <button type="submit">Abschicken</button> <small>(* Pflichtfeld)</small><br>
+    <span style="color: #F00;" id="formerror"></span>
+</form> 
+</html>

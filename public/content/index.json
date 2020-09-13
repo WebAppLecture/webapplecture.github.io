@@ -1,0 +1,116 @@
+[
+    {
+        "title": "Einführung",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/0_einfuehrung/vorwort.html",
+            "content/0_einfuehrung/um was geht es.html",
+            "content/0_einfuehrung/kurs aufbau.html",
+            "content/0_einfuehrung/code editor.html",
+            "content/0_einfuehrung/warum webapps.html"
+        ]      
+    },{
+        "title": "JS-Basics",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/1_js-basics/js einstieg.html",
+            "content/1_js-basics/ecma script.html",
+            "content/1_js-basics/ecma 2.html",
+            "content/1_js-basics/datentypen.html",
+            "content/1_js-basics/variablen.html",
+            "content/1_js-basics/string.html",
+            "content/1_js-basics/funktionen.html",
+            "content/1_js-basics/funktionen extra.html",
+            "content/1_js-basics/object.html",
+            "content/1_js-basics/arrays 1.html",
+            "content/1_js-basics/arrays 2.html",
+            "content/1_js-basics/operatoren.html",
+            "content/1_js-basics/operatoren liste.html",
+            "content/1_js-basics/konvertieren mit operatoren.html",
+            "content/1_js-basics/kontrollstrukturen.html",
+            "content/1_js-basics/eingaben prüfen.html",
+            "content/1_js-basics/fehler finden.html",
+            "content/1_js-basics/class.html",
+            "content/1_js-basics/class 2.html",
+            "content/1_js-basics/module.html"
+        ]  
+    },{
+        "title": "HTML5",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/2_html-basics/geschichte html.html",
+            "content/2_html-basics/was ist html.html",
+            "content/2_html-basics/nutzen html5.html",
+            "content/2_html-basics/semantischer aufbau.html",
+            "content/2_html-basics/verwendung neue tags.html",
+            "content/2_html-basics/html forms.html",
+            "content/2_html-basics/html5 forms.html",
+            "content/2_html-basics/automatische validierung.html",
+            "content/2_html-basics/DOM.html",
+            "content/2_html-basics/auf eingaben reagieren.html",
+            "content/2_html-basics/diy validierung.html",
+            "content/2_html-basics/per javascript prüfen.html",
+            "content/2_html-basics/js meets html.html",
+            "content/2_html-basics/html events.html",
+            "content/2_html-basics/programmatisches html.html",
+            "content/2_html-basics/kurzgefasst.html",
+            "content/2_html-basics/window objekt.html"
+        ]
+    },{
+        "title": "CSS3",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/3_CSS/einstieg css.html",
+            "content/3_CSS/selektoren.html",
+            "content/3_CSS/CSS im Detail.html",
+            "content/3_CSS/anzeigemodus.html",
+            "content/3_CSS/positionieren.html",
+            "content/3_CSS/groesse.html",
+            "content/3_CSS/border.html",
+            "content/3_CSS/responsive design.html",
+            "content/3_CSS/reactive design.html",
+            "content/3_CSS/layout maeglichkeiten.html",
+            "content/3_CSS/schrift und text.html",
+            "content/3_CSS/schrift 2.html",
+            "content/3_CSS/farben.html",
+            "content/3_CSS/licht und schatten.html",
+            "content/3_CSS/farbverlaeufe.html",
+            "content/3_CSS/listen stylen.html",
+            "content/3_CSS/transition.html",
+            "content/3_CSS/transform.html",
+            "content/3_CSS/animation.html",
+            "content/3_CSS/beispiel 1.html",
+            "content/3_CSS/beispiel 2.html"
+        ]      
+    },{
+        "title": "Multimedia",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/0_einfuehrung/vorwort.html",
+            "content/0_einfuehrung/um was geht es.html",
+            "content/0_einfuehrung/kurs aufbau.html",
+            "content/0_einfuehrung/code editor.html",
+            "content/0_einfuehrung/warum webapps.html"
+        ]      
+    },{
+        "title": "Daten",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/0_einfuehrung/vorwort.html",
+            "content/0_einfuehrung/um was geht es.html",
+            "content/0_einfuehrung/kurs aufbau.html",
+            "content/0_einfuehrung/code editor.html",
+            "content/0_einfuehrung/warum webapps.html"
+        ]      
+    },{
+        "title": "APIs",
+        "subtitle": "blablabla",
+        "slides": [
+            "content/0_einfuehrung/vorwort.html",
+            "content/0_einfuehrung/um was geht es.html",
+            "content/0_einfuehrung/kurs aufbau.html",
+            "content/0_einfuehrung/code editor.html",
+            "content/0_einfuehrung/warum webapps.html"
+        ]      
+    }
+]

@@ -1,0 +1,46 @@
+<h2>Transition</h2>
+<ul>
+<li>Vorher waren Änderungen am CSS Stil z.B. durch <code>:hover</code> beim Überfahren, immer direkt</li>
+<li>Mit CSS3 haben wir die Möglichkeit Änderungen an Eigenschaften zwischen CSS Regeln zu animieren</li>
+<li>Dies wird als <code>transition</code>  bezeichnet (nicht als Animation - dazu gleich mehr)</li>
+<li>Die Syntax benutzt dazu folgende Elemente:
+<ul>
+<li>Welche Eigenschaften sind von der Transition betroffen? (<code>all</code> meint alle)</li>
+<li>Wie lange soll der Effekt gehen? z.B. <code>1s</code> oder ab wann und wie lang z.B. <code>0.5s 1s</code></li>
+<li>Wie soll sich der Wert über die Zeit ändern? z.B. <code>ease</code> (Standard) oder <code>linear</code></li>
+</ul>
+</li>
+</ul>
+
+<!-- Code -->
+<style>
+.beispiele { 
+    background: #0F0; 
+    width: 50px; 
+    height: 50px;
+    margin: 5px;
+}
+
+.beispiele:hover { 
+    background: #F00; 
+    width: 100px; 
+} 
+
+#eins {  }
+
+#zwei { transition: width 1s linear; }
+
+#drei { transition: background-color 1s linear; }
+
+#vier { transition: all 1s linear; }
+
+#fuenf { transition: background-color 1s ease-in-out, width 0.5s 1s linear; }
+
+</style>
+<html>
+<div class="beispiele" id="eins">#eins</div>
+<div class="beispiele" id="zwei">#zwei</div>
+<div class="beispiele" id="drei">#drei</div>
+<div class="beispiele" id="vier">#vier</div>
+<div class="beispiele" id="fuenf">#fuenf</div>
+</html>

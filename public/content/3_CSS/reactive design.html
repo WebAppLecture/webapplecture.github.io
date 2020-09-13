@@ -1,0 +1,14 @@
+<h2>Reactive Design</h2>
+<ul>
+<li>Im Prinzip handelt es sich bei dem Responsive Design um ein Reactive Design (es wird nicht geantwortet, d.h. auf den Benutzer eingegangen, sondern auf die Umgebung reagiert)</li>
+<li>Designs sollten so aufgebaut werden, dass diese sehr schnell für verschiedene Plattformen portiert werden können</li>
+<li>Dies schließt relative Schriften mit ein - wenn man jedem Element eine neue Schriftgröße zuweist sind mehr Änderungen notwendig als bei Zuweisung von Prozentangaben relativ zur im <code>body</code>-Selektor eingestellten Schriftgröße</li>
+<li>Zusätzlich zu den <code>@media</code>-Regeln sollte man noch weitere (HTML) Spezifikationen beachten</li>
+<li>So ist es essentiell den <strong>Viewport</strong> für Smartphones einzustellen</li>
+<li>Die Einstellung des Viewports geschieht im <code>&lt;head&gt;</code>-Tag z.B. mit
+<pre lang="html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /&gt;
+</pre>
+Legt in diesem Fall fest, dass die Seite die volle Breite hat und dies 100% Zoom (deaktiviert) entspricht</li>
+<li>Bilder sollten mit <code>img { max-width: 100%; }</code> behandelt werden um bei Smartphones nicht zu stören</li>
+<li>Für Smartphones gibt es noch jede Menge weiterer Tricks (Mobile First statt Desktop First) inklusive einiger besonderer CSS-Regeln wie z.B. <code>-webkit-tap-highlight-color: #FFF</code></li>
+</ul>

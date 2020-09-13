@@ -1,0 +1,42 @@
+<h2>Neue Layout-Möglichkeiten</h2>
+<ul>
+<li>Mit CSS3 geht auch die Ära der div-Layouts dem Ende zu - wir haben nun besseres</li>
+<li>Natürlich kehrt man nicht zur guten alten Tabelle zurück, sondern zu spezialisierten Layout-Mustern</li>
+<li>Heutzutage trennen sich Layouts primär in <code>flexbox</code> und <code>grid</code> oder ein Kombination der beiden.</li>
+<li>Da die perfekten Erklärungen für beide existieren, hier die Links:
+    <ul>
+        <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox</a></li>
+        <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid</a></li>
+        <li>Gibts beide auch als Poster zu kaufen.</li>
+    </ul>
+</li>
+</ul>
+
+<!-- Code -->
+<script>
+document.querySelector("body")
+    .addEventListener("click", function() {
+        this.appendChild(document.createElement("div"));
+})
+</script>
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+}
+div {
+    width: 50%;
+    flex: 2 1 10%;
+    
+    background: red;
+}
+div:nth-last-of-type(even) {
+    background: blue;
+    flex: 1 1 10%;
+    align-self: flex-end;
+}
+</style>
+<html>
+<body>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<h2>Konvertieren mit Operatoren</h2>
+<ul>
+<li>Um eine boolsche Variable zu erhalten, ist doppelte Negation, d.h. <code>!!myvar</code> ausgezeichnet</li>
+<li>Strings kann man allgemein durch Addition mit einem String, z.B. <code>myvar + ''</code>, erhalten</li>
+<li>Alle Typen konvertieren zu Zahlen bei (fast) allen Operationen, z.B. <code>myvar * 1</code> oder <code>+myvar</code></li>
+<li>Wir können solche Zahlen auch runden, hier ist <code>~~myvar</code> geeignet</li>
+<li>Neben boolschen Werten, Zahlen und Strings können wir auch Standardwerte definieren</li>
+<li>So gibt <code>myvar || mydefault</code> immer <code>mydefault</code> zurück, außer <code>myvar</code> konvertiert zu <code>true</code></li>
+<li>Umgekehrt gibt <code>myvar &amp;&amp; mydefault</code> immer <code>myvar</code> zurück, außer <code>myvar</code> konvertiert zu <code>true</code></li>
+<li><code>myvar ?? mydefault</code> gibt <code>mydefault</code> zurück wenn <code>myvar</code> <code>null</code> oder <code>undefined</code> ist. <br>
+    Oft besser als <code>||</code> zum Setzen von Defaults, da <code>""</code>, <code>0</code> und <code>false</code> nicht als ungesetzte Variable interpretiert werden. (alle falsy aber nicht nullish)</li>
+<li>Sinnvoll vor Konvertierungen sind auch die Operatoren <code>typeof</code> und <code>instanceof</code></li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let a = document.querySelector("#a"),
+    button = document.querySelector("button"),
+    fnSelect = document.querySelector("#functions")
+    output = document.querySelector("#output"),
+    functions = [
+        x => !!x,
+        x => x + "",
+        x => +x,
+        x => x * 1,
+        x => ~~x,
+        x => x || "x is falsy",
+        x => x && "x is truthy",
+        x => x ?? "x is nullish", // funktioniert nicht da x immer mindestens "" ist.
+        x => typeof x, // hier immer String
+        x => ({} instanceof Object), 
+    ];
+
+((list, select) => {
+    list.forEach((item, i) => {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = item?.toString();
+        select.appendChild(option);
+    });
+})(functions, fnSelect);
+
+button.addEventListener("click", () => {
+    let fnId = fnSelect.selectedOptions[0].value,
+        f = functions[fnId];
+    output.value = f(a.value);
+});
+
+
+</script>
+<style>
+div > * {
+    width: 24%;
+}
+</style>
+<html>
+<div>
+<input id="a" type="text"/>
+<select id="functions"></select>
+<button>apply</button>
+<input id="output" type="text"/>
+</div>
+</html>
