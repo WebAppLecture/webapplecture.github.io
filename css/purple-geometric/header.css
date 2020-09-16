@@ -1,0 +1,19 @@
+header {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="turquoise" points="0 0 75 35 80 75 75 80 73 45"/><polygon fill="purple" points="0 100 100 100 80 13 0 0 75 35 80 75"/></svg>');
+}
+
+header > nav {
+    transform: rotate(-5deg);
+}
+
+header > p {
+    transform: translateY(-20px) rotate(-5deg);
+}
+
+h1 {
+    color: #ff3e00;
+    text-transform: uppercase;
+    font-size: 4em;
+    font-weight: 100;
+    transform: rotate(-5deg);
+}

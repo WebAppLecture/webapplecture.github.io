@@ -84,13 +84,21 @@
         ]      
     },{
         "title": "Multimedia",
-        "subtitle": "blablabla",
+        "subtitle": "Canvas und SVG, mit Aussicht auf <audio> und <video>",
         "slides": [
-            "content/0_einfuehrung/vorwort.html",
-            "content/0_einfuehrung/um was geht es.html",
-            "content/0_einfuehrung/kurs aufbau.html",
-            "content/0_einfuehrung/code editor.html",
-            "content/0_einfuehrung/warum webapps.html"
+            "content/04_multimedia/audio.html",
+            "content/04_multimedia/formate.html",
+            "content/04_multimedia/canvas 1.html",
+            "content/04_multimedia/canvas 2.html",
+            "content/04_multimedia/canvas paint.html",
+            "content/04_multimedia/canvas images.html",
+            "content/04_multimedia/canvas gradient.html",
+            "content/04_multimedia/webgl.html",
+            "content/04_multimedia/svg 1.html",
+            "content/04_multimedia/D3.html",
+            "content/04_multimedia/svg 2.html",
+            "content/04_multimedia/svg chart.html",
+            "content/04_multimedia/canvas vs svg.html"
         ]      
     },{
         "title": "Daten",

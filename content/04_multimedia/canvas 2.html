@@ -1,0 +1,88 @@
+<article>
+    <h2>Canvas JavaScript Methoden</h2>
+    <ul>
+    <li><code>getContext('2d')</code> <strong>gibt</strong> uns das entsprechende Zeichenobjekt (hier: <strong>2D</strong>, z.B. auch möglich: <strong>webgl</strong>)</li>
+    <li>Das 2D-Kontextobjekt hat einige Eigenschaften, z.B.
+    <ul>
+    <li><code>fillStyle</code> (Füllfarbe), <code>strokeStyle</code> (Stiftfarbe) und <code>lineWidth</code> (Stiftbreite)</li>
+    <li><code>shadowOffsetX/Y</code>, (Schattenversatz), <code>shadowBlur</code> (Unschärfe) und <code>shadowColor</code> (Schattenfarbe)</li>
+    <li><code>font</code> (Schriftart), <code>textAlign</code> (hor. Ausrichtung) und <code>textBaseline</code> (ver. Ausrichtung)</li>
+    </ul>
+    </li>
+    <li>Neben diesen Eigenschaften gibt es noch jede Menge Methoden (mit eigenen Objekten), z.B.
+    <ul>
+    <li><code>fillRect(x,y,width,height)</code> (Rechteck füllen), <code>strokeRect(x,y,width,height)</code> (Rechteck zeichnen) und <code>clearRect(x,y,width,height)</code> (Rechteck mit Hintergrundfarbe füllen)</li>
+    <li><code>beginPath()</code> und <code>closePath()</code> um Pfad zu erstellen, der durch <code>fill()</code>, <code>stroke()</code> gefüllt wird</li>
+    <li>Mit <code>moveTo(x,y)</code> bzw. <code>lineTo(x,y)</code> werden Teilstücke des Pfades festgelegt</li>
+    <li>Über <code>drawImage(img_el,x,y,width,heigth)</code> können wir Bilder einbinden</li>
+    <li>Durch <code>createImageData(x,y,width,height)</code> kann Pixelkarte ein Bereich mit Pixelmanipulation erstellt werden</li>
+    </ul>
+    </li>
+    <li>Sehr gute Einsatzmöglichkeiten des Canvas-Tags bieten sich durch ein Video-Element</li>
+    </ul>
+</article>
+
+<!-- Code -->
+
+<script>
+
+let canvas = document.querySelector("canvas"),
+    controls = document.querySelector(".controls"),
+    ctx = canvas.getContext('2d'),
+    paint = false,
+    colors = ["red", "green", "blue", "yellow"];
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx.strokeStyle = "red";
+ctx.lineWidth = "5";
+ctx.lineCap = "round";
+
+colors.forEach(color => {
+    let colorSelect = document.createElement("div");
+    colorSelect.style.background = color;
+    colorSelect.addEventListener("click", () => ctx.strokeStyle = color);
+    controls.appendChild(colorSelect);
+});
+
+window.addEventListener("mousedown", () => {
+    paint = true;
+    ctx.beginPath();
+});
+
+window.addEventListener("mouseup", () => {
+    paint = false;
+    ctx.closePath();
+});
+
+window.addEventListener("mousemove", e => {
+    if(paint) {
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+    }
+});
+
+</script>
+<style>
+body {
+    margin: 0;
+}
+
+.controls {
+    position: absolute;
+    top: 0;
+}
+
+.controls > div {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+</style>
+<html>
+<canvas></canvas>
+<div class="controls"></div>
+</html>

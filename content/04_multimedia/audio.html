@@ -1,0 +1,64 @@
+<article>
+    <h2>Das Audio Element</h2>
+    <ul>
+    <li>HTML5 erlaubt uns Audiodateien direkt über den <code>&lt;audio&gt;</code>-Tag einzubinden</li>
+    <li>Der Tag ist von den Attributen her wie der <code>&lt;img&gt;</code>-Tag aufgebaut</li>
+    <li>Das Element ist aus Fallbackgründen nicht selbstschließend - der Inhalt ist ein Fallback, z.B.
+    <pre lang="html">&lt;audio src="..."&gt;&lt;/audio&gt;
+    </pre>
+    </li>
+    <li>Natürlich gibt es neben <code>src</code> jede Menge neuer Attribute für dieses Element, u.a.
+    <ul>
+    <li><code>autoplay</code> spielt die Audiodatei automatisch ab (Vorsicht, wird von den meisten Browsern blockiert.)</li>
+    <li><code>controls</code> zeigt Kontrollelemente (Start, Pause, ...) an</li>
+    <li><code>loop</code> stellt ein ob es sich um eine Endlosschleife handelt (Standardmäßig: <code>false</code>)</li>
+    <li><code>preload</code> mit drei Werten (<code>auto</code>, <code>none</code>, <code>metadata</code>) zur Konfiguration des Vorladevorgangs</li>
+    </ul>
+    </li>
+    <li>Neue JavaScript-Ereignisse sind u.a. <code>play</code>, <code>canplay</code>, <code>pause</code>, <code>seeking</code>, <code>abort</code>, <code>ended</code> und <code>error</code></li>
+    <li>Wir können viele neue Eigenschaften (z.B. <code>volume</code>) bearbeiten und Methoden (z.B. <code>play()</code>) aufrufen</li>
+    </ul>
+    <h2>Das Video Element</h2>
+    <ul>
+    <li>Analog zum Audio-Element, besitzt jedoch zusätzlich noch Videobildanzeige</li>
+    <li>Zusätzliche Attribute sind unter anderem gegeben durch 
+    <ul>
+    <li><code>poster</code> um ein Vorschaubild zu spezifizieren (ansonsten wird der erste Frame verwendet)</li>
+    <li><code>height</code> bzw. <code>width</code> um die Größe des Videos zu bestimmen</li>
+    </ul>
+    </li>
+    </ul>
+</article>
+
+<!-- Code -->
+<script>
+let player = document.querySelector("audio");
+
+player.addEventListener("play", () => {
+    player.style["border-color"] = "green";
+});
+
+player.addEventListener("pause", () => {
+    player.style["border-color"] = "red";
+});
+
+window.addEventListener("wheel", e => {
+    if( e.deltaY > 0 && player.volume > 0 ) {
+        player.volume = (player.volume - .1).toFixed(2);
+    } 
+    if( e.deltaY < 0 && player.volume < 1 ){
+        player.volume = (player.volume + .1).toFixed(2);
+    }
+    e.preventDefault();
+}, {passive:false});
+</script>
+<style>
+audio {
+    border: 5px solid red;
+    border-radius: 40px;
+    outline: none;
+}
+</style>
+<html>
+    <audio controls src="/data/WilhelmScream.mp3"></audio>
+</html>

@@ -1,0 +1,99 @@
+main > div > article{
+    display: flex;
+    flex-direction: row;
+}
+
+main > div > article > section {
+    padding: 50px 20px;
+}
+
+main > div:nth-of-type(2n) > article > *:nth-child(2n-1) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="turquoise" points="0 1 0 0 100 0 100 15"/><polygon fill="purple" points="0 0 100 0 100 10"/><polygon fill="purple" points="0 100 100 100 100 90"/><polygon fill="purple" points="100 0 100 100 96 100"/></svg>'); 
+  background-size: 100% 100%;
+}
+
+main > div:nth-of-type(2n) > article > *:nth-child(2n) {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="purple" points="0 0 100 0 98 30 100 100 0 100"/></svg>'); 
+    background-size: 100% 100%;
+}
+
+main > div:nth-of-type(2n-1) > article > *:nth-child(2n-1) {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="purple" points="0 0 100 0 100 100 0 100 2 80"/></svg>'); 
+    background-size: 100% 100%;
+    color: var(--accent);
+}
+
+main > div:nth-of-type(2n-1) > article > *:nth-child(2n) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="orangered" points="0 0 100 0 98 1 0 13"/><polygon fill="purple" points="0 0 100 0 0 10"/><polygon fill="purple" points="0 100 100 100 0 90"/><polygon fill="purple" points="0 0 0 100 3 0"/></svg>'); 
+  background-size: 100% 100%;
+}
+
+.svelte-tabs__tab {
+    background: black;
+    color: white !important;
+}
+
+.svelte-tabs__selected {
+    background: var(--accent);
+    color: var(--highlight) !important;
+}
+
+.svelte-tabs__tab-list > *:nth-child(1) {
+    transform: rotate(-4deg);
+    padding-right: 20px;
+    padding-left: 30px;
+}
+
+.svelte-tabs__tab-list > *:nth-child(2) {
+    transform: rotate(-5deg);
+    padding-right: 25px;
+    padding-left: 10px;
+}
+
+.svelte-tabs__tab-list >*:nth-child(3) {
+    transform: rotate(5deg);
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+.sandbox-wrapper {
+    border: 5px dashed var(--highlight) !important;
+}
+
+main > div:nth-of-type(2n) > article > *:nth-child(2n) .sandbox-wrapper  {
+    border-color: var(--accent) !important;
+}
+
+h2 {
+    max-width: 400px; 
+    background: black;
+    color: white;
+    width: max-content;
+    padding: 0 20px 0 40px;
+    transform: rotate(-3deg);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.side-article code {
+    display: inline-block;
+    background: black;
+    padding: 0 1em;
+    color: white;
+}
+
+.side-article pre {
+    background: black;
+    color: white;
+    padding: 5px 15px;
+    width: max-content;
+    font-family: inherit;
+    margin: .5em 0;
+    font-size: small;
+}
+
+.side-article table img {
+    height: 50px;
+}
+
+

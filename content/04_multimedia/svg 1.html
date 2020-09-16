@@ -1,0 +1,41 @@
+<article>
+    <h2>Vektorgrafiken mit SVG</h2>
+    <ul>
+    <li>Neben pixelbasierten Grafiken mit Canvas kann man auch vektorbasierte Grafiken mit <code>&lt;svg&gt;</code> erstellen</li>
+    <li>Was mit SVG auf keinen Fall geht sind Pixelmanipulationen (Ereignisse z.B. Klick auf Kreis sind möglich)</li>
+    <li>Ein Vorteil von SVG ist, dass man komplizierte Pfade direkt in Programmen wie <a href="https://inkscape.org/de/">Inkscape</a> zeichnen kann</li>
+    <li>Das Bild zur Rechten wurde nur über HTML generiert</li>
+    <li>Gezeichnet wurde es in einem externen Programm</li>
+    <li>Der generierte Quellcode wurde nur kopiert und wäre über JavaScript noch sehr leicht manipulierbar</li>
+    <li>Im Prinzip muss man nur neue (SVG-) HTML-Elemente dem <code>&lt;svg&gt;</code>-Element hinzufügen</li>
+    <li>Das alles funktioniert daher sehr leicht, da SVG ein XML-basiertes Format darstellt</li>
+    <li>Auch für SVG gibt es auch mächtige Libraries wie z.B. <a href="https://d3js.org">D3.js</a>, die auf Graphen spezialisiert ist, aber auch schon Spiele hervorgebracht hat</li>
+    </ul>
+</article>
+
+<!-- Code -->
+<script>
+let svgExample = {
+    rect : document.getElementById('RectID-13399d0890-1f04cf-4a040d-e852c4-c736dd5b101cfc'),
+    circ : document.getElementById('EllipseID-2867d6cd6b-524c91-749964-b19454-c3cf56dcfef693'),
+    tri : document.getElementById('triangleID-b5cee00154-4c0a3e-8dc06b-1e123f-0e9b47d8e23314'),
+    p : document.getElementById('introsvg'),
+};
+    
+function toggleSvg(el) {
+    if(el.parentNode === svgExample.p)
+        svgExample.p.removeChild(el);
+    else
+        svgExample.p.appendChild(el);
+    return false;
+}
+</script>
+
+<html>
+<a href="#" onclick="return toggleSvg(svgExample.rect);">Rechteck</a> <a href="#" onclick="return toggleSvg(svgExample.circ);">Ellipse</a> <a href="#" onclick="return toggleSvg(svgExample.tri);">Dreieck</a>
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" id="introsvg" style="border: 1px solid #CCC; overflow:hidden;">
+    <ellipse cx="80" cy="62" rx="58" ry="50" fill="rgb(255, 204, 102)" stroke="rgb(255, 102, 0)" stroke-width="2" id="EllipseID-2867d6cd6b-524c91-749964-b19454-c3cf56dcfef693"></ellipse>
+    <polygon points="187,102 244,182 130,182" id="triangleID-b5cee00154-4c0a3e-8dc06b-1e123f-0e9b47d8e23314" fill="rgb(51, 102, 255)" stroke="rgb(0, 0, 102)" stroke-width="2" stroke-dasharray="0"></polygon>
+    <rect x="8" y="230" width="230" height="41" fill="rgb(204, 102, 0)" fill-opacity="1" stroke-opacity="1" stroke="rgb(51, 0, 0)" stroke-width="5" id="RectID-13399d0890-1f04cf-4a040d-e852c4-c736dd5b101cfc" rx="15"></rect>
+</svg>
+</html>

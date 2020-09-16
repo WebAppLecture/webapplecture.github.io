@@ -1,0 +1,56 @@
+<article>
+    <h2>Bilder laden und verwenden</h2>
+    <ul>
+    <li>Wir können mit Canvas auch Bilder zeichen - woher kommen diese?</li>
+    <li>Die Bilder müssen durch einen <code>&lt;img&gt;</code>-Tag bereits geladen sein, dies erreichen wir durch
+        <ol>
+            <li>Image Tag erstellen <code>let img = document.createElement('img')</code></li>
+            <li>Auf das Laden des Bildes warten <code>img.addEventlistener("load", f())</code></li>
+            <li>Bild Quelle festlegen <code>img.src = url</code></li>
+        </ol>
+    </li>
+    <li>Da wir das Bild nirgends angehängt haben wird es auch nicht auf der Seite angezeigt werden</li>
+    <li>Es kann wichtig sein das <code>load</code> Ereignis vor dem Setzen des <code>src</code> Attributes festzulegen</li>
+    <li>Als Bild erwartet der Canvas-Kontext immer das entsprechende HTML-Image-Element (d.h. den Tag)</li>
+    <li>D.h. wir können nun die Variable <i>img</i> verwenden z.B. in <code>drawImage(img, ...)</code></li>
+    </ul>
+    <h2>Video und Canvas</h2>
+    <ul>
+    <li>Analog zum <code>&lt;img&gt;</code>-Element können wir Videos auf der Seite abspielen ohne diese anzuzeigen</li>
+    <li>Um den aktuellen Frame zu zeichnen müssen wir nur ein <code>video</code> statt <code>img</code> übergeben</li>
+    </li>
+    <li>Einige Eventhandler des Videoelements helfen uns beim Festhalten von Bildern:
+    <ul>
+    <li>Über <code>timeupdate</code> können wir Änderungen der Zeit abfragen</li>
+    <li>Über <code>loadeddata</code> sollten wir unsere Schleife starten</li>
+    </ul>
+    </li>
+    <li>Falls ungewollt, <code>video.volume = 0</code> auf Lautlos stellen!</li>
+    </ul>
+</article>
+
+<!-- Code -->
+
+<script>
+
+let c = document.querySelector('canvas').getContext('2d');
+let img = document.createElement('img');
+
+img.addEventListener("load", function() {
+    let redraw = setInterval(function() {
+        c.clearRect(0,0,c.canvas.width,c.canvas.height);
+        c.drawImage(img, Math.floor(Math.random() * (c.canvas.width - 50)), Math.floor(Math.random() * (c.canvas.height - 50)), 50, 50);
+    }, 2000);      
+});
+
+img.src = 'images/slides/html5.jpg'
+
+</script>
+<style>
+canvas {
+    border: 1px solid black;
+}
+</style>
+<html>
+<canvas width="200" height="200"></canvas>
+</html>

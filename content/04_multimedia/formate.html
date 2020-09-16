@@ -1,0 +1,155 @@
+<article>
+    <h2>Das Format-Desaster</h2>
+    <ul>
+    <li>Historisch war die Wahl von Audio und Videoformat kritisch: zwar konnten sich die Hersteller auf einen Audio- und Video-Tag einigen, jedoch nicht auf einen einheitlichen Standard</li>
+    <li>Daher akzeptieren diese Tags noch einen Untergeordneten Tag - den <code>&lt;source&gt;</code>-Tag, z.B.
+    <pre lang="html">
+    &lt;video controls&gt;
+        &lt;source src="*.ogg" type="video/ogg; codecs='theora, vorbis'"&gt;
+        &lt;source src="*.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'"&gt;
+    &lt;/video&gt;
+    </pre>
+    </li>
+    <li>Seit dem 16. April 2017 ist MP3 lizenzfrei erhältlich, es wird seit deim von allen Browsern unterstützt</li>
+    <li>Bei den Videoformaten weist MPEG-4 volle Unterstützung auf</li>
+    </ul>
+    <p>
+    </p><figure>
+    <table style="font-size: 10pt;">
+    <thead>
+        <tr>
+            <th></th>
+            <th><img src="images/slides/chrome_logo.svg"></th>
+            <th><img src="images/slides/safari_logo.svg"></th>
+            <th><img src="images/slides/firefox_logo.svg"></th>
+            <th><img src="images/slides/ie_logo.svg"></th>
+            <th><img src="images/slides/android_robot.svg"></th>
+            <th><img src="images/slides/edge_logo.svg"></th>
+            <th><img src="images/slides/baidu_logo.png"></th>
+            <th><img src="images/slides/opera_logo.svg"></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Chrome</th>
+            <th>Safari</th>
+            <th>Firefox</th>
+            <th>Internet Explorer</th>
+            <th>QQ, UC, Android</th>
+            <th>Edge</th>
+            <th>Baidu</th>
+            <th>Opera</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th><a href='https://www.netmarketshare.com/browser-market-share.aspx?options={"filter"%3A{"%24and"%3A[{"deviceType"%3A{"%24in"%3A["Desktop%2Flaptop"%2C"Mobile"%2C"Tablet"]}}]}%2C"dateLabel"%3A"Trend"%2C"attributes"%3A"share"%2C"group"%3A"browser"%2C"sort"%3A{"share"%3A-1}%2C"id"%3A"browsersDesktop"%2C"dateInterval"%3A"Monthly"%2C"dateStart"%3A"2018-02"%2C"dateEnd"%3A"2019-01"%2C"segments"%3A"-1000"}'>Anteil</a></th>
+            <td>63.07%</td>
+            <td>17.57%</td>
+            <td>4.93%</td>
+            <td>4.49%</td>
+            <td>3.72</td>
+            <td>1.88%</td>
+            <td>1.22%</td>
+            <td>0.87%</td>
+        </tr>
+        <tr>
+            <td colspan="9" class="tdpartition">Audio</td>
+        </tr>
+        <tr>
+            <th>OGG Vorbis*</th>
+            <td class="tdyes">nein</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>AAC(*)</th>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdish">teilweise</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>MP3*</th>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>WAV</th>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <td colspan="9" class="tdpartition">Video</td>
+        </tr>
+        <tr>
+            <th>OGG Theora*</th>
+            <td class="tdyes">nein</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>webM*</th>
+            <td class="tdyes">nein</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdno">nein</td>
+            <td class="tdyes">ja</td>
+            <td class="tdish">teilweise</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>MPEG-4/H.264</th>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+            <td class="tdyes">ja</td>
+        </tr>
+        <tr>
+            <th>HVEC/H.265</th>
+            <td class="tdno">nein</td>
+            <td class="tdish">teilweise</td>
+            <td class="tdno">nein</td>
+            <td class="tdish">teilweise</td>
+            <td class="tdno">nein</td>
+            <td class="tdish">teilweise</td>
+            <td class="tdno">nein</td>
+            <td class="tdno">nein</td>
+        </tr>
+    </tbody>
+    </table>
+    <figcaption>
+    <small><p>Mit * gekennzeichnete Formate sind <strong>frei erhältlich</strong>.</p></small>
+    </figcaption>
+    </figure>
+</article>

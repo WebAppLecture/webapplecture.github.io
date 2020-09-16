@@ -1,0 +1,59 @@
+<article>
+    <h2>Animationen zeichnen</h2>
+    <ul>
+    <li>In Canvas kann man sehr gut Animationen einbauen - dies geht über löschen und neuzeichnen</li>
+    <li>Zum Zeichnen könnte man z.B. immer dieselbe Methoden mit unterschiedlichen Argumenten verwenden</li>
+    <li>Oder man transformiert die Koordinaten und verwendet dieselbe Methode mit gleichen Argumenten</li>
+    <li>Zusätzlich zur Transformation (<code>translate(dx,dy)</code> oder <code>rotate(alpha)</code>) kann man Zustände speichern</li>
+    <li><code>save()</code> speichert den aktuellen Zustand<sup>1</sup> und <code>restore()</code> stellt den gespeicherten Zustand wieder her</li>
+    </ul>
+</article>
+
+<!-- Code -->
+<script>
+(function () {
+    let c = document.querySelector('canvas').getContext('2d'), alpha = 0;
+
+    animate();
+
+    function animate() {
+        rotate();
+        requestAnimationFrame(animate);
+    }
+    
+    function rotate() {
+        c.clearRect(0,0,c.canvas.width,c.canvas.height);
+        c.save();
+        alpha += 1 / 180 * Math.PI;
+        c.translate(c.canvas.width / 2, c.canvas.height / 2);
+        c.rotate(alpha);
+        drawMaze();
+        c.restore();
+    }
+
+    function drawMaze() {
+        let s = 0, r = 1, b = 1, x = 0, y = 0;
+        c.beginPath();
+        c.moveTo(x, y);
+        
+        for(let i = 0; i < 100; i++) {
+            if(i % 2 == 0) {
+                s += 10;
+                x += s * r;
+                c.lineTo(x, y);
+                r *= -1;
+            } else {
+                y += s * b;
+                c.lineTo(x, y);
+                b *= -1;
+            }
+        }
+        
+        c.stroke();
+        c.closePath();
+    }
+})();
+</script>
+<html>
+<canvas width="200" height="200"></canvas>
+</html>
