@@ -1,0 +1,15 @@
+<h2>Drag and Drop</h2>
+<ul>
+    <figure><img src="./images//slides/dnd.png" alt="Verdeutlichung eines Drag and Drop Vorgangs"></figure>
+<li>Die Drag-And-Drop API kommt vom IE(5) - sie wurde für HTML5 Reverse Engineered</li>
+<li>Alle Browser sollten die API mittlerweile im Prinzip unterstützen</li>
+<li>Die API gilt leider als eine der schlechteren - hat aber durch seine Verbreitung Vorteile</li>
+<li>Im Fokus stand die Standardisierung des Drag and Drop Vorgangs</li>
+<li>Standardmäßig <code>draggable</code> sind Text, Bilder und Links</li>
+<li>Um solche Elemente ablegen zu können müssen Ereignisse in den Ablagezonen gesetzt werden</li>
+<li>Über <code>return false</code> in <code>drop</code> erlauben wir das Ablegen</li>
+<li><code>dragover</code> gibt uns die Chance bei Ablage etwas mit den Daten anzufangen, z.B. mit Text über 
+<pre lang="javascript">element.ondrop = function(event) { var text = event.dataTransfer.getData('Text'); }
+</pre>
+</li>
+</ul></div>

@@ -104,11 +104,21 @@
         "title": "Daten",
         "subtitle": "blablabla",
         "slides": [
-            "content/0_einfuehrung/vorwort.html",
-            "content/0_einfuehrung/um was geht es.html",
-            "content/0_einfuehrung/kurs aufbau.html",
-            "content/0_einfuehrung/code editor.html",
-            "content/0_einfuehrung/warum webapps.html"
+            "content/5_daten/drag and drop.html",
+            "content/5_daten/dataTransfer.html",
+            "content/5_daten/daten speichern.html",
+            "content/5_daten/cookie.html",
+            "content/5_daten/session.html",
+            "content/5_daten/webstorage.html",
+            "content/5_daten/json 1.html",
+            "content/5_daten/json 2.html",
+            "content/5_daten/ajax 1.html",
+            "content/5_daten/messaging.html",
+            "content/5_daten/websockets.html",
+            "content/5_daten/datenformat.html",
+            "content/5_daten/promises.html",
+            "content/5_daten/file api.html",
+            "content/5_daten/file api 2.html"
         ]      
     },{
         "title": "APIs",

@@ -1,0 +1,19 @@
+<h2>Raus aus dem Browser</h2>
+<ul>
+    <li>Es ist möglich Interaktionen zwischen dem Browser und anderen Applikationen über die API zu beschreiben</li>
+    <li>Das Objekt <code>dataTransfer</code>, das wir mit einem DnD-Ereignis erhalten enthält Methoden:
+        <ul>
+            <li><code>getData(mime)</code> mit einem Mime-Type z.B. <code>'text/plain'</code></li>
+            <li><code>setData(mime, data)</code> mit einem zusätzlichen String von Daten</li>
+        </ul></li>
+    <li>Ein Problem ist, dass man sich schon bei <code>dragstart</code> entscheiden muss, was man für Daten setzt</li>
+    <li>Dies bedeutet, dass man nicht auf erst beim Ablegen (Worauf wird abgelegt?) entscheiden kann</li>
+    <li>Alles in allem hat man am Ende sieben Ereignisse mit <code>dragend</code>, <code>drag</code> und <code>dragleave</code></li>
+    <li>Neben den erwähnten Elementen kann in HTML5 jedes Element gezogen werden</li>
+    <li>Hierzu benötigt man das Attribut <code>draggable</code> (bzw. <code>draggable="true"</code>)</li>
+    <li>Bei älteren Safaris wird daneben noch eine CSS-Regel benötigt:
+        <pre lang="css">[draggable] { -webkit-user-drag: element; }
+        </pre>
+    </li>
+    <li>Ein großes Problem ist leider die Cross-Browser-Unterstützung...</li>
+</ul>

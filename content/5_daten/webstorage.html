@@ -1,0 +1,25 @@
+<h2>WebStorage</h2>
+<ul>
+<li>Mit WebStorage haben wir nun ein mächtiges Werkzeug, dass uns nicht nur jede Menge Speicher garantiert (min. <strong>5 MB</strong>), sondern auch nur Clientseitig abläuft</li>
+<li>Das <code>window</code>-Objekt enthält zwei Objekte, <code>localStorage</code> (permanent, sofort über mehrere Fenster hinweg verfügbar) und <code>sessionStorage</code> (flüchtig, nur in dem aktuellen Fenster solange die Seite läuft aktiv)</li>
+</ul>
+
+<!-- Code -->
+<script>
+let button = document.querySelector("button"),
+    clear = document.querySelector(".clear"),
+    input = document.querySelector("input");
+
+input.value = localStorage.getItem("storageTest") ?? "";
+
+button.addEventListener("click", () => {
+    localStorage.setItem("storageTest", input.value);
+});
+
+clear.addEventListener("click", () => {
+    localStorage.removeItem("storageTest");
+})
+</script>
+<html>
+<input type="text"/><button>Speichern</button><button class="clear">Leeren</button>
+</html>

@@ -1,0 +1,22 @@
+<h2>Die File API</h2>
+<ul>
+<li>Mit dem <code>FileReader</code> und der File API sind Zugriffe auf Dateien möglich</li>
+<li>Es gibt ein Objekt <code>Blob</code>, der Inhalt aus dem Objekt <code>File</code> aus dem Objekt <code>FileList</code></li>
+<li>Zunächst stellt sich die Frage, wie man Dateien auswählen kann</li>
+<li>Aus Sicherheitsgründen muss der Benutzer die Dateien auswählen - dies kann man folgendermaßen erreichen:
+<ul>
+<li>Klassisch über den <code>input</code> Typ <code>file</code>, z.B. auch mit <code>multiple</code>:
+<pre lang="html">&lt;input type="file" id="files" name="files[]" multiple /&gt;
+</pre>
+</li>
+<li>Elegant und modern über Drag-and-Drop und das <code>dataTransfer.files</code> Objekt des Events, z.B.
+<pre lang="javascript">function handleFileSelect(event) {
+    var files = event.dataTransfer.files;
+    /* Etwas damit machen */
+}
+</pre>
+</li>
+</ul>
+</li>
+<li>Anschließend kann man jede Menge Methoden verwenden um die Dateien auszulesen oder die Dateien per Ajax auf einen Server laden</li>
+</ul>

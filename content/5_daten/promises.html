@@ -1,0 +1,34 @@
+<h2>JavaScript Promises</h2>
+<ul>
+<li>Durch Promises ist es möglich auf ein Ergebnis zu warten ohne dass diese Wartezeit die Seite blockiert</li>
+<li>Das Konzept wurde von Microsoft wg. einer ähnlichen Technologie in .NET 4.5 eingeführt</li>
+<li>Man verringert die Zahl der notwendigen Callbacks und schafft mehr Übersichtlichkeit</li>
+<li>Außerdem kann man durch dieses Konzept wieder <strong>Chaining</strong> sehr gut nutzen</li>
+<li>Ein JavaScript Promise ist definiert durch folgende Zustände:
+<ul>
+<li>Zustandslos</li>
+<li>Erfolgreich</li>
+<li>Fehlgeschlagen</li>
+</ul>
+</li>
+<li>Der Code einer asynchronen (d.h. einer Methode die länger als 50 ms benötigt und nicht-blockend sein soll) Methode würde nun so ausgewertet werden
+<pre lang="javascript">
+var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+
+promise.then(function(result) {
+  console.log(result); // "Stuff worked!"
+}, function(err) {
+  console.log(err); // Error: "It broke"
+});
+</pre>
+</li>
+</ul>

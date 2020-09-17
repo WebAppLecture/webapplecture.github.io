@@ -1,0 +1,20 @@
+<h2>Die Messaging API</h2>
+<ul>
+<li>Die Messaging API erfreut sich optimaler Browserunterstützung und bietet uns eine einfache Möglichkeit Text zwischen Seiten <strong>unterschiedlicher Herkunft</strong> zu versenden oder zu empfangen</li>
+<li>Im Regelfall wird die Messaging API dazu verwendet, dass Webseiten miteinander kommunizieren</li>
+<li>Normalerweise wird die Seite mit der man kommunizieren möchte in einem neuen Fenster oder <code>&lt;iframe&gt;</code> geladen - und zwar von unserer Seite aus, da wir sonst keinen Zugriff haben</li>
+<li>Wichtig ist, dass wir eine Referenz auf das <code>window</code> Objekt dieser Seite erhalten</li>
+<li>Weiterhin muss eine Nachricht natürlich aufgenommen werden können</li>
+<li>Dies kann man durch eine Ereignisbehandlung auf das <code>message</code> Ereignis ermöglichen.</li>
+<li>Somit kann man sehr leicht Kommunikationsschnittstellen in einer Webseite einbauen oder ausnutzen</li>
+</ul>
+
+<!-- Code -->
+<script>
+window.parent.postMessage(
+    {message: "postMessage nach Hause telefonieren!",
+    lineNumber: 4, 
+    columnNumber: 20, 
+    id: window.id}, 
+    '*');
+</script>

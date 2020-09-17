@@ -1,0 +1,16 @@
+<h2>Das Cookie</h2>
+<div class="left">
+<figure><img src="./images//slides/cookie-monster.jpg" alt="Das Cookie Monster"><figcaption>Cookies: nützlich oder gefährlich?</figcaption></figure>
+</div>
+<div class="right">
+<ul>
+<li>Über JavaScript hat man durch <code>document.cookie</code> Zugriff auf die Cookies</li>
+<li>Da der Zugriff nicht straight-forward ist empfiehlt es sich Peter-Paul Kochs Skript<sup>1</sup> zu verwenden</li>
+<li>Restriktionen gibt es aber überall: Nur <strong>4 kB</strong> pro Cookie und nur <strong>Texte</strong> können gespeichert werden</li>
+<li>Cookies dienen dazu Informationen <i>zwischen</i> Seiten auszutauschen</li>
+<li>Ein Cookie besteht immer aus einem Name-Wert Paar (maximal 20 davon)</li>
+<li>Daneben werden noch Attribute wie Domäne, Pfad, Ablaufdatum (oder max. Alter), sowie Sicherheit (z.B. Secure oder httpOnly) eingestellt</li>
+<li>Die Browser schicken die Attribute nicht an Server</li>
+<li>Durch Cross-Site-Scripting und Abhören von Verbindungen sind Cookiediebstähle etc. möglich</li>
+</ul>
+</div>

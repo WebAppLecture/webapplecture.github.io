@@ -1,0 +1,61 @@
+<h2>Methoden im Detail</h2>
+<ul>
+<li>Hat man die entsprechende(n) Datei(en) ausgewählt, kann man deren Inhalt auslesen</li>
+<li>Zunächst benötigt man dafür eine neue Instanz eines <code>FileReader</code>-Objektes</li>
+<li>Anschließend kann man folgenden Code verwenden:
+
+</li>
+<li>Jetzt können wir das <code>reader</code>-Objekt verwenden um eine der folgenden Methoden auszuführen:
+<ul>
+<li><code>readAsBinaryString(file)</code> liest die Datei als Binärobjekt ein mit <code>int</code>-Werten zwischen 0 und 255</li>
+<li><code>readAsText(file, encoding)</code> liest die Datei als Text ein - <code>encoding</code> ist hierbei optional</li>
+<li><code>readAsDataURL(file)</code> wandelt den Inhalt der Datei in eine DataURL um</li>
+<li><code>readAsArrayBuffer(file)</code> liest die Datei in eine <code>ArrayBuffer</code> Instanz ein</li>
+</ul>
+</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    this.className = '';//Optischen Drag beenden
+    let files = evt.dataTransfer.files;// FileList object
+    let output = [];//Buffer für Ausgabe
+    for (let i = 0, f; f = files[i]; i++) //Ein paar Eigenschaften auflisten
+        output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ', f.size, ' Bytes, letzte Änderung: ', f.lastModifiedDate.toLocaleDateString(), '</li>');
+    document.querySelector('#ex31-list').innerHTML = '<ul>' + output.join('') + '</ul>';
+}
+
+//Die EventListener auflisten
+let dropZone = document.querySelector('#ex31-drop_zone');
+dropZone.addEventListener('dragover', function (ev) { 
+    this.className = 'hover';
+    ev.stopPropagation(); 
+    ev.preventDefault(); 
+    ev.dataTransfer.dropEffect = 'copy'; }, false);
+dropZone.addEventListener('dragleave', function (ev) {
+    this.className = '';
+    ev.stopPropagation(); 
+    ev.preventDefault(); }, false);
+dropZone.addEventListener('drop', handleFileSelect, false);
+</script>
+<style>
+#ex31-drop_zone { 
+    border: 3px dashed #ccc; 
+    height: 100px; 
+    border-radius: 15px; 
+}
+#ex31-drop_zone.hover { 
+    border: 3px dashed #333; 
+    background: rgba(255, 0, 0, 0.1); 
+}
+</style>
+<html>
+<div id="ex31-drop_zone"></div> 
+<output id="ex31-list"></output>
+</html>
+
+        
