@@ -9,7 +9,9 @@
 <li>Um solche Elemente ablegen zu können müssen Ereignisse in den Ablagezonen gesetzt werden</li>
 <li>Über <code>return false</code> in <code>drop</code> erlauben wir das Ablegen</li>
 <li><code>dragover</code> gibt uns die Chance bei Ablage etwas mit den Daten anzufangen, z.B. mit Text über 
-<pre lang="javascript">element.ondrop = function(event) { var text = event.dataTransfer.getData('Text'); }
+<pre lang="javascript">element.ondrop = function(event) { 
+    let text = event.dataTransfer.getData('Text');
+}
 </pre>
 </li>
 </ul></div>
