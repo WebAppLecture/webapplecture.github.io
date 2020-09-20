@@ -135,5 +135,30 @@
             "content/6_apis/patterns mvp.html",
             "content/6_apis/patterns mvvm.html"
         ]      
+    },{
+        "title": "Projekte",
+        "subtitle": "Abgaben der letzten Jahre",
+        "slides": [
+            "content/7_projekte/pikarun.html",
+            "content/7_projekte/lochness.html",
+            "content/7_projekte/trifix.html",
+            "content/7_projekte/space impact.html",
+            "content/7_projekte/fzero asteroids.html",
+            "content/7_projekte/find the box.html",
+            "content/7_projekte/win2000.html",
+            "content/7_projekte/mission calypso.html",
+            "content/7_projekte/flottenmanöver.html",
+            "content/7_projekte/asteroids.html",
+            "content/7_projekte/fox n run.html",
+            "content/7_projekte/rectangle man.html",
+            "content/7_projekte/escape.html",
+            "content/7_projekte/shoot em up.html",
+            "content/7_projekte/timerun.html",
+            "content/7_projekte/unnamed jump and run.html",
+            "content/7_projekte/explosive pong.html",
+            "content/7_projekte/petfight.html",
+            "content/7_projekte/starfall.html",
+            "content/7_projekte/flappy bird 2.0.html"
+        ]      
     }
 ]
