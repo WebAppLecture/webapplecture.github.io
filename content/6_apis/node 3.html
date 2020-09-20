@@ -1,0 +1,24 @@
+<h2>JavaScript am Server</h2>
+<ul>
+<li>Mit dem <em>http</em> Modul kann man einen Webserver starten</li>
+<li>Als einfachstes Beispiel kann man <i>Hallo Welt</i> bei Anfragen als Text zurückgeben:
+<pre lang="javascript">var http = require('http');
+http.createServer(
+  function (request, response) {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end('Hallo Welt\n');
+  }
+).listen(8000);
+</pre>
+</li>
+<li>Natürlich kann man noch mehr machen (Parameter auslesen, dynamische Rückgabe, ...)</li>
+<li>Analog kann man natürlich auch Anfragen senden, z.B. folgender <i>GET</i> Request
+<pre lang="javascript">var http = require('http');
+http.get("http://www.google.com/index.html", function(res) {
+  console.log("Got response: " + res.statusCode);
+}).on('error', function(e) {
+  console.log("Got error: " + e.message);
+});
+</pre>
+</li>
+</ul>

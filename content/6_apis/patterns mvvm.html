@@ -1,0 +1,24 @@
+<h2>Model-View-ViewModel (MVVM)</h2>
+<ul>
+<li>Ein eher neues Konzept ist MVVM, das eine Verbesserung von MVP darstellt</li>
+<li>Das Konzept wird durch ereignisgesteuertes Binding ermöglicht - d.h. man bindet Darstellungen an Quellen</li>
+<li>Ändert sich eine Quelle (d.h. die Daten), wird die Darstellung aktualisiert</li>
+<li>Dies ist bei statischen Webseiten unmöglich, kann aber durch JavaScript ermöglicht werden
+<pre lang="html">&lt;p&gt;First name: &lt;input data-bind="value: firstName" /&gt;&lt;/p&gt;
+&lt;p&gt;Last name: &lt;input data-bind="value: lastName" /&gt;&lt;/p&gt;
+&lt;p&gt;Full name: &lt;strong data-bind="text: fullName"&gt;&lt;/strong&gt;&lt;/p&gt;
+</pre>
+</li>
+<li>Eine bekannte Bibliothek hierfür ist KnockoutJS</li>
+<li>Hier werden verschiedene Elemente über <strong>unobtrusive JavaScript</strong> gebunden:
+<pre lang="javascript">function AppViewModel() {
+    this.firstName = ko.observable("Bert");
+    this.lastName = ko.observable("Bertington");
+    this.fullName = ko.computed(function() {
+    return this.firstName() + " " + this.lastName();    
+    }, this);
+}
+ko.applyBindings(new AppViewModel()); // Activates knockout.js
+</pre>
+</li>
+</ul>

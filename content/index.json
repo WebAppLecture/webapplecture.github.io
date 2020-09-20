@@ -122,13 +122,18 @@
         ]      
     },{
         "title": "APIs",
-        "subtitle": "blablabla",
+        "subtitle": "Server-side JS und Programming Patterns",
         "slides": [
-            "content/0_einfuehrung/vorwort.html",
-            "content/0_einfuehrung/um was geht es.html",
-            "content/0_einfuehrung/kurs aufbau.html",
-            "content/0_einfuehrung/code editor.html",
-            "content/0_einfuehrung/warum webapps.html"
+            "content/6_apis/webworker.html",
+            "content/6_apis/webworker 2.html",
+            "content/6_apis/node 1.html",
+            "content/6_apis/node 2.html",
+            "content/6_apis/node 3.html",
+            "content/6_apis/view engines.html",
+            "content/6_apis/patterns.html",
+            "content/6_apis/patterns mvc.html",
+            "content/6_apis/patterns mvp.html",
+            "content/6_apis/patterns mvvm.html"
         ]      
     }
 ]

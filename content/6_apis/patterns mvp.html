@@ -1,0 +1,12 @@
+<h2>Model-View-Presenter (MVP)</h2>
+<figure><img src="./images/slides/mvp.png" alt="Das MVP Muster"><figcaption>Beziehungen der Klassen mit direkten Verweisen im MVP Konzept</figcaption></figure>
+<ul>
+<li>Das MVP Muster wurde Anfang der 90er von Taligent (Apple, IBM, HP) entwickelt</li>
+<li>Es nimmt dabei MVC als Grundlage und kapselt die Funktionalität in einem Controller ähnlichen Objekt</li>
+<li>Zusätzlich dazu ist der View verantwortlich für die UI Ereignisse (Postback) - dies war eigentlich der Job des Controllers</li>
+<li>Das <strong>Model</strong> kapselt die Daten, welche dargestellt werden sollen</li>
+<li>Der <strong>View</strong> stellt die Daten in einer Webseite dar und empfängt die Ereignisse</li>
+<li>Die Ereignisse werden an den <strong>Presenter</strong> weitergeleitet, welcher dann entsprechende Aktionen durchführt</li>
+<li>Dabei werden Änderungen an den Model und den View durchgeführt</li>
+<li>Bei MVP ist in Verbindung mit WinForms und WebForms (.NET) sogar oftmals eine Portierung der Anwendung möglich</li>
+</ul>

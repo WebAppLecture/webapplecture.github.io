@@ -1,0 +1,14 @@
+<h2>Warum WebWorker?</h2>
+<ul>
+<li>Die Applikation soll immer responsive bleiben (immer reagieren können)</li>
+<li>Als Faustregel gilt: Wenn eine Operation mehr als <strong>50 ms</strong> brauchen kann, sollte diese asynchron sein</li>
+<li>Ein WebWorker kann von außen über <code>terminate()</code> abgebrochen werden</li>
+<li>Innerhalb eines Workers haben wir nur die Möglichkeiten über <code>postMessage()</code> an die Quelle zu senden oder diese über das <code>onmessage</code>-Ereignis zu empfangen</li>
+<li>Diese Möglichkeiten unterliegen der Messaging API und können nur Strings senden und empfangen (JSON!)</li>
+<li>Des Weiteren können wir AJAX Requests, <strong>WebSockets</strong>, alle JS-Methoden wie <code>eval()</code>, <code>isNaN()</code> etc. und alle Timer wie <code>setInterval()</code> verwenden</li>
+<li>Mit Hilfe von <code>importScripts</code> kann man weitere Skripte (z.B. jQuery) reinladen</li>
+<li>Das <code>location</code>-Objekt enthält die Adresse des WebWorkers</li>
+<li>Worker dürfen das <code>navigator</code>-Objekt verwenden: <code>appName</code>, <code>appVersion</code>, <code>platform</code> und <code>userAgent</code></li>
+<li>Über <code>close()</code> können wir den Worker innerhalb schließen</li>
+<li>Innerhalb des Workers ist <code>this</code> gleich der Worker-Instanz</li>
+</ul>
