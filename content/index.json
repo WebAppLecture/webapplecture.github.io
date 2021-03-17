@@ -4,7 +4,6 @@
         "subtitle": "blablabla",
         "slides": [
             "content/0_einfuehrung/vorwort.html",
-            "content/0_einfuehrung/um was geht es.html",
             "content/0_einfuehrung/kurs aufbau.html",
             "content/0_einfuehrung/code editor.html",
             "content/0_einfuehrung/warum webapps.html"
@@ -43,18 +42,15 @@
             "content/2_html-basics/nutzen html5.html",
             "content/2_html-basics/semantischer aufbau.html",
             "content/2_html-basics/verwendung neue tags.html",
-            "content/2_html-basics/html forms.html",
-            "content/2_html-basics/html5 forms.html",
-            "content/2_html-basics/automatische validierung.html",
             "content/2_html-basics/DOM.html",
-            "content/2_html-basics/auf eingaben reagieren.html",
-            "content/2_html-basics/diy validierung.html",
-            "content/2_html-basics/per javascript prüfen.html",
+            "content/2_html-basics/window objekt.html",
             "content/2_html-basics/js meets html.html",
             "content/2_html-basics/html events.html",
+            "content/2_html-basics/html5 forms.html",
+            "content/2_html-basics/automatische validierung.html",
+            "content/2_html-basics/diy validierung.html",
             "content/2_html-basics/programmatisches html.html",
-            "content/2_html-basics/kurzgefasst.html",
-            "content/2_html-basics/window objekt.html"
+            "content/2_html-basics/kurzgefasst.html"
         ]
     },{
         "title": "CSS3",
@@ -106,13 +102,14 @@
         "slides": [
             "content/5_daten/drag and drop.html",
             "content/5_daten/dataTransfer.html",
-            "content/5_daten/daten speichern.html",
+            "content/5_daten/daten speichern",
             "content/5_daten/cookie.html",
             "content/5_daten/session.html",
             "content/5_daten/webstorage.html",
             "content/5_daten/json 1.html",
             "content/5_daten/json 2.html",
             "content/5_daten/ajax 1.html",
+            "content/5_daten/ajax 2.html",
             "content/5_daten/messaging.html",
             "content/5_daten/websockets.html",
             "content/5_daten/datenformat.html",

@@ -30,7 +30,7 @@ let a = document.querySelector("#a"),
         add = (a, b) => a + b,
         muliply = (a, b) => a * b,
         subtract = (a, b) => a - b,
-        divide = (a, b) => b*1 === 0 ? "durch Null geteilt" : a / b,
+        divide = (a, b) => b === 0 ? "durch Null geteilt" : a / b,
     ];
 
 ((list, select) => {
@@ -45,7 +45,7 @@ let a = document.querySelector("#a"),
 button.addEventListener("click", () => {
     let fnId = fnSelect.selectedOptions[0].value,
         f = functions[fnId];
-    output.value = f(a.value, b.value);
+    output.value = f(a.value*1, b.value*1);
 });
 
 

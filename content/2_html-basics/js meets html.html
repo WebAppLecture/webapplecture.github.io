@@ -18,10 +18,34 @@
 <!-- Code -->
 
 <script>
+let colorDiv = document.querySelector("#colorSetExample"),
+    button = colorDiv.querySelector("button"),
+    select = colorDiv.querySelector("select");
 
+button.addEventListener('click', 
+    setName.bind(button, colorDiv));
+select.addEventListener('change', 
+    setColor.bind(select, colorDiv));
+
+function setName(colorDiv) {
+    this.innerHTML = colorDiv.style.background;
+}
+function setColor(colorDiv) {
+    if(this.selectedIndex) {
+        colorDiv.style.background = 
+            this.options[this.selectedIndex].value;
+    }
+}
 </script>
 <html>
-    <button onclick="alert('Das ist ein Test');">
-        
-    </button>
+<div id="colorSetExample" style="background: none;">
+    <select>
+        <option>---</option>
+        <option value="#F00">Red</option>
+        <option value="#0F0">Green</option>
+        <option value="#00F">Blue</option>
+    </select>
+
+    <button>Anklicken</button>
+</div>
 </html>

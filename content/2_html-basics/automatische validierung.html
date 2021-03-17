@@ -1,15 +1,24 @@
-<h2>Automatische Validierung</h2>
+<h2>Validierung mit HTML5</h2>
 <ul>
 <li>Es gibt einige neue Attribute wie <code>autofocus</code>, <code>placeholder=""</code>, <code>required</code>, <code>multiple</code> und <code>pattern=""</code></li>
 <li>Letzteres erlaubt Eingabe eines regulären Ausdrucks: Grund <strong>Validierung</strong>!</li>
 <li>Einige spezielle Elemente (z.B. <code>&lt;input type=email&gt;</code>) haben bereits eine vordefinierte Validierung eingebaut</li>
 <li>Für z.B. <strong>number</strong> gibt es <code>min</code>, <code>max</code> (Steuerung des Bereichs) und <code>step</code> (Steuerung der Schrittweite)</li>
 <li>Neben Validierung können wir über das Attribut <code>autocomplete</code> nun steuern ob diese Funktion vom Browser verwendet werden soll</li>
-<li>Problem ist, dass die Validierung erst beim Absenden ausgeführt wird (direkt nur über JavaScript)</li>
+<li>Problem ist, dass die Validierung erst beim Absenden ausgeführt wird</li>
 <li>Attribute zum Deaktivieren: <code>novalidate</code> (ein Element) oder <code>formnovalidate</code> (alle Elemente) im Button</li>
 </ul>
 
 <!-- Code -->
+<script>
+document.querySelector("#form1").addEventListener("submit", e => {
+    e.preventDefault();
+    for(let i=0; i<e.target.length; i++) {
+        console.log(e.target[i].type, e.target[i].value);
+    }
+    return false;
+})
+</script>
 <style>
 form { 
     text-align: center;
@@ -20,26 +29,16 @@ input {
     display: block;
     margin: auto;
 }
-input[required]::after {
-    content: "*";
-}
 </style>
 <html>
 <form id="form1">
-    E-mail*:<input type="email" required placeholder="Bitte E-Mail eingeben">
-    Url*: <input type="url" required placeholder="Bitte URL eingeben">
-    Color: <input type="color" onchange="form1.style.color = this.value;">
-    Telefon: <input type="tel"> 
-    Number*: <input type="number" required min="9" max="15" step="3/"> 
-
-    Range: <span id="slidertest"></span><input type="range" onchange="slidertest.innerHTML = this.value;" min="30" max="300"> 
-
+    E-mail:
+    <input type="email" required placeholder="Bitte E-Mail eingeben">
+    Url:
+    <input type="url" required placeholder="Bitte URL eingeben">
+    Number:
+    <input type="number" required min="9" max="15" step="3"> 
     <button type="submit">Testen!</button>
-</form>
-<form>
-    Datetime: <input type="datetime">
-    Week: <input type="week"> 
-    Month*: <input required type="month">
 </form>
 </html>
 

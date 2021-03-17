@@ -31,34 +31,62 @@
 <!-- Code -->
 
 <script>
-let colorDiv = document.querySelector("#colorSetExample"),
-    button = colorDiv.querySelector("button"),
-    select = colorDiv.querySelector("select");
+document.querySelector("#b1").addEventListener("mousedown", trigger);
+document.querySelector("#b2").addEventListener("mouseup", trigger);
+document.querySelector("#b3").addEventListener("mouseup", trigger);
+document.querySelector("#b4").addEventListener("mouseover", trigger);
+document.querySelector("#b5").addEventListener("mouseenter", trigger);
+document.querySelector("#b6").addEventListener("mouseleave", trigger);
+window.addEventListener("keydown", () => trigger({target: document.querySelector("#b7")}));
+window.addEventListener("keyup", () => trigger({target: document.querySelector("#b8")}));
+window.addEventListener("keydown", (e) => e.repeat ? {} : trigger({target: document.querySelector("#b9")}));
+document.querySelector("#input").addEventListener("input", color);
+document.querySelector("#change").addEventListener("change", color);
+window.addEventListener("load", () => trigger({target: document.body}))
 
-button.addEventListener('click', 
-    setName.bind(button, colorDiv));
-select.addEventListener('change', 
-    setColor.bind(select, colorDiv));
-
-function setName(colorDiv) {
-    this.innerHTML = colorDiv.style.background;
+function trigger(e) {
+    e.target.classList.add("trigger");
+    setTimeout(() => e.target.classList.remove("trigger"), 100);
 }
-function setColor(colorDiv) {
-    if(this.selectedIndex) {
-        colorDiv.style.background = 
-            this.options[this.selectedIndex].value;
-    }
+function color(e) {
+    e.target.parentElement.style.background = e.target.value;
 }
 </script>
+<style>
+* {
+    box-sizing: border-box;
+}
+div {
+    display: inline-block;
+    width: 10ch;
+    height: 10ch;
+    padding-top: 20px;
+    text-align: center;
+    vertical-align: bottom;
+    border-radius: 50%;
+    background: #999;
+    
+}
+.trigger {
+    background: red;
+}
+</style>
 <html>
-<div id="colorSetExample" style="background: none;">
-    <select>
-        <option>---</option>
-        <option value="#F00">Red</option>
-        <option value="#0F0">Green</option>
-        <option value="#00F">Blue</option>
-    </select>
-
-    <button>Anklicken</button>
+<div id="b1">mousedown</div>
+<div id="b2">mouseup</div>
+<div id="b3">click</div>
+<div id="b4">mouseover</div>
+<div id="b5">mouseenter</div>
+<div id="b6">mouseleave</div>
+<div id="b7">keydown</div>
+<div id="b8">keyup</div>
+<div id="b9">keydown (safe)</div>
+<div>
+    input
+    <input type="color" id="input">
+</div>
+<div>
+    change
+    <input type="color" id="change">
 </div>
 </html>

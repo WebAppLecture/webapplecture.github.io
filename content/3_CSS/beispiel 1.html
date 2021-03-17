@@ -1,5 +1,14 @@
 <!-- Code -->
 
+<script>
+document.querySelectorAll("li").forEach((el, i) => el.addEventListener("click", e => {
+  if(e.target.innerHTML === "") {
+    e.target.innerHTML = i+1;
+  } else {
+    e.target.innerHTML = "";
+  }
+}));
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 

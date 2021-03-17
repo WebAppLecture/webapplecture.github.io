@@ -8,10 +8,10 @@ Javascript ist dynamisch Typisiert.
     <li>Es gibt auch eine streng typisierte Sprachvariante Typescript, die deswegen besonders bei großen Projekten sehr beliebt ist.</li>
 </ul>
 
-Mit ES 6 erhiel Javascript zwei neue Bezeichner für Variablen: <code>const</code> und <code>let</code>
+Mit ES 6 erhielt Javascript zwei neue Bezeichner für Variablen: <code>const</code> und <code>let</code>
 
 <ul>
-    <li>Der alte <code>var</code> Bezeichner sollte nicht mehr benutzt werden!</li>
+    <li>Der alte <code>var</code> Bezeichner sollte nicht mehr benutzt werden! (Ihr werdet ihn aber noch in vielen ältern Guides finden)</li>
     <li><code>let</code> verhält sich wie eine normale Variable, ohne <code>var</code>'s Eigenheiten</li>
     <li><code>const</code> bezeichnet eine nicht veränderbare Konstante.
         <ul>
@@ -27,6 +27,8 @@ Mit ES 6 erhiel Javascript zwei neue Bezeichner für Variablen: <code>const</cod
 <script>
 const PI = 3.14; 
 let pi = 3.14;
+const MATH = { pi: 3.14};
 pi = 3;
+MATH.pi = 7;
 PI = 4;
 </script>

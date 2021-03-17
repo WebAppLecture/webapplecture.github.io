@@ -14,8 +14,8 @@
 <ul>
 <li><code>concat()</code></li>
 <li><code>indexOf()</code> und <code>lastIndexOf()</code></li>
-<li><code>match()</code></li>
-<li><code>replace()</code> (und <code>replaceAll()</code> per Prototyp Erweiterung)</li>
+<li><code>match()</code> und <code>matchAll()</code></li>
+<li><code>replace()</code> und <code>replaceAll()</code></li>
 <li><code>slice()</code> und <code>split()</code></li>
 <li><code>substr()</code> und <code>substring()</code></li>
 </ul>
@@ -39,11 +39,12 @@ let s = document.querySelector("#string"),
 input.addEventListener("input", updateOutput);
 
 function updateOutput() {
-    output.value = s.value.indexOf(input.value) + "\n";
-    output.value += s.value.lastIndexOf(input.value) + "\n";
-    output.value += s.value.split(input.value) + "\n";
-    output.value += s.value.replace(input.value, "_") + "\n";
-    output.value += s.value.replaceAll(input.value, "_") + "\n";
+    output.value = 
+`indexOf: \t ${s.value.indexOf(input.value)}
+lastIndexOf: \t ${s.value.lastIndexOf(input.value)}
+split: \t\t [${s.value.split(input.value).map(s => '"' + s + '"')}]
+replace: \t ${s.value.replace(input.value, "_")}
+replaceAll: \t ${s.value.replaceAll(input.value, "_")}`;
 }
 
 String.prototype.replaceAll = function(find, replace) {

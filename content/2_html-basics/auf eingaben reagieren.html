@@ -12,7 +12,8 @@
 let form = document.querySelector('form');
 form.onsubmit = onSubmit;
 
-function onSubmit() {
+function onSubmit(e) {
+    e.preventDefault();
     var error = [];            
     if(this.name.value.length === 0)
         error.push('Bitte das Namens-Feld ausfüllen');  

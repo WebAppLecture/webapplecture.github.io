@@ -1,7 +1,7 @@
 <h2>Klassen (2)</h2>
 <h3>Private und Public</h3>
 <ul>
-    <li>Gibt es in Javascript formal nicht, es gibt aber Entwürfe wie dies in Zukunft funktioniert.</li>
+    <li>Gibt es in Javascript formal nicht, es gibt aber Entwürfe wie dies in Zukunft funktioniert. (<a href="https://caniuse.com/mdn-javascript_classes_private_class_fields">Browsersupport</a> 67% - 03.2021)</li>
     <li>Es gibt jedoch viele Möglichkeiten dies zu emulieren, z.B. durch Scoping.</li>
     <li>Es ist in Javascript Konvention "private" Eigenschaften/Methoden mit einem Unterstrich zu markieren <code>_variable</code></li>
 </ul>
@@ -16,8 +16,10 @@
 
 <script>
 class User {
-    constructor(name) {
-        this.name = name; // ruft Setter auf
+    constructor(params) {
+        this.output = params.output;
+        this.name = params.name; // ruft Setter auf
+        params.button.addEventListener('click', () => this.name = params.input.value);
     }
     get name() {
         return this._name;
@@ -27,22 +29,18 @@ class User {
             return;
         }
         this._name = value;
+        this.output.value = this._name;
     }
     static get MIN_NAME_LENGTH() {
         return 4;
     }
 }
 
-let button = document.querySelector("button"),
-    input = document.querySelector(".name"),
-    output = document.querySelector(".output"),
-    user = new User("Hans");
-
-output.value = user.name;
-
-button.addEventListener('click', () => {
-    user.name = input.value;
-    output.value = user.name;
+let user = new User({
+    name: "Hans", 
+    input: document.querySelector(".name"), 
+    output: document.querySelector(".output"), 
+    button: document.querySelector("button")
 });
 </script>
 <style>

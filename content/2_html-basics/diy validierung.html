@@ -2,17 +2,23 @@
 <ul>
     <li>Wir wollen nun die automatische Validierung nutzen um eine eigene Validierung einzubauen</li>
     <li>Dies ist sinnvoll, da die automatische Validierung erst beim <code>onsubmit</code> sichtbar wird</li>
+    <li>Für Validierung eignet sich sehr gut der eingebaute <code>RegExp</code> Datentyp</li>
+    <li>RegEx können wir auch im <code>pattern</code> Attribut verwenden</li>
+    <li>Wer RegEx genauer erklärt bekommen will: <a href="http://www.regex101.com">Regex101</a></li>
 </ul>
 
 <!-- Code -->
 
 <script>
-let form = input.querySelector('form');
-form.email.addEventListener('keyup', validate)
-
-function validate(e) {
+document.querySelector("#form1").addEventListener("submit", e => {
+    e.preventDefault();
+    return false;
+});
+document.querySelectorAll("*[required]").forEach(el => el.addEventListener("input", e => {
+    e.target.reportValidity();
+    return;
     if(e.target.willValidate && !e.target.validity.valid) {//Jedes Element besitzt (in HTML5) eine validity Eigenschaft
-        form.querySelector('#mailerror').innerHTML = 'Bitte eine korrekte Mailadresse eingeben';
+        e.target.nextSibling.innerHTML = "Fehleingabe"
         form.querySelector('#formmailsubmit').disabled = true;//Button disablen
         output.value = "validate failed!";
     } else if (e.target.value.length) {
@@ -20,11 +26,29 @@ function validate(e) {
         form.querySelector('#formmailsubmit').disabled = false;//Button enablen
         output.value = "validation successful!";
     }
-}
+}));
 </script>
+<style>
+form { 
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+input { 
+    display: block;
+    margin: auto;
+}
+</style>
 <html>
-<form action="http://html5.florian-rappl.de/submitted.html" method="GET" target="_blank">
-    <label style="font-weight:bold;">E-Mail<span style="width:150px;font-weight:normal;display: block;color: #F00;font-size:8pt;height:10px;" id="mailerror">&nbsp;</span></label><input type="email" name="email" placeholder="'name@domain.com'" style="width: 150px;height:30px;vertical-align:top;"></p>
-    <button type="submit" id="formmailsubmit" disabled="">Abschicken</button>
+<form id="form1">
+    E-mail:
+    <input type="email" required placeholder="Bitte E-Mail eingeben"><span></span>
+    Url:
+    <input type="url" required placeholder="Bitte URL eingeben"><span></span>
+    Number:
+    <input type="number" required min="9" max="15" step="3"><span></span>
+    NDS-Kürzel (xyz12345):
+    <input type="text" required pattern="[a-z]{3}[0-9]{5}"><span></span>
+    <button type="submit">Abschicken!</button>
 </form>
 </html>

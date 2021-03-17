@@ -32,47 +32,37 @@ class NameDerKlasse {
 <!-- Code -->
 <script>
 class Person {
-    constructor(alter) {
+    constructor(target, alter) {
+        this.output = target.querySelector("input");
         this.alter = alter ?? (Math.random() * 120).toFixed(0);
+        target.querySelector(".neu").addEventListener("click", this.reincarnate.bind(this));
+        target.querySelector(".geburtstag").addEventListener("click", this.geburtstag.bind(this));
+    }
+    set alter(value) {
+        this._alter = value*1;
+        this.output.value = this._alter;
+    }
+    get alter() {
+        return this._alter;
     }
     geburtstag() {
         this.alter++;
     }
+    reincarnate() {
+        this.alter = (Math.random() * 120).toFixed(0);
+    }
     static istÄlter(a, b) {
-        return a.alter - b.alter;
+        return a._alter - b._alter;
     }
 }
-let feldA = document.querySelector("#person-a"),
-    feldB = document.querySelector("#person-b"),
-    personA, 
-    personB, 
-    vergleich = document.querySelector("#vergleich"),
+let personA = new Person(document.querySelector("#person-a")), 
+    personB = new Person(document.querySelector("#person-b")), 
     ergebnis = document.querySelector("#ergebnis");
 
-init(feldA, personA);
-init(feldB, personB);
-
-vergleich.addEventListener('click', () => {
-    console.log(personA, personB, Person.istÄlter(personA, personB));
-    ergebnis.value = (Person.istÄlter(personA, personB) ? "A" : "B") + " ist älter!";
-})
-
-function init(target, person) {
-    let neu = target.querySelector(".neu"),
-        geburtstag = target.querySelector(".geburtstag"),
-        output = target.querySelector("input");
-    
-    person = new Person();
-
-    neu.addEventListener("click", () => {
-        person = new Person();
-        output.value = person.alter;
-    });
-    geburtstag.addEventListener("click", () => {
-        person.geburtstag();
-        output.value = person.alter;
-    });
-}
+document.querySelector("#vergleich").addEventListener('click', () => {
+    let differenz = Person.istÄlter(personA, personB);
+    ergebnis.value = (differenz > 0 ? "A" : "B") + " ist " + Math.abs(differenz) + " Jahre älter!";
+});
 
 </script>
 <style>

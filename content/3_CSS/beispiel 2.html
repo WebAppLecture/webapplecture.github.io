@@ -1,5 +1,14 @@
 <!-- Code -->
 
+<script>
+document.querySelectorAll("input").forEach(el => {
+    el.value = window.getComputedStyle(document.documentElement).getPropertyValue(el.dataset.cssvar)
+        .trim().replace(el.dataset.cssunit, "");
+    el.addEventListener('input', e => {
+        document.documentElement.style.setProperty(el.dataset.cssvar, e.target.value + (el.dataset.cssunit || ""));
+    });
+});
+</script>
 <style>
 :root {
   --cell-count: 4;
@@ -31,3 +40,12 @@ body {
   background: var(--weave-straight), #1d1e22;
 }
 </style>
+<html>
+<input data-cssvar="--hue" type="range" min="0" max="360" step="1">
+<input data-cssvar="--saturation" data-cssunit="%" type="range" min="0" max="100" step="1">
+<input data-cssvar="--light" data-cssunit="%" type="range" min="0" max="100" step="1">
+<input data-cssvar="--light-spread" data-cssunit="%" type="range" min="0" max="100" step="1">
+<input data-cssvar="--alpha" type="range" min="0" max="1" step=".05">
+<input data-cssvar="--cell-count" type="range" min="1" max="10" step=".1">
+
+</html>
