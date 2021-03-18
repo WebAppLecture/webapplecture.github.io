@@ -17,13 +17,11 @@
 
 </script>
 <Tabs {initialSelectedIndex}>
-	<div style="--deg1: {getDegRng(-5, 5)}deg; --deg2: {getDegRng(-5, 5)}deg; --deg3: {getDegRng(-5, 5)}deg">
 	<TabList>
 		<Tab>HTML</Tab>
 		<Tab>CSS</Tab>
 		<Tab>JS</Tab>
 	</TabList>
-	</div>
 	<div class="wrapper">
 	<TabPanel>
 		<CodeFlask bind:code={editors.html} opts={{language: 'html', lineNumbers: true}}></CodeFlask>
@@ -61,31 +59,4 @@
 		border: none !important;
 	}
 
-	:global(.svelte-tabs__tab) {
-		background: black;
-		color: white !important;
-	}
-
-	:global(.svelte-tabs__tab-list > *:nth-child(1)) {
-		transform: rotate(var(--deg1));
-		padding-right: 20px;
-		padding-left: 30px;
-	}
-
-	:global(.svelte-tabs__tab-list > *:nth-child(2)) {
-		transform: rotate(var(--deg2));
-		padding-right: 25px;
-		padding-left: 10px;
-	}
-
-	:global(.svelte-tabs__tab-list >*:nth-child(3)) {
-		transform: rotate(var(--deg3));
-		padding-right: 40px;
-		padding-left: 20px;
-	}
-
-	:global(.svelte-tabs__selected) {
-		background: var(--accent);
-		color: var(--highlight) !important;
-	}
 </style>

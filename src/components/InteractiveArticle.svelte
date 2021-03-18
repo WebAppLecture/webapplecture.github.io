@@ -23,7 +23,7 @@
         .then(text => {
             let src = read(text);
             editors = src.editors;
-            article = src.article;
+            article = src.article || "";
         })
         .then(() => {
             if(active) {
@@ -46,38 +46,37 @@
 </script>
 
 <article bind:this={container} data-src={content}>
-    {#if article}
     <section>
         <SideArticle {article}></SideArticle>
     </section>
-    {:else}
-    <section class="filler"></section>
-    {/if}
-    {#if editors}
+
     <section bind:this={editContainer} class="code" on:focusin={activate}>
+        {#if editors}
         <CodeEditor {editors} {id} active={editorActive}></CodeEditor>
+        {/if}
     </section>
-    {:else}
-    <section class="filler"></section>
-    {/if}
+    
 </article>
 
 <style>
     article {
         width: 100%;
-        display: flex;
-        
+        display: flex; 
     }
 
     section {
-        flex: 1 1 50%;
+        flex: 1 1 auto;
     }
 
-    .filler {
+    section.code {
+        flex: 10 0 50%;
+    }
+
+    section:empty {
         flex: 0 1 100px;
     }
 
-    .code {
+    .code:not(:empty) {
         min-height: 800px;
     }
 

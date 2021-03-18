@@ -1,57 +1,56 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate } from 'svelte';
     export let article;
 
     let container;
-
-    onMount(() => {
-        container.innerHTML = article;
-    });    
+    
+    afterUpdate(() => {
+        article !== undefined ? container.innerHTML = article : {};
+    });
 </script>
-{#if article}
-<article bind:this={container}>
+
+<article class="side-article" bind:this={container}>
+    <div class="skeleton">
+        <h2>Great Standin Heading</h2>
+        There will be some text <code>here</code>.
+        <ul>
+            <li>Some placeholder text.</li>
+            <li>You never know who might read this. <code>Aliens?</code></li>
+            <li><code>a + b = c</code>, stunning realisations occur rapidly.</li>
+            <li>Some placeholder text.</li>
+            <li>You never know who might read this. <code>Aliens?</code></li>
+            <li><code>a + b = c</code>, stunning realisations occur rapidly.</li>
+            <li>Some placeholder text.</li>
+            <li>You never know who might read this. <code>Aliens?</code></li>
+            <li><code>a + b = c</code>, stunning realisations occur rapidly.</li>
+            <li>Some placeholder text.</li>
+            <li>You never know who might read this. <code>Aliens?</code></li>
+            <li><code>a + b = c</code>, stunning realisations occur rapidly.</li>
+        </ul>
+    </div>
 </article>
-{/if}
+
 
 <style>
-    article :global(h2) {
-        background: black;
-        color: white;
-        width: max-content;
-        padding: 0 20px 0 40px;
-        transform: rotate(-3deg);
-        text-transform: uppercase;
-        font-weight: 400;
+
+    .skeleton {
+        filter: blur(5px);
     }
 
-    article :global(code) {
-        display: inline-block;
-        background: black;
-        padding: 0 1em;
-        color: white;
-    }
-
-    article :global(pre) {
-        background: black;
-        color: white;
-        padding: 5px 15px;
-        width: max-content;
-        font-family: inherit;
-        margin: .5em 0;
-        font-size: small;
+    article :global(img) {
+        max-width: 100%;
     }
 
     article :global(figure) {
         float: right;
     }
 
-    article :global(figcaption) {
-        text-align: center;
+    article :global(figure.full-width) {
+        width: 100%;
     }
 
-
-    article :global(img) {
-        max-width: 100%;
+    article :global(figcaption) {
+        text-align: center;
     }
 
 </style>

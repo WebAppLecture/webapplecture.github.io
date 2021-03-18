@@ -59,12 +59,15 @@
     div {
         width: 100%;
         margin-top: 10px;
-        border: 5px dashed var(--highlight);
         height: 100%;
     }
     div :global(iframe) {
         width: 100%;
         height: 100%;
         border: none;
+    }
+
+    div {
+        border: 1px solid grey;
     }
 </style>
