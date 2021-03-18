@@ -4,7 +4,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
-import path from 'path';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -35,7 +34,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'docs/build/bundle.js'
 	},
 	inlineDynamicImports: true,
 	plugins: [
@@ -45,7 +44,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write('public/build/bundle.css');
+				css.write('docs/build/bundle.css');
 			}
 		}),
 
@@ -62,16 +61,16 @@ export default {
 		postcss({
 			extract: true,
 			// Or with custom file name, it will generate file relative to bundle.js in v3
-			extract: 'public/build/vendors.css'
+			extract: 'docs/build/vendors.css'
 		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
 		!production && serve(),
 
-		// Watch the `public` directory and refresh the
+		// Watch the `docs` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
+		!production && livereload('docs'),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
