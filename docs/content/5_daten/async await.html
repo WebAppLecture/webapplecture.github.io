@@ -1,0 +1,35 @@
+<h2>Async Await</h2>
+<ul>
+<li>Zusätzlich zu <code>Promise.then</code> gibt es mittlerweile auch eine weitere Schreibweise um Asynchronität darzustellen</li>
+<li>Funktionen die mit <code>async</code> gekennzeichnet sind können intern andere asynchrone Aufrufe (Promises o.ä.) mit <code>await</code> abwarten</li>
+<li>Fehler werden mit <code>try/catch</code> Blöcken gefangen, vgl. <code>.catch</code> bei Promises</li>
+<li>Dadurch ergibt sich ein Syntax der sich wie synchrones Javascript liest</li>
+<li>Async Await kann beliebig mit Promise.then Syntax gemischt werden</li>
+<li>Nehmt die Schreibweise her, die euch besser liegt, es gibt keine falsche Antwort</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+
+function getIndexA() {
+    fetch('/content/index.json')
+        .then(response => response.json())
+        .then(formatJSON)
+        .then(console.log);
+}
+// vgl.
+async function getIndexB() {
+    let response = await fetch('/content/index.json'),
+        data = await response.json(),
+        output = formatJSON(data);
+    console.log(output);
+}
+
+getIndexA();
+getIndexB();
+
+function formatJSON(json) {
+    return JSON.stringify(json, null, 2);
+}
+</script>
