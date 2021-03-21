@@ -1,7 +1,7 @@
 [
     {
         "title": "Einführung",
-        "subtitle": "blablabla",
+        "subtitle": "Organisatorisches und Überblick",
         "slides": [
             "content/0_einfuehrung/vorwort.html",
             "content/0_einfuehrung/kurs aufbau.html",
@@ -10,7 +10,7 @@
         ]      
     },{
         "title": "JS-Basics",
-        "subtitle": "blablabla",
+        "subtitle": "Von Livescript bis ES2021",
         "slides": [
             "content/1_js-basics/js einstieg.html",
             "content/1_js-basics/ecma script.html",
@@ -35,7 +35,7 @@
         ]  
     },{
         "title": "HTML5",
-        "subtitle": "blablabla",
+        "subtitle": "Aufbau und Interaktion",
         "slides": [
             "content/2_html-basics/geschichte html.html",
             "content/2_html-basics/was ist html.html",
@@ -54,7 +54,7 @@
         ]
     },{
         "title": "CSS3",
-        "subtitle": "blablabla",
+        "subtitle": "Farbe und Form",
         "slides": [
             "content/3_CSS/einstieg css.html",
             "content/3_CSS/selektoren.html",
@@ -98,7 +98,7 @@
         ]      
     },{
         "title": "Daten",
-        "subtitle": "blablabla",
+        "subtitle": "Laden, Übertragen und Speichern",
         "slides": [
             "content/5_daten/drag and drop.html",
             "content/5_daten/dataTransfer.html",
@@ -109,11 +109,10 @@
             "content/5_daten/json 1.html",
             "content/5_daten/json 2.html",
             "content/5_daten/ajax 1.html",
-            "content/5_daten/ajax 2.html",
             "content/5_daten/messaging.html",
             "content/5_daten/websockets.html",
-            "content/5_daten/datenformat.html",
             "content/5_daten/promises.html",
+            "content/5_daten/async await.html",
             "content/5_daten/file api.html",
             "content/5_daten/file api 2.html"
         ]      

@@ -1,6 +1,5 @@
 <h2>Drag and Drop</h2>
 <ul>
-    <figure><img src="./images//slides/dnd.png" alt="Verdeutlichung eines Drag and Drop Vorgangs"></figure>
 <li>Die Drag-And-Drop API kommt vom IE(5) - sie wurde für HTML5 Reverse Engineered</li>
 <li>Alle Browser sollten die API mittlerweile im Prinzip unterstützen</li>
 <li>Die API gilt leider als eine der schlechteren - hat aber durch seine Verbreitung Vorteile</li>
@@ -15,3 +14,74 @@
 </pre>
 </li>
 </ul></div>
+
+<!-- Code -->
+<script>
+let draggable = document.querySelectorAll('[draggable]'),
+    targets = document.querySelectorAll('[data-drop-target]');
+for(let i = 0; i < draggable.length; i++) {
+    draggable[i].addEventListener("dragstart", 
+        function(e) { e.dataTransfer.setData("text", this.id)});
+}
+for(let i = 0; i < targets.length; i++) {
+    targets[i].addEventListener("dragover", 
+        e => e.preventDefault());
+    targets[i].addEventListener("drop", handleOverDrop);
+    targets[i].addEventListener("dragenter", 
+        function(e) {this.classList.add("drag-enter")});
+    targets[i].addEventListener("dragleave",  
+        function(e) {this.classList.remove("drag-enter")});
+}
+function handleOverDrop(e) {
+    e.preventDefault(); 
+    let draggedId = e.dataTransfer.getData("text"),
+        draggedEl = document.querySelector("#" + draggedId);
+    this.appendChild(draggedEl); 
+    this.classList.remove("drag-enter");
+}		
+</script>
+<style>
+* {
+    box-sizing: border-box;
+}
+[data-drop-target] {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    vertical-align: top;
+    height: 274px;
+    width: 184px;
+    background-color: gainsboro;
+    border: 2px solid transparent;
+}
+.drag-enter {
+    border: 2px dashed #000;
+}
+.box {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+.navy {
+    background-color: navy;
+}
+.red {
+    background-color: firebrick;
+}
+.green {
+    background-color: darkgreen;
+}
+.orange {
+    background-color: orange;
+}
+</style>
+<html>
+<div data-drop-target="true">
+    <div id="box1" draggable="true" class="box navy"></div>
+    <div id="box2" draggable="true" class="box red"></div>
+    <div id="box3" draggable="true" class="box green"></div>
+    <div id="box4" draggable="true" class="box orange"></div>
+    <div id="box5" draggable="true" class="box navy"></div>
+    <div id="box6" draggable="true" class="box red"></div>
+</div>
+<div data-drop-target="true"></div>
+</html>

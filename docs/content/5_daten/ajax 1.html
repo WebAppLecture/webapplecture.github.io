@@ -14,16 +14,37 @@
 
 <!-- Code -->
 <script>
-fetch('/content/index.json')
+let button1 = document.querySelector(".then"),
+    button2 = document.querySelector(".await"),
+    clear = document.querySelector(".clear"),
+    textarea = document.querySelector("textarea");
+
+button1.addEventListener("click", () => 
+    fetch('/content/index.json')
     .then(response => response.json())
-    .then(data => document.querySelector("textarea").value = JSON.stringify(data));
+    .then(formatOutput)
+);
+button2.addEventListener("click", async () => {
+    let response = await fetch('/content/index.json'),
+        data = await response.json();
+    formatOutput(data);
+});
+
+clear.addEventListener("click", () => textarea.value = "");
+function formatOutput(data) {
+    textarea.value = JSON.stringify(data, null, 2);
+}
 </script>
 <style>
-    textarea {
-        height: 100%;
-        width: 100%;
-    }
+textarea {
+    height: 90%;
+    width: 100%;
+    resize: none;
+}
 </style>
 <html>
+<button class="then">load</button>
+<button class="await">load (await)</button>
+<button class="clear">clear</button>
 <textarea></textarea>
 </html>

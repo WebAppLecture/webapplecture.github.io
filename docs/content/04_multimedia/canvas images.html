@@ -33,15 +33,41 @@
 
 <script>
 
-let c = document.querySelector('canvas').getContext('2d');
-let img = document.createElement('img');
+let c = document.querySelector('canvas').getContext('2d'),
+    img = document.createElement('img'),
+    x = c.canvas.width/2 - 25,
+    y = c.canvas.height/2 - 25,
+    vx = 2,
+    vy = 3,
+    physixCount = 0;
 
 img.addEventListener("load", function() {
-    let redraw = setInterval(function() {
-        c.clearRect(0,0,c.canvas.width,c.canvas.height);
-        c.drawImage(img, Math.floor(Math.random() * (c.canvas.width - 50)), Math.floor(Math.random() * (c.canvas.height - 50)), 50, 50);
-    }, 2000);      
+    animate();
 });
+
+function animate() {
+    c.clearRect(0,0,c.canvas.width,c.canvas.height);
+    physixCount++;
+     
+    x += vx;
+    y += vy;
+    if(physixCount % 3 === 0) {
+        [x, vx] = hit(x, vx, c.canvas.width - 50);
+        [y, vy] = hit(y, vy, c.canvas.height - 50);
+    }
+    c.drawImage(img, x, y, 50, 50);
+    requestAnimationFrame(animate);
+}
+
+function hit(pos, speed, upperBoundary) {
+    if(pos >= upperBoundary) {
+        return [2 * upperBoundary - pos, -speed]; 
+    }
+    if(pos <= 0) {
+        return [-pos, -speed];
+    }
+    return [pos + speed, speed];
+}
 
 img.src = 'images/slides/html5.jpg'
 
@@ -52,5 +78,5 @@ canvas {
 }
 </style>
 <html>
-<canvas width="200" height="200"></canvas>
+<canvas width="400" height="350"></canvas>
 </html>
