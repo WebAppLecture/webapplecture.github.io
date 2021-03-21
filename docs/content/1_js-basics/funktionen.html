@@ -56,7 +56,7 @@ function divide(a, b) {
 button.addEventListener("click", function() {
     let fnId = fnSelect.selectedOptions[0].value,
         f = functions[fnId];
-    output.value = f(a.value, b.value);
+    output.value = f(a.value*1, b.value*1);
 });
 
 function fillOptions(list, select) {
