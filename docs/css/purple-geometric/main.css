@@ -9,23 +9,23 @@ main > div > article > section {
 
 main > div:nth-of-type(2n) > article > *:nth-child(2n-1) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="turquoise" points="0 1 0 0 100 0 100 15"/><polygon fill="purple" points="0 0 100 0 100 10"/><polygon fill="purple" points="0 100 100 100 100 90"/><polygon fill="purple" points="100 0 100 100 96 100"/></svg>'); 
-  background-size: 100% 100%;
+  background-size: 101% 101%;
 }
 
 main > div:nth-of-type(2n) > article > *:nth-child(2n) {
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="purple" points="0 0 100 0 98 30 100 100 0 100"/></svg>'); 
-    background-size: 100% 100%;
+    background-size: 101% 101%;
 }
 
 main > div:nth-of-type(2n-1) > article > *:nth-child(2n-1) {
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="purple" points="0 0 100 0 100 100 0 100 2 80"/></svg>'); 
-    background-size: 100% 100%;
+    background-size: 101% 101%;
     color: var(--accent);
 }
 
 main > div:nth-of-type(2n-1) > article > *:nth-child(2n) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100"><polygon fill="orangered" points="0 0 100 0 98 1 0 13"/><polygon fill="purple" points="0 0 100 0 0 10"/><polygon fill="purple" points="0 100 100 100 0 90"/><polygon fill="purple" points="0 0 0 100 3 0"/></svg>'); 
-  background-size: 100% 100%;
+  background-size: 101% 101%;
 }
 
 .svelte-tabs__tab {
