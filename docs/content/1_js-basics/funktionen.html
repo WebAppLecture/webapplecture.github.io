@@ -42,14 +42,11 @@ function multiply(a, b) {
     return a * b;
 }
 
-function subtract() {
-    return arguments[0] - arguments[1];
+function subtract(a, b) {
+    return a - b;
 }
 
 function divide(a, b) {
-    if(b*1 === 0) {
-        return "durch Null geteilt!"
-    }
     return a / b;
 }
 
@@ -63,23 +60,43 @@ function fillOptions(list, select) {
     list.forEach(function(item, i) {
         let option = document.createElement("option");
         option.value = i;
-        option.innerText = item?.name;
+        option.innerText = item?.toString().match(/return\s*(?<return>[^;}]*)/).groups.return;
         select.appendChild(option);
     });
 }
 </script>
+</script>
 <style>
-div > * {
-    width: 19%;
+div {
+  font-size: 1.5rem;
+  font-family: monospace;
 }
 
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input, select {
+    border: none;
+    outline: none;
+    max-width: 30%;
+}
+
+#a, #b {
+  width: 6ch;
+}
 </style>
 <html>
 <div>
-<input id="a" type="text"/>
-<input id="b" type="text"/>
-<select id="functions"></select>
-<button>apply</button>
-<input id="output" type="text"/>
+    function f(a, b) {return <select id="functions"></select>}
+</div>
+<div>
+    f(<input id="a" type="text" placeholder="a"/>,
+    <input id="b" type="text" placeholder="b"/>)
+    <button id="apply">▶</button>
+</div>
+<div>
+    <textarea id="output"></textarea>
 </div>
 </html>

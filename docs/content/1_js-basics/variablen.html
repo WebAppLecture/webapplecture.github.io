@@ -1,26 +1,34 @@
 <h2>Variablen deklarieren</h2>
 
-Javascript ist dynamisch Typisiert.
+Ermöglichen uns Daten mit einem Namen zu versehen um dann über diesen Namen auf sie zuzugreifen.
 <ul>
-    <li>Keine Deklaration des Variablentyps wie z.B in Java <code>int i = 0</code> oder <code> String s = "test"</code></li>
-    <li>Die Typen werden dynamisch während der Laufzeit bestimmt und können sich auch ändern! <code>let i = 0; i = "test";</code></li>
-    <li>Deklaration einer Variablen erfolgt mit ihrer ersten Aufzählung (<code>let a</code>)</li>
-    <li>Es gibt auch eine streng typisierte Sprachvariante Typescript, die deswegen besonders bei großen Projekten sehr beliebt ist.</li>
+    <li>Syntax: <code>let varibalenName = wert</code></li>
+    <li>Beispiel: <code>let farbe = '#f00'</code></li>
+    <li>Konvention Schreibweise: wortWortWort ("Camel Case")</li>
 </ul>
 
-Mit ES 6 erhielt Javascript zwei neue Bezeichner für Variablen: <code>const</code> und <code>let</code>
+Der Wert der Variable kann nach der Definition beliebig oft neu beschrieben werden.
+<ol>
+    <li><code>let notiz = "noch einkaufen!"</code></li>
+    <li><code>notiz = "erledigt!"</code></li>
+</ol>
 
+Für aufeinander folgenden Variablendeklarationen gibt es eine Kurzschreibweise:
 <ul>
-    <li>Der alte <code>var</code> Bezeichner sollte nicht mehr benutzt werden! (Ihr werdet ihn aber noch in vielen ältern Guides finden)</li>
-    <li><code>let</code> verhält sich wie eine normale Variable, ohne <code>var</code>'s Eigenheiten</li>
-    <li><code>const</code> bezeichnet eine nicht veränderbare Konstante.
-        <ul>
-            <li><strong>Konvention:</strong> Verwende GROSSBUCHSTABEN für Konstanten. z.B. <code>const BG_COLOR = "#fff"</code></li>
-            <li>Verhindert nicht das Verändern von Eigenschaften der Variable! (siehe Beispiel)</li>
-        </ul>
-    </li>
-    <li>Variablendeklarationen lassen sich kurz fassen: <code>let a = 1, b = 2;</code> enspricht <code>let a = 1; let b = 2;</code></li>
+    <li><code>let rot = "#f00", blau = "#00f"</code> entspricht <code>let rot = "#f00"</code> <code>let blau = "#00f"</code></li>
 </ul>
+
+Für Variablen deren Werte sich nicht ändern soll, verwendet man <code>const</code>.
+Hier führt der Versuch die Variable zu überschreiben zu einem Fehler.
+<ol>
+    <li><code>const PI = 3.1415</code></li>
+    <li><code>PI = 5</code> <strong>wirft eine Fehlermeldung!</strong></li>
+    <li>Konvention Schreibweise (nur für echte Konstanten!): WORT_WORT_WORT</li>
+</ol>
+
+<strong>MERKE:</strong> <code>let</code> statt <code>var</code>!
+<p><code>var</code> ist ein alter Variablenbezeichner, welcher noch in vielen Beispielen und Dokumentiation zu finden, sollte aber durch <code>let</code> ersetzt werden.</p>
+
 
 <!-- Code -->
 

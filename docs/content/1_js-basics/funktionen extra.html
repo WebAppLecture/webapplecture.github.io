@@ -8,12 +8,12 @@
     <li>fat arrow ist immer anonym, kann aber in Variablen gespeichert werden.</li>
     <li>Syntax:
         <ul>
-            <li><code>(param1, param2, ..., paramN) => { statements }</code> Parameter in runden Klammern, gefolgt vom Funktionskörper in geschweiften.</li>
+            <li><code>(param1, param2, ..., paramN) => { statements }</code> Parameterliste in runden Klammern, gefolgt vom Funktionskörper in geschweiften.</li>
             <li><code>(param1, param2, ..., paramN) => expression</code> Falls Funktionskörper ein einziger Ausdruck ist, keine Klammern nötig.</li>
             <li><code>(param1, param2, ..., paramN) => { return expression }</code> bei geschweiften Klammern muss return explizit definiert sein</li>
             <li><code>param1 => { statements }</code> bei einzelnen Parametern sind die Klammern optional</li>
             <li><code>param1 => ({ x: param1 })</code> Körper einklammern um Objektliterale zurück zu geben</li>
-            <li><code>() => ({ x: 5 })</code> parameterlose Parameterliste muss mit Klammern umgeben sein</li>
+            <li><code>() => { statements }</code> eine leere Parameterliste muss mit Klammern umgeben sein</li>
         </ul>
     </li>
 </ul>
@@ -30,14 +30,14 @@ let a = document.querySelector("#a"),
         add = (a, b) => a + b,
         muliply = (a, b) => a * b,
         subtract = (a, b) => a - b,
-        divide = (a, b) => b === 0 ? "durch Null geteilt" : a / b,
+        divide = (a, b) => a / b,
     ];
 
 ((list, select) => {
     list.forEach((item, i) => {
         let option = document.createElement("option");
         option.value = i;
-        option.innerText = item?.name;
+        option.innerText = item?.toString().match(/=>\s*(?<return>.*)/).groups.return;
         select.appendChild(option);
     });
 })(functions, fnSelect);
@@ -51,16 +51,37 @@ button.addEventListener("click", () => {
 
 </script>
 <style>
-div > * {
-    width: 19%;
+div {
+  font-size: 1.5em;
+  font-family: monospace;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input, select {
+    border: none;
+    outline: none;
+    max-width: 30%;
+}
+
+#a, #b {
+  width: 6ch;
 }
 </style>
 <html>
 <div>
-<input id="a" type="text"/>
-<input id="b" type="text"/>
-<select id="functions"></select>
-<button>apply</button>
-<input id="output" type="text"/>
+    const f = (a, b) => <select id="functions"></select>
+</div>
+<div>
+    f(
+    <input id="a" type="text" placeholder="a"/>,
+    <input id="b" type="text" placeholder="b"/>)
+    <button id="apply">▶</button>
+</div>
+<div>
+    <textarea id="output"></textarea>
 </div>
 </html>

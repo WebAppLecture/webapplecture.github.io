@@ -1,10 +1,10 @@
 <h2>Eingaben prüfen</h2>
 <ul>
-<li>Wie erwähnt: Jede Eingabe erstmal ein String - wie wird dieser z.B. zu einer Zahl?</li>
-<li>Von einer Zahl zu einem String ist recht einfach z.B. bei <code>var i = 2</code> über var str = i.toString()</li>
+<li><strong>Wichtig:</strong> Jede Eingabe ist erstmal ein String - wie wird dieser z.B. zu einer Zahl?</li>
+<li>Von einer Zahl zu einem String ist recht einfach z.B. bei <code>let i = 2</code> über <code>let str = i.toString()</code> oder <code>let str = i + ""</code></li>
 <li>Umgekehrt ist es nicht so einfach - <code>let number = 'abc' * 1</code> ergibt <code>number = NaN</code></li>
 <li><strong>NaN</strong> heißt <i>Not a Number</i> und ist ein spezieller Wert! Funktion zum Test ist <code>isNaN()</code></li>
-<li>Konvertierungsmethoden wie <code>parseInt()</code> und <code>parseFloat()</code> können auch verwendet werden</li>
+<li>Um Zahlen sauber einzulesen verwenden wir Konvertierungsmethoden wie <code>parseInt()</code> und <code>parseFloat()</code></li>
 <li>Geben zwar auch im ungünstigen Fall <code>NaN</code> zurück - eignen sich aber sehr gut um wirklich Komma- oder Ganzzahl zu erhalten</li>
 <li>Auswerten von Benutzereingabe: mit <strong>regulären Ausdrücken</strong> (<code>match()</code>) und Typüberprüfung arbeiten</li>
 <li><a href="http://regex101.com">Regex Spielwiese</a></li>

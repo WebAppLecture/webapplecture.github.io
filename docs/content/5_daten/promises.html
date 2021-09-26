@@ -12,8 +12,13 @@
 </ul>
 </li>
 <li>Der Code einer asynchronen (d.h. einer Methode die länger als 50 ms benötigt und nicht-blockend sein soll) Methode würde nun so ausgewertet werden
-<pre lang="javascript">
-var promise = new Promise(function(resolve, reject) {
+</li>
+</ul>
+
+<!-- Code -->
+
+<script>
+let promise = new Promise(function(resolve, reject) {
   // do a thing, possibly async, then…
 
   if (/* everything turned out fine */) {
@@ -24,11 +29,14 @@ var promise = new Promise(function(resolve, reject) {
   }
 });
 
-promise.then(function(result) {
-  console.log(result); // "Stuff worked!"
-}, function(err) {
-  console.log(err); // Error: "It broke"
-});
-</pre>
-</li>
-</ul>
+promise.then(
+  result => console.log(result), 
+  err => console.log(err)
+);
+
+promise.then(
+  result => console.log(result)
+).catch(
+  err => console.log(err)
+);
+</script>

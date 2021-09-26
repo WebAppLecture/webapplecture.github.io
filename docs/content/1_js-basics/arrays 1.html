@@ -21,28 +21,50 @@
 <!-- Code -->
 
 <script>
-let output = document.querySelector("output"),
-    leer1 = [], //Empfohlen
-    leer2 = new Array(), //Nicht empfohlen
-    reserviert = new Array(14), //Bringt keine Performance-Vorteile
-    belegt1 = new Array('Milch', 'Zucker', 'Mehl'),
-    belegt2 = ['Milch', 'Mehl', 'Äpfel'],
-    ausString = "C#,Java,Ruby".split(",");
+let output = document.querySelector("#array"),
+    operationSelect = document.querySelector("select"),
+    entry = document.querySelector("#entry"),
+    call = document.querySelector("#call"),
+    returnValue = document.querySelector("#return"),
+    array = [],
+    operations = [
+        "push", "pop", "shift", "unshift"
+    ];
 
-ausString.push("Haskell"); 
+output.value = array
 
-let outputString = ausString; // probiers aus
+operations.forEach(operation => {
+    let option = document.createElement("option");
+    option.value = operation
+    option.innerText = operation
+    operationSelect.appendChild(option)
+})
 
-output.value = `[${outputString}](${outputString.length})`; 
-
+call.addEventListener("click", () => {
+    returnValue.value = array[operationSelect.value](entry.value)
+    output.value = array
+})
 </script>
 <style>
+    div {
+        font-size: 1.5rem;
+        font-family: monospace;
+    }
+
     output {
-        color: white;
-        background: black;
-        padding: 5px;
+        font-size: 1rem;
+    }
+
+    #entry {
+        width: 10ch;
     }
 </style>
 <html>
-<output></output>
+<div>
+    [<output id="array"></output>].<select></select>(<input id="entry"/>)<button id="call">▶</button>
+</div>
+<div>
+    return <output id="return"></output>
+</div>
+
 </html>

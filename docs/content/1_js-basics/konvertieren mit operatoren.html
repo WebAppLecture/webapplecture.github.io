@@ -20,6 +20,7 @@ let a = document.querySelector("#a"),
     fnSelect = document.querySelector("#functions")
     output = document.querySelector("#output"),
     functions = [
+        x => x,
         x => !!x,
         x => x + "",
         x => +x,
@@ -27,9 +28,6 @@ let a = document.querySelector("#a"),
         x => ~~x,
         x => x || "x is falsy",
         x => x && "x is truthy",
-        x => x ?? "x is nullish", // funktioniert nicht da x immer mindestens "" ist.
-        x => typeof x, // hier immer String
-        x => ({} instanceof Object), 
     ];
 
 ((list, select) => {
@@ -44,21 +42,33 @@ let a = document.querySelector("#a"),
 button.addEventListener("click", () => {
     let fnId = fnSelect.selectedOptions[0].value,
         f = functions[fnId];
-    output.value = f(a.value);
+    output.value = f(a.value) + `(${typeof f(a.value)})`;
 });
 
 
 </script>
 <style>
-div > * {
-    width: 24%;
+div {
+    font-size: 1.5em;
+    font-family: monospace;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input, select {
+    border: none;
+    outline: none;
+    max-width: 30%;
 }
 </style>
 <html>
 <div>
-<input id="a" type="text"/>
-<select id="functions"></select>
-<button>apply</button>
-<input id="output" type="text"/>
+    (<select id="functions"></select>)(<input id="a" type="text"/>)<button>▶</button>
+</div>
+<textarea id="output">
+</textarea>
 </div>
 </html>

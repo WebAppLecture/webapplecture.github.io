@@ -26,16 +26,90 @@
 <!-- Code -->
 
 <script>
-let leer = {}, // leeres Objekt
-    gefüllt1 = { a: 3 }, // Objekt mit Eigenschaft
-    gefüllt2 = { add: function(a,b) {return a + b}}, // Objekt mit Methode
-    gefüllt3 = { add: (a,b) => a + b}, // auch fat-arrow möglich
-    gefüllt4 = { // Objekt mit Eigenschaft und Funktion
-        value: 0,
-        add: function(a) {return this.value += a},
-    },
-    kopie = {...gefüllt4}; // shallow copy 
+let objContainer = document.querySelector("#object"),
+    apply = document.querySelector("#apply"),
+    call = document.querySelector("#call"),
+    name = document.querySelector("#name"),
+    value = document.querySelector("#value"),
+    fn = document.querySelector("#function"),
+    obj = { size: function(){return Object.keys(this).length} }
 
-gefüllt4.add(6);
-gefüllt4.value === 6;
+fillObjContainer()
+
+apply.addEventListener("click", () => {
+    if(name.value === "" || value.value === "") {
+        return
+    }
+    // Achtung! eval() erlaubt Nutzern einfach Code auszuführen, benutze eval() nicht ohne die Risiken zu kennen!
+    try {
+        obj[name.value] = eval(value.value) 
+    } catch(error) {
+        obj[name.value] = value.value
+    }
+    objContainer.textContent = ""
+    fn.textContent = ""
+    fillObjContainer()
+})
+
+call.addEventListener("click", () => {
+    output.value = obj[fn.value]()
+})
+
+function fillObjContainer() {
+    Object.entries(obj).forEach(createEntry)
+}
+
+function createEntry([name, value]) {
+    let div = document.createElement("div")
+    div.textContent = name + ": " + value.toString() + ","
+    objContainer.appendChild(div)
+    if(typeof value === "function") {
+        let option = document.createElement("option")
+        option.value = name
+        option.textContent = name
+        fn.appendChild(option)
+    }
+}
+
+
 </script>
+<style>
+div {
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+#object > div {
+    padding-left: 4ch;
+    font-size: .9rem;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input, select {
+    border: none;
+    outline: none;
+    max-width: 30%;
+}
+
+#name {
+    width: 10ch;
+}
+</style>
+<html>
+<div>
+let obj = {
+<div id="object"></div>
+}
+</div>
+<div>
+obj.<input id="name" placeholder="attribute">=<input id="value" placeholder="value"><button id="apply">▶</button>
+</div>
+<div>
+    obj.<select id="function"></select>()<button id="call">▶</button>
+</div>
+<textarea id="output"></textarea>
+</html>

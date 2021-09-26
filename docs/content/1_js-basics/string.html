@@ -11,61 +11,104 @@
 </ul>
 
 <h3>Einige wichtige Methoden</h3>
+<p>Mit <code>?</code> markierte Parameter sind optional, alternative Parameter sind durch <code>|</code> getrennt.</p>
+<h4>Durchuchen</h4>
 <ul>
-<li><code>concat()</code></li>
-<li><code>indexOf()</code> und <code>lastIndexOf()</code></li>
-<li><code>match()</code> und <code>matchAll()</code></li>
-<li><code>replace()</code> und <code>replaceAll()</code></li>
-<li><code>slice()</code> und <code>split()</code></li>
-<li><code>substr()</code> und <code>substring()</code></li>
+    <li><code>incluces(string, ?fromIndex)</code></li>
+    <li><code>indexOf(search, ?fromIndex)</code> und <code>lastIndexOf(search, ?fromIndex)</code></li>
+    <li><code>match(regexp)</code> und <code>matchAll(regexp)</code></li>
 </ul>
-
-<h3>Methoden mit HTML Ausgabe</h3>
+<h4>Verändern</h4>
+<p>Alle Operationen geben einen neuen String zurück, der originale wird nicht verändert.</p>
 <ul>
-<li><code>link()</code></li>
-<li><code>bold()</code> und <code>italics()</code></li>
-<li><code>fixed()</code></li>
-<li><code>anchor()</code></li>
-<li><code>small()</code> und <code>strike()</code></li>
-<li><code>sub()</code> und <code>sup()</code></li>
+    <li><code>concat(str1, ?..., ?strN)</code></li>
+    <li><code>replace(string | regexp, ?string | ?replaceFn)</code> und <code>replaceAll(string | regexp, ?string | ?replaceFn)</code></li>
+    <li><code>padStart(length, ?string)</code> und <code>padEnd(length, ?string)</code></li>
+    <li><code>toUpperCase()</code> und <code>toLowerCase()</code></li>
+    <li><code>trim()</code>, <code>trimStart()</code> und <code>trimEnd()</code></li>
+    <li><code>slice(start, ?end)</code> und <code>split(?string, ?limit)</code></li>
+    <li><code>substr(start, ?length)</code> und <code>substring(start, ?end)</code></li>
 </ul>
 
 <!-- Code -->
 <script>
 let s = document.querySelector("#string"),
     input = document.querySelector("#input"),
-    output = document.querySelector("#output");
+    a = document.querySelector("#a"),
+    b = document.querySelector("#b"),
+    select = document.querySelector("select"),
+    output = document.querySelector("#output"),
+    apply = document.querySelector("#apply"),
+    operations = [
+        [
+            "Suchen",
+            "includes",
+            "indexOf",
+            "lastIndexOf",
+            "match",
+            "matchAll",
+        ],[
+            "Verändern",
+            "slice",
+            "split",
+            "replace",
+            "replaceAll",
+            "trim",
+            "concat",
+            "substr",
+            "substring",
+            "toUpperCase",
+            "toLowerCase",
+            "padStart",
+            "padEnd",
+        ]
+    ];
 
-input.addEventListener("input", updateOutput);
+operations.forEach(optGroup => {
+    let group = document.createElement("optgroup")
+    group.label = optGroup.shift()
+    optGroup.forEach(operation => {
+        let option = document.createElement("option")
+        option.value = operation
+        option.innerText = operation
+        group.appendChild(option)
+    })
+    select.appendChild(group)
+})
 
-function updateOutput() {
-    output.value = 
-`indexOf: \t ${s.value.indexOf(input.value)}
-lastIndexOf: \t ${s.value.lastIndexOf(input.value)}
-split: \t\t [${s.value.split(input.value).map(s => '"' + s + '"')}]
-replace: \t ${s.value.replace(input.value, "_")}
-replaceAll: \t ${s.value.replaceAll(input.value, "_")}`;
-}
-
-String.prototype.replaceAll = function(find, replace) {
-    let string = this;
-    return string.replace(new RegExp(find, "g"), replace);
-}
+apply.addEventListener("click", () => {
+    
+    output.value = s.value[select.value](
+        a.value ? a.value : undefined, 
+        b.value ? b.value : undefined)
+})
 </script>
 <style>
-    #string {
-        width: 60%;
-    }
-    #input {
-        width: 39%;
-    }
-    textarea {
-        width: 100%;
-        height: 200px;
-    }
+div {
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input, select {
+    border: none;
+    outline: none;
+    max-width: 30%;
+}
+
+#a, #b, #c {
+    width: 5ch;
+}
 </style>
 <html>
-<input id="string" type="text" value="Hallo Welt - Guten Tag!"/>
+<div>
+    "<input id="string" type="text"/>".<select></select>(<input id="a">,<input id="b">)<button id="apply">▶</button>
+</div>
+
 <input id="input" type="text"/>
 <textarea id="output"></textarea>
 </html>
