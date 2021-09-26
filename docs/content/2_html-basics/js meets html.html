@@ -1,15 +1,18 @@
 <h2>JavaScript in HTML nutzen</h2>
 <p>
     Bevor Javascript im Browser ausgeführt werden kann muss es im HTML eingebunden werden.
-    Externer Javascript wird ideal im <code>&lt;head&gt;</code> eingebunden.
+    Externer Javascript wird im <code>&lt;head&gt;</code> eingebunden.
 </p>
 <code>&lt;script defer src="pfad/zum/beispiel.js"&gt;&lt;/script&gt;</code>
+<p>Falls der Code in Modulen definiert ist:</p>
+<code>&lt;script defer type="module" src="pfad/zum/beispiel.js"&gt;&lt;/script&gt;</code>
 <p>
     <strong>MERKE:</strong> <code>defer</code> sorgt dafür, dass das Laden des Codes das Rendern der Seite nicht blockiert!
 </p>
 <p>
-    Um schnell etwas auszuprobieren kann man Skripte auch direkt einbinden. 
+    Um schnell etwas auszuprobieren kann man Skripte auch an beliebiger Stelle im HTML direkt einbinden. 
 </p>
+<code>&lt;script&gt;Hier ist Code&lt;/script&gt;</code>
 <h3>HTML auslesen & manipulieren</h3>
 <p>
     In Javascript greifen wir über das <code>document</code> Objekt auf die HTML Seite zu.
